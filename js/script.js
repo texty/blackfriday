@@ -15,12 +15,6 @@ var yAxis = d3.axisLeft()
     .scale(yScale)
     .ticks(3);
 
-// var area = d3.area()
-//     .x(function(d) { return xScale(d.date); })
-//     .y0(height)
-//     .y1(function(d) { return yScale(d.price); });
-
-
 var line = d3.line()
     .defined(function(d) { return d; })
     .x(function(d) { return xScale(d.date); })

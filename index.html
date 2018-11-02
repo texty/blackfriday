@@ -1,27 +1,48 @@
 <!doctype html>
 <html>
 <head>
+    <meta charset="utf-8">
     <link rel="stylesheet" href="css/style.css">
 
 </head>
 <style>
+body{
+    /*background-color: black ;*/
+    background-color: #a0a0a0;
 
+}
 
 
     .line {
         fill: none;
-        stroke: #0f9f23;
+        stroke: #1dffdc;
         stroke-width: 1px;
+        z-index:10;
     }
 
     .lineOld{
         fill: none;
-        stroke: #890e13;
+        stroke: #ac0044;
         stroke-width: 1px;
+        stroke-dasharray: 3;
     }
 
     .area {
         fill: #e8eef4;
+    }
+
+    .small-multiples {
+        background-color: #020202;
+    }
+
+    g.tick > line {
+        stroke: #0f0f0f;
+        z-index:5;
+    }
+
+    svg {
+        margin-bottom:60px;
+        margin-left: 5%;
     }
 
     g#xAxisG text, g#yAxisG text {
@@ -34,11 +55,31 @@
         margin-left: 40px;
         margin-bottom: 38px;
     }
+
+    .focus circle {
+        fill: none;
+        stroke: #1dffdc;
+    }
+
+    .focus2 circle {
+        fill: none;
+        stroke: #ac0044;
+}
+    .overlay {
+        fill: none;
+        pointer-events: all;
+    }
+
+    .tooltip {
+        padding:4px;
+        font-size:12px;
+    }
 </style>
 
 <body>
-<h1>My first server code</h1>
-<h2>I'm beautiful, it's true</h2>
+<!--<h1>My first server code</h1>-->
+<!--<h2>I'm beautiful, it's true</h2>-->
+
 
 <button id="mybut">Click</button>
 <div id="charts">

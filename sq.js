@@ -6,8 +6,9 @@ var app = express();
 
 // For receiving JSON in posts
 var bodyParser = require('body-parser');
-var jsonParser = bodyParser.json();
-var urlencodedParser = bodyParser.urlencoded({ extended: false });
+
+
+
 
 // For the database
 var sqlite3 = require('sqlite3').verbose();
@@ -38,15 +39,16 @@ app.use(function(req, res, next) {
 // });
 
 app.post('/', function( req, res, next ) {
+        console.log(req.body);
         db.serialize(function() {
-            db.all("SELECT * FROM leboutique WHERE id IN (SELECT DISTINCT id FROM leboutique ORDER BY RANDOM() LIMIT 50)",
+            db.all("SELECT * FROM leboutique WHERE id IN (SELECT DISTINCT id FROM leboutique ORDER BY RANDOM() LIMIT 20)",
                 function(err,rows){
                 if(err)
                     {
                         console.log(err);
                     }
                     else {
-                        console.log(rows);
+                        // console.log(rows);
                         res.send(rows);
                         next();
 

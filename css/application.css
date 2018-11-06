@@ -1,0 +1,132 @@
+@charset "UTF-8";
+/* --- імпорт шрифтів ---*/
+@font-face {
+  font-family: Prisma Pro;
+  src: url(../fonts/PrismaPro.otf); }
+body {
+  /*background-color: black ;*/
+  background-color: #a0a0a0; }
+
+/* ------- HEADER ANIMATION --------- */
+#header {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-color: black;
+  font-size: 150px;
+  font-family: "Prisma Pro";
+  text-align: center;
+  text-transform: uppercase;
+  color: #ff36ad; }
+
+#neon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
+p {
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0; }
+
+div p {
+  margin: 0; }
+
+#black {
+  color: #fff; }
+
+#black span {
+  opacity: 0.2;
+  animation: whiteBlink 5.5s linear 1; }
+
+#friday span {
+  opacity: 0.2;
+  animation: redBlink 5s linear 1; }
+
+#friday span:nth-of-type(2) {
+  animation: redBlink1 5s linear 1; }
+
+#friday span:nth-of-type(3) {
+  animation: redBlink2 5s linear 1; }
+
+@keyframes whiteBlink {
+  0%, 98%, 99.3%, 100% {
+    opacity: .99;
+    text-shadow: 0 0 80px #ffffff,0 0 30px #008000,0 0 6px #0000ff; }
+  99%,99.5% {
+    opacity: 0.2;
+    text-shadow: none; } }
+@keyframes redBlink {
+  0%,12%,18.999%,23%,31.999%,37%,44.999%,46%,49.999%,51%,58.999%,61%,68.999%,71%,85.999%,96%,100% {
+    opacity: 0.99;
+    text-shadow: 0 0 80px #ff36ad,0 0 30px #008000,0 0 6px #0000ff; }
+  86%,95.999% {
+    opacity: 0.2;
+    text-shadow: none; } }
+@keyframes redBlink1 {
+  0%,12%,12.8%,13.2%,44.999%,46%,49.999%,51%,58.94%,62%,68.999%,71%,85.999%,96% {
+    opacity: 0.99;
+    text-shadow: 0 0 80px #ff36ad,0 0 30px #008000,0 0 6px #0000ff; }
+  12.3%,13%,45%,45.999%,50%,50.99%,59%,60.39%,69%,70.999%,86%,95.999%,100% {
+    opacity: 0.4;
+    text-shadow: none; } }
+@keyframes redBlink2 {
+  0%,50.5%,58.999%,61%,68.999%,71%,85.999%,96% {
+    opacity: 0.99;
+    text-shadow: 0 0 80px #ff36ad,0 0 30px #008000,0 0 6px #0000ff; }
+  50%,50.99%,59%,60.999%,69%,70.999%,86%,95.999%,100% {
+    opacity: 0.4;
+    text-shadow: none; } }
+/* ----- SVG small multiples -----*/
+.line {
+  fill: none;
+  stroke: #1dffdc;
+  stroke-width: 1px;
+  z-index: 10; }
+
+.lineOld {
+  fill: none;
+  stroke: #ac0044;
+  stroke-width: 1px;
+  stroke-dasharray: 3; }
+
+.area {
+  fill: #e8eef4; }
+
+.small-multiples {
+  background-color: #020202; }
+
+g.tick > line {
+  stroke: #0f0f0f;
+  z-index: 5; }
+
+svg {
+  margin-bottom: 60px;
+  margin-left: 5%; }
+
+g#xAxisG text, g#yAxisG text {
+  stroke: none;
+  fill: silver;
+  font-size: 9px; }
+
+header, div#source {
+  margin-left: 40px;
+  margin-bottom: 38px; }
+
+.focus circle {
+  fill: none;
+  stroke: #1dffdc; }
+
+.focus2 circle {
+  fill: none;
+  stroke: #ac0044; }
+
+.overlay {
+  fill: none;
+  pointer-events: all; }
+
+.tooltip {
+  padding: 4px;
+  font-size: 12px; }
+
+/*# sourceMappingURL=application.css.map */

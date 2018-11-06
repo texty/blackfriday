@@ -142,7 +142,7 @@ $('#mybut').on('click', function () {
                 .on("mousemove", mousemove);
 
             function mousemove() {
-                var x0 = xScale.invert(d3.mouse(this)[0]),
+                var x0 = xScale.invert(d3.mouse(this)[1]),
                     i = bisectDate(filtered_data, x0, 1),
                     d0 = filtered_data[i - 1],
                     d1 = filtered_data[i],

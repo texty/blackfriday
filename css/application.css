@@ -1,11 +1,12 @@
 @charset "UTF-8";
+/* --- variables ----*/
 /* --- імпорт шрифтів ---*/
 @font-face {
   font-family: Prisma Pro;
   src: url(../fonts/PrismaPro.otf); }
 body {
-  /*background-color: black ;*/
-  background-color: #a0a0a0; }
+  background-color: black;
+  font-family: 'Montserrat Alternates', sans-serif; }
 
 /* ------- HEADER ANIMATION --------- */
 #header {
@@ -43,40 +44,108 @@ div p {
   opacity: 0.2;
   animation: redBlink 5s linear 1; }
 
-#friday span:nth-of-type(2) {
+#friday span:nth-of-type(3) {
   animation: redBlink1 5s linear 1; }
 
-#friday span:nth-of-type(3) {
+#friday span:nth-of-type(1) {
   animation: redBlink2 5s linear 1; }
 
 @keyframes whiteBlink {
-  0%, 98%, 99.3%, 100% {
+  0%, 60%,62%, 63%, 97%, 99%, 100% {
     opacity: .99;
     text-shadow: 0 0 80px #ffffff,0 0 30px #008000,0 0 6px #0000ff; }
-  99%,99.5% {
+  61%,62.5%, 98%,99.5% {
     opacity: 0.2;
     text-shadow: none; } }
 @keyframes redBlink {
   0%,12%,18.999%,23%,31.999%,37%,44.999%,46%,49.999%,51%,58.999%,61%,68.999%,71%,85.999%,96%,100% {
     opacity: 0.99;
-    text-shadow: 0 0 80px #ff36ad,0 0 30px #008000,0 0 6px #0000ff; }
+    text-shadow: 0 0 80px #ff36ad, 0 0 30px #008000, 0 0 6px #0000ff; }
   86%,95.999% {
     opacity: 0.2;
     text-shadow: none; } }
 @keyframes redBlink1 {
   0%,12%,12.8%,13.2%,44.999%,46%,49.999%,51%,58.94%,62%,68.999%,71%,85.999%,96% {
     opacity: 0.99;
-    text-shadow: 0 0 80px #ff36ad,0 0 30px #008000,0 0 6px #0000ff; }
+    text-shadow: 0 0 80px #ff36ad, 0 0 30px #008000, 0 0 6px #0000ff; }
   12.3%,13%,45%,45.999%,50%,50.99%,59%,60.39%,69%,70.999%,86%,95.999%,100% {
-    opacity: 0.4;
+    opacity: 0.2;
     text-shadow: none; } }
 @keyframes redBlink2 {
-  0%,50.5%,58.999%,61%,68.999%,71%,85.999%,96% {
+  0%,48.999%,61%,62%,68.999%,71%,85.999%,96% {
     opacity: 0.99;
-    text-shadow: 0 0 80px #ff36ad,0 0 30px #008000,0 0 6px #0000ff; }
-  50%,50.99%,59%,60.999%,69%,70.999%,86%,95.999%,100% {
+    text-shadow: 0 0 80px #ff36ad, 0 0 30px #008000, 0 0 6px #0000ff; }
+  50.5%,95.999%,100% {
     opacity: 0.4;
     text-shadow: none; } }
+/* ----- Buy Me Section  ------ */
+.buyMe {
+  margin: 0 auto;
+  padding: 10%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px; }
+
+.prod {
+  background-color: #0f0f0f;
+  line-height: 1.8;
+  color: white;
+  font-size: 18px; }
+
+.prod img {
+  width: 100%; }
+
+.prod p {
+  padding-left: 10px;
+  text-align: left; }
+
+.price-old {
+  font-weight: 100;
+  color: #ff36ad;
+  font-size: 20px;
+  text-decoration: line-through; }
+
+.current-price {
+  font-weight: 800;
+  letter-spacing: 1px;
+  font-size: 20px; }
+
+.buy-button {
+  width: 50%;
+  margin-left: 25%;
+  background-color: grey;
+  text-align: center;
+  cursor: pointer; }
+
+.first-blink {
+  background-color: #ff36ad;
+  animation: buy 0.5s linear 50; }
+
+@keyframes buy {
+  0%,100% {
+    background-color: #ff36ad; }
+  50% {
+    background-color: grey; } }
+/*------ countdown -----*/
+.clockdiv {
+  width: 80%;
+  margin-left: 10%;
+  display: inline-block;
+  font-weight: 100;
+  text-align: center;
+  font-size: 20px;
+  color: #ff36ad; }
+
+.clockdiv > div {
+  padding: 5px;
+  border-radius: 3px;
+  display: inline-block; }
+
+.clockdiv div > span {
+  padding: 5px;
+  border-radius: 3px;
+  display: inline-block; }
+
 /* ----- SVG small multiples -----*/
 .line {
   fill: none;

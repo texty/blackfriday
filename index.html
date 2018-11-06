@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Alegreya|Alice|Cormorant|Jura|Montserrat+Alternates|Philosopher" rel="stylesheet">
     <link rel="stylesheet" href="css/application.css">
 </head>
 <body>
@@ -11,6 +12,77 @@
     <p id="friday"><span>п'</span><span>я</span><span>т</span><span>н</span><span>и</span><span>ц</span><span>я</span></p>
     </div>
 </div>
+<section >
+    <div class="buyMe">
+        <div class="prod">
+            <img src="img/1397157.jpg"/>
+            <div class="price-grid">
+                <p>Сумочка "Zr@da"</p>
+                <p>MarieM</p>
+                <div class="price-container">
+                    <p id="price-old-2" class="price-old">&nbsp;&nbsp;5300&nbsp;&nbsp;</p>
+                    <p id="current-price-2" class="current-price">1200</p>
+                </div>
+                <div class="count-days"></div>
+            </div>
+            <div id="clockdiv1" class="clockdiv">
+                <div>
+                    Скоро! <span class="hours"></span><span class="minutes"></span><span class="seconds"></span>
+                </div>
+            </div>
+            <div class="buy-button">
+                <h2>Купити</h2>
+            </div>
+        </div>
+
+        <div class="prod">
+            <img src="img/4241614.jpg"/>
+            <div class="price-grid">
+                    <p>Сумочка "Zr@da"</p>
+                    <p>MarieM</p>
+                <div class="price-container">
+                    <p id="price-old-1" class="price-old">&nbsp;&nbsp;5300&nbsp;&nbsp;</p>
+                    <p id="current-price-1" class="current-price">1200</p>
+                </div>
+                <div class="count-days"></div>
+            </div>
+            <div id="clockdiv2" class="clockdiv">
+                <div>
+                    Встигни! <span class="hours"></span><span class="minutes"></span><span class="seconds"></span>
+                </div>
+            </div>
+            <div class="buy-button first-blink">
+                <h2>Купити</h2>
+            </div>
+        </div>
+
+        <div class="prod">
+            <img src="img/1470450.jpg"/>
+            <div class="price-grid">
+                <p>Сумочка "Zr@da"</p>
+                <p>MarieM</p>
+                <div class="price-container">
+                    <p id="price-old-3" class="price-old">&nbsp;&nbsp;5300&nbsp;&nbsp;</p>
+                    <p id="current-price-3" class="current-price">1200</p>
+                </div>
+                <div class="count-days"></div>
+            </div>
+            <div id="clockdiv3" class="clockdiv">
+                <div>
+                    Скоро!<span class="hours"></span><span class="minutes"></span><span class="seconds"></span>
+                </div>
+            </div>
+            <div class="buy-button">
+                <h2>Купити</h2>
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+</section>
 
 <button id="mybut">Click</button>
 <div id="charts">
@@ -24,15 +96,50 @@
 <script src="js/script.js"></script>
 
 <script>
-//    $('#mybut').on('click', function () {
-//        $.ajax({
-//            type: "POST",
-//            url: "http://localhost:8000/",
-//            data: {"text": "hi"}
-//        }).done(function(d) {
-//           console.log(d);
-//        });
-//    })
+    function getTimeRemaining(endtime) {
+        var t = Date.parse(endtime) - Date.parse(new Date());
+        var seconds = Math.floor((t / 1000) % 60);
+        var minutes = 41;
+        var hours = 2;
+//        var days = 0;
+        return {
+            'total': t,
+//            'days': days,
+            'hours': hours,
+            'minutes': minutes,
+            'seconds': seconds
+        };
+    }
+
+    function initializeClock(id, endtime) {
+        var clock = document.getElementById(id);
+//        var daysSpan = clock.querySelector('.days');
+        var hoursSpan = clock.querySelector('.hours');
+        var minutesSpan = clock.querySelector('.minutes');
+        var secondsSpan = clock.querySelector('.seconds');
+
+        function updateClock() {
+            var t = getTimeRemaining(endtime);
+
+//            daysSpan.innerHTML = t.days;
+            hoursSpan.innerHTML = ('0' + t.hours).slice(-2) + "  :";
+            minutesSpan.innerHTML = ('0' + t.minutes).slice(-2) + "  :";
+            secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+            if (t.total <= 0) {
+                clearInterval(timeinterval);
+            }
+        }
+
+        updateClock();
+        var timeinterval = setInterval(updateClock, 1000);
+    }
+
+    var deadline = new Date(Date.parse(new Date()) + 15 * 24 * 60 * 60 * 1000);
+//    initializeClock('clockdiv1', deadline);
+    initializeClock('clockdiv2', deadline);
+//    initializeClock('clockdiv3', deadline);
+
 </script>
 
 

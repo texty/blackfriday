@@ -45,9 +45,10 @@ var categ = "bags";
 $('#mybut').on('click', function () {
     $.ajax({
         type: "POST",
-        contentType: "plain/text",
+        contentType: "application/json",
+        dataType: "json",
         url: "http://localhost:8000/",
-        data: { text : categ }
+        data: JSON.stringify({ "categ": categ })
     }).done(function(data) {
         console.log(data);
         $('#charts').find('svg').remove();
@@ -157,7 +158,7 @@ $('#mybut').on('click', function () {
                         }
                     })
                     .attr("y", 15)
-                    .attr("fill", "#1dffdc")
+                    .attr("fill", "#ff36ad")
                     .attr("class", "tooltip")
                     .attr("x", function () {
                         if (x0 > parseDate ('2018-10-01')) {
@@ -179,7 +180,7 @@ $('#mybut').on('click', function () {
                         }
                     })
                     .attr("y", -15)
-                    .attr("fill", "#ac0044")
+                    .attr("fill", "white")
 
                     .attr("class", "tooltip")
                     .attr("x", function () {

@@ -12,10 +12,12 @@
     <p id="friday"><span>п'</span><span>я</span><span>т</span><span>н</span><span>и</span><span>ц</span><span>я</span></p>
     </div>
 </div>
-<section >
+<section>
     <div class="buyMe">
-        <div class="prod">
+        <div class="card">
+            <div class="prod">
             <img src="img/1397157.jpg"/>
+                <div class="buyMeChart"></div>
             <div class="price-grid">
                 <p>Сумочка "Zr@da"</p>
                 <p>MarieM</p>
@@ -27,7 +29,7 @@
             </div>
             <div id="clockdiv1" class="clockdiv">
                 <div>
-                    Скоро! <span class="hours"></span><span class="minutes"></span><span class="seconds"></span>
+                    <span class="hours"></span><span class="minutes"></span><span class="seconds"></span>
                 </div>
             </div>
             <div class="buy-button">
@@ -35,8 +37,12 @@
             </div>
         </div>
 
+        </div>
+
         <div class="prod">
             <img src="img/4241614.jpg"/>
+            <div class="buyMeChart"></div>
+
             <div class="price-grid">
                     <p>Сумочка "Zr@da"</p>
                     <p>MarieM</p>
@@ -48,7 +54,7 @@
             </div>
             <div id="clockdiv2" class="clockdiv">
                 <div>
-                    Встигни! <span class="hours"></span><span class="minutes"></span><span class="seconds"></span>
+                    <span class="hours"></span><span class="minutes"></span><span class="seconds"></span>
                 </div>
             </div>
             <div class="buy-button first-blink">
@@ -58,6 +64,7 @@
 
         <div class="prod">
             <img src="img/1470450.jpg"/>
+            <div class="buyMeChart"></div>
             <div class="price-grid">
                 <p>Сумочка "Zr@da"</p>
                 <p>MarieM</p>
@@ -69,7 +76,7 @@
             </div>
             <div id="clockdiv3" class="clockdiv">
                 <div>
-                    Скоро!<span class="hours"></span><span class="minutes"></span><span class="seconds"></span>
+                    <span class="hours"></span><span class="minutes"></span><span class="seconds"></span>
                 </div>
             </div>
             <div class="buy-button">
@@ -85,6 +92,7 @@
 </section>
 
 <button id="mybut">Click</button>
+<p>Підтягує з сервера 50 рендомних графічків</p>
 <div id="charts">
 
 </div>
@@ -94,6 +102,7 @@
 <!--<script src="lib/d3.min.js"></script>-->
 <script src ="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
 <script src="js/script.js"></script>
+<script src="js/flippedCards.js"></script>
 
 <script>
     function getTimeRemaining(endtime) {
@@ -136,9 +145,9 @@
     }
 
     var deadline = new Date(Date.parse(new Date()) + 15 * 24 * 60 * 60 * 1000);
-//    initializeClock('clockdiv1', deadline);
+    initializeClock('clockdiv1', deadline);
     initializeClock('clockdiv2', deadline);
-//    initializeClock('clockdiv3', deadline);
+    initializeClock('clockdiv3', deadline);
 
 </script>
 

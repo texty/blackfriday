@@ -83,14 +83,15 @@ div p {
   margin: 0 auto;
   padding: 10%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-gap: 20px; }
 
 .prod {
   background-color: #0f0f0f;
   line-height: 1.8;
   color: white;
-  font-size: 18px; }
+  font-size: 18px;
+  height: 100%; }
 
 .prod img {
   width: 100%; }
@@ -126,6 +127,12 @@ div p {
     background-color: #ff36ad; }
   50% {
     background-color: grey; } }
+.hidden {
+  display: none; }
+
+.buyMeChartSvg {
+  margin-bottom: 10px; }
+
 /*------ countdown -----*/
 .clockdiv {
   width: 80%;
@@ -149,13 +156,13 @@ div p {
 /* ----- SVG small multiples -----*/
 .line {
   fill: none;
-  stroke: #1dffdc;
+  stroke: #ff36ad;
   stroke-width: 1px;
   z-index: 10; }
 
 .lineOld {
   fill: none;
-  stroke: #ac0044;
+  stroke: white;
   stroke-width: 1px;
   stroke-dasharray: 3; }
 
@@ -169,7 +176,7 @@ g.tick > line {
   stroke: #0f0f0f;
   z-index: 5; }
 
-svg {
+#chart svg {
   margin-bottom: 60px;
   margin-left: 5%; }
 
@@ -184,11 +191,11 @@ header, div#source {
 
 .focus circle {
   fill: none;
-  stroke: #1dffdc; }
+  stroke: #ff36ad; }
 
 .focus2 circle {
   fill: none;
-  stroke: #ac0044; }
+  stroke: white; }
 
 .overlay {
   fill: none;

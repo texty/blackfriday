@@ -43,9 +43,11 @@ app.use(bodyParser.json());
 // });
 
 app.post('/', function(req, res, next) {
-        console.log(req.body);
+        console.log(req.body.categ);
         db.serialize(function() {
-            db.all("SELECT * FROM leboutique WHERE id IN (SELECT DISTINCT id FROM leboutique ORDER BY RANDOM() LIMIT 10)",
+            db.all("SELECT * " +
+                "FROM database " +                
+                "WHERE id IN (SELECT DISTINCT id FROM database WHERE product = '"+ req.body.categ+ "' ORDER BY RANDOM() LIMIT 10)",
                 function(err,rows){
                 if(err)
                     {

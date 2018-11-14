@@ -1,3 +1,33 @@
+var data = [
+    { value: "notebook", text: 'ноутбуки'},
+    { value: "bags", text: 'сумки'},
+    { value: "flag", text: 'плити'}
+];
+
+var select = d3.select('#MyDropDownList')
+    .append('select')
+    .attr('class','select')
+    .on('change',onchange);
+
+var options = select
+    .selectAll('option')
+    .data(data).enter()
+    .append('option')
+    .attr("value", function (d) {return d.value })
+    .text(function (d) { return d.text; });
+
+var categ;
+
+function onchange() {
+    selectValue = $('option:selected', this).attr('value');
+
+    console.log(this);
+    console.log(selectValue);
+    categ = selectValue;
+
+};
+
+
 
 var parseDate = d3.timeParse("%Y-%m-%d");
 var formatTime = d3.timeFormat("%B");
@@ -39,8 +69,6 @@ var lineOld = d3.line()
 
 var bisectDate = d3.bisector(function(d) { return d.date; }).left;
 
-var categ = "bags";
-
 
 $('#mybut').on('click', function () {
     $.ajax({
@@ -60,7 +88,7 @@ $('#mybut').on('click', function () {
         });
         xScale.domain([parseDate('2018-05-01'), parseDate('2018-12-31')]);
         // xScale.domain(d3.extent(data, function(d) { return d.date; }));
-        yScale.domain([0,d3.max(data, function(d) {  return d.priceOld; })]);
+        yScale.domain([0,d3.max(data, function(d) {  return d.price; })]);
 
 
         var products = d3.nest()
@@ -141,6 +169,17 @@ $('#mybut').on('click', function () {
                     focus2.style("display", "none");
                 })
                 .on("mousemove", mousemove);
+
+
+            svg.append("text")
+                .attr("x", 0)
+                .attr("y", 0 - (margin.top / 2))
+                .attr("text-anchor", "left")
+                .style("font-size", "11px")
+                .attr("fill", "white")
+                .text(function (d) {
+                    return d.key
+                });
 
             function mousemove() {
                 var x0 = xScale.invert(d3.mouse(this)[1]),

@@ -171,8 +171,9 @@ div p {
   font-size: 20px; }
 
 .buy-button {
-  width: 50%;
-  margin-left: 25%;
+  width: max-content;
+  padding: 0 5px;
+  margin: 0 auto;
   background-color: grey;
   text-align: center;
   cursor: pointer;

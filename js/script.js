@@ -1,12 +1,22 @@
+/* --- Create Select MENU for category and charts amount --- */
+
+
+//категорії
 var data = [
     { value: "", text: '--- Оберіть категорію товару ---'},
     { value: "notebook", text: 'ноутбуки'},
     { value: "bags", text: 'сумки'},
-    { value: "flag", text: 'плити'}
+    { value: "flag", text: 'плити'},
+    { value: "tv", text: 'телевізори'},
+    { value: "perfumery", text: 'парфуми'},
+    { value: "leatherJackets", text: 'верхній одяг'},
+    { value: "smartfon", text: 'смартфони'}
+
 ];
 
+//limit sqlite
 var dataLim = [
-    { value: "10", text: '--- 10 графіків ---' },
+    { value: "10", text: '10 графіків' },
     { value: "25", text: '25'},
     { value: "50", text: '50'},
     { value: "100", text: '100'}
@@ -52,7 +62,7 @@ function onchangeLim() {
 
 };
 
-
+/*--- svg з купою рендомних графічків---*/
 var parseDate = d3.timeParse("%Y-%m-%d");
 var formatTime = d3.timeFormat("%B");
 
@@ -95,6 +105,9 @@ var bisectDate = d3.bisector(function(d) { return d.date; }).left;
 
 
 $('#mybut').on('click', function () {
+    $('html, body').animate({
+        scrollTop: $("#selectButtons").offset().top
+    }, 'slow');
     $.ajax({
         type: "POST",
         contentType: "application/json",
@@ -112,7 +125,17 @@ $('#mybut').on('click', function () {
         });
         xScale.domain([parseDate('2018-05-01'), parseDate('2018-12-31')]);
         // xScale.domain(d3.extent(data, function(d) { return d.date; }));
-        yScale.domain([0,d3.max(data, function(d) {  return d.price; })]);
+
+            yScale.domain([0, d3.max(data, function (d) {
+                if(d.site === "leboutique") {
+                    return d.priceOld;
+                }
+                else {
+                    return d.price;
+                }
+            })]);
+
+
 
 
         var products = d3.nest()
@@ -205,6 +228,8 @@ $('#mybut').on('click', function () {
                     return d.values[0].name
                 });
 
+
+
             function mousemove() {
                 var x0 = xScale.invert(d3.mouse(this)[1]),
                     i = bisectDate(filtered_data, x0, 1),
@@ -257,14 +282,7 @@ $('#mybut').on('click', function () {
 
         })
 
-
-
-
         });
-
-
-
-
     });
 // });
 

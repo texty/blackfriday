@@ -1,7 +1,15 @@
 var data = [
+    { value: "", text: '--- Оберіть категорію товару ---'},
     { value: "notebook", text: 'ноутбуки'},
     { value: "bags", text: 'сумки'},
     { value: "flag", text: 'плити'}
+];
+
+var dataLim = [
+    { value: "10", text: '--- 10 графіків ---' },
+    { value: "25", text: '25'},
+    { value: "50", text: '50'},
+    { value: "100", text: '100'}
 ];
 
 var select = d3.select('#MyDropDownList')
@@ -9,24 +17,40 @@ var select = d3.select('#MyDropDownList')
     .attr('class','select')
     .on('change',onchange);
 
-var options = select
+select
     .selectAll('option')
     .data(data).enter()
     .append('option')
     .attr("value", function (d) {return d.value })
     .text(function (d) { return d.text; });
 
+var select2 = d3.select('#MyDropDownList2')
+    .append('select')
+    .attr('class','select')
+    .on('change', onchangeLim);
+
+select2
+    .selectAll('option')
+    .data(dataLim).enter()
+    .append('option')
+    .attr("value", function (d) {return d.value })
+    .text(function (d) { return d.text; });
+
 var categ;
+var limit = 10;
 
 function onchange() {
     selectValue = $('option:selected', this).attr('value');
-
-    console.log(this);
-    console.log(selectValue);
     categ = selectValue;
 
 };
 
+function onchangeLim() {
+    selectValue = $('option:selected', this).attr('value');
+    limit = selectValue;
+
+
+};
 
 
 var parseDate = d3.timeParse("%Y-%m-%d");
@@ -76,7 +100,7 @@ $('#mybut').on('click', function () {
         contentType: "application/json",
         dataType: "json",
         url: "http://localhost:8000/",
-        data: JSON.stringify({ "categ": categ })
+        data: JSON.stringify({ "categ": categ, "limit": limit })
     }).done(function(data) {
         console.log(data);
         $('#charts').find('svg').remove();
@@ -175,10 +199,10 @@ $('#mybut').on('click', function () {
                 .attr("x", 0)
                 .attr("y", 0 - (margin.top / 2))
                 .attr("text-anchor", "left")
-                .style("font-size", "11px")
+                .style("font-size", "9px")
                 .attr("fill", "white")
                 .text(function (d) {
-                    return d.key
+                    return d.values[0].name
                 });
 
             function mousemove() {

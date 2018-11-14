@@ -44,10 +44,12 @@ app.use(bodyParser.json());
 
 app.post('/', function(req, res, next) {
         console.log(req.body.categ);
-        db.serialize(function() {
+        console.log(req.body.limit);
+
+    db.serialize(function() {
             db.all("SELECT * " +
                 "FROM database " +                
-                "WHERE id IN (SELECT DISTINCT id FROM database WHERE product = '"+ req.body.categ+ "' ORDER BY RANDOM() LIMIT 10)",
+                "WHERE id IN (SELECT DISTINCT id FROM database WHERE product = '"+ req.body.categ+ "' ORDER BY RANDOM() LIMIT "+ req.body.limit +" )",
                 function(err,rows){
                 if(err)
                     {

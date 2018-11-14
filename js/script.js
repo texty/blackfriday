@@ -1,5 +1,7 @@
-/* --- Create Select MENU for category and charts amount --- */
 
+/* ---------------------------------------------------------
+ ---- Create Select MENU for category and charts amount ----
+ ----------------------------------------------------------- */
 
 //категорії
 var data = [
@@ -50,21 +52,27 @@ var categ;
 var limit = 10;
 
 function onchange() {
+    $('#mybut').html('Показати');
     selectValue = $('option:selected', this).attr('value');
     categ = selectValue;
 
 };
 
 function onchangeLim() {
+    $('#mybut').html('Показати');
     selectValue = $('option:selected', this).attr('value');
     limit = selectValue;
-
-
 };
 
-/*--- svg з купою рендомних графічків---*/
+
+
+/* -------------------------
+   ---- SMALL MULTIPLES ----
+   ------------------------- */
+
+
 var parseDate = d3.timeParse("%Y-%m-%d");
-var formatTime = d3.timeFormat("%B");
+var formatTime = d3.timeFormat("%b");
 
 var margin = {top: 30, right: 0, bottom: 40, left: 40},
     width = 250 - margin.left - margin.right,
@@ -84,7 +92,7 @@ var xAxis = d3.axisBottom()
     .scale(xScale)
     .tickSize(-height)
     .ticks(9)
-    .tickFormat("")
+    .tickFormat(formatTime)
     ;
 
 var line = d3.line()
@@ -108,6 +116,7 @@ $('#mybut').on('click', function () {
     $('html, body').animate({
         scrollTop: $("#selectButtons").offset().top
     }, 'slow');
+    $('#mybut').html('<b>Ще графічків</b>');
     $.ajax({
         type: "POST",
         contentType: "application/json",
@@ -123,7 +132,7 @@ $('#mybut').on('click', function () {
             d.priceOld = +d.priceOld;
             d.date = parseDate(d.date )
         });
-        xScale.domain([parseDate('2018-05-01'), parseDate('2018-12-31')]);
+        xScale.domain([parseDate('2018-04-15'), parseDate('2018-11-30')]);
         // xScale.domain(d3.extent(data, function(d) { return d.date; }));
 
             yScale.domain([0, d3.max(data, function (d) {
@@ -183,9 +192,9 @@ $('#mybut').on('click', function () {
                 .attr("class", "focus")
                 .style("display", "none");
 
-            var focus2 = svg.append("g")
-                .attr("class", "focus2")
-                .style("display", "none");
+            // var focus2 = svg.append("g")
+            //     .attr("class", "focus2")
+            //     .style("display", "none");
 
             focus.append("circle")
                 .attr("r", 3);
@@ -195,13 +204,13 @@ $('#mybut').on('click', function () {
                 .attr("x", 9)
                 .attr("dy", ".35em");
 
-            focus2.append("circle")
-                .attr("r", 3);
-
-
-            focus2.append("text")
-                .attr("x", 9)
-                .attr("dy", ".35em");
+            // focus2.append("circle")
+            //     .attr("r", 3);
+            //
+            //
+            // focus2.append("text")
+            //     .attr("x", 9)
+            //     .attr("dy", ".35em");
 
             svg.append("rect")
                 .attr("class", "overlay")
@@ -209,11 +218,11 @@ $('#mybut').on('click', function () {
                 .attr("height", height)
                 .on("mouseover", function () {
                     focus.style("display", null);
-                    focus2.style("display", null);
+                    // focus2.style("display", null);
                 })
                 .on("mouseout", function () {
                     focus.style("display", "none");
-                    focus2.style("display", "none");
+                    // focus2.style("display", "none");
                 })
                 .on("mousemove", mousemove);
 
@@ -228,55 +237,70 @@ $('#mybut').on('click', function () {
                     return d.values[0].name
                 });
 
+            var left = xScale(new Date("2018-09-20"));
+            var right = xScale(new Date("2018-09-24")); //one more day
+            var wid = right - left;
+            svg.append("rect")
+                .attr("x", left)
+                .attr("width", wid)
+                .attr("height", height)
+                .attr("fill", "yellow")
+                .attr("opacity", "0.05");
+
 
 
             function mousemove() {
-                var x0 = xScale.invert(d3.mouse(this)[1]),
+                var x0 = xScale.invert(d3.mouse(this)[0]),
                     i = bisectDate(filtered_data, x0, 1),
                     d0 = filtered_data[i - 1],
                     d1 = filtered_data[i],
                     d = x0 - d0.date > d1.date - x0 ? d1 : d1;
+
 
                 focus.attr("transform", "translate(" + xScale(d.date) + "," + yScale(d.price) + ")");
                 focus
                     .select("text")
                     .text(function() {
                         if(d.price > 0) {
-                            return d.price  + "  / " + formatTime(d.date)
+                            return d.price
                         }
                     })
                     .attr("y", 15)
                     .attr("fill", "#ff36ad")
                     .attr("class", "tooltip")
                     .attr("x", function () {
-                        if (x0 > parseDate ('2018-10-01')) {
+                        if (x0 > parseDate ('2018-09-01')) {
                             // you are on A zone
-                            return -30;
-                        }
-                    });
-
-
-                focus2.attr("transform", "translate(" + xScale(d.date) + "," + yScale(d.priceOld) + ")");
-                focus2
-                    .select("text")
-                    .text(function() {
-                        if(d.priceOld > 0) {
-                            // var thisCircle = $(this)
-                            //     .closest('g')[0].find('circle');
-                            // thisCircle.css("opacity", 0);
-                            return d.priceOld
+                            return -20;
                         }
                     })
-                    .attr("y", -15)
-                    .attr("fill", "white")
+                ;
 
-                    .attr("class", "tooltip")
-                    .attr("x", function () {
-                       if (x0 > parseDate ('2018-10-01')) {
-                            // you are on A zone
-                            return -30;
-                        }
-                    });
+
+
+
+
+                // focus2.attr("transform", "translate(" + xScale(d.date) + "," + yScale(d.priceOld) + ")");
+                // focus2
+                //     .select("text")
+                //     .text(function() {
+                //         if(d.priceOld > 0) {
+                //             // var thisCircle = $(this)
+                //             //     .closest('g')[0].find('circle');
+                //             // thisCircle.css("opacity", 0);
+                //             return d.priceOld
+                //         }
+                //     })
+                //     .attr("y", -15)
+                //     .attr("fill", "white")
+                //
+                //     .attr("class", "tooltip")
+                //     .attr("x", function () {
+                //        if (x0 > parseDate ('2018-10-01')) {
+                //             // you are on A zone
+                //             return -30;
+                //         }
+                //     });
             }
 
 

@@ -4,7 +4,7 @@
  ----------------------------------------------------------- */
 
 //категорії
-var data = [
+var dataCat = [
     { value: "", text: '--- Оберіть категорію товару ---'},
     { value: "notebook", text: 'ноутбуки'},
     { value: "bags", text: 'сумки'},
@@ -31,7 +31,7 @@ var select = d3.select('#MyDropDownList')
 
 select
     .selectAll('option')
-    .data(data).enter()
+    .data(dataCat).enter()
     .append('option')
     .attr("value", function (d) {return d.value })
     .text(function (d) { return d.text; });
@@ -265,7 +265,7 @@ $('#mybut').on('click', function () {
                             return d.price
                         }
                     })
-                    .attr("y", 15)
+                    .attr("y", -15)
                     .attr("fill", "#ff36ad")
                     .attr("class", "tooltip")
                     .attr("x", function () {
@@ -275,10 +275,6 @@ $('#mybut').on('click', function () {
                         }
                     })
                 ;
-
-
-
-
 
                 // focus2.attr("transform", "translate(" + xScale(d.date) + "," + yScale(d.priceOld) + ")");
                 // focus2

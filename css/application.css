@@ -11,7 +11,11 @@ body {
 
 p.text {
   width: 50%;
-  margin: 0 auto; }
+  margin: 10px auto; }
+
+.content {
+  width: 60%;
+  margin: 50px  auto; }
 
 /* ------- HEADER ANIMATION --------- */
 #header {
@@ -138,19 +142,36 @@ div p {
   color: white; }
 
 /* ----- Buy Me Section  ------ */
-.buyMe {
+#mySticky {
   width: 60%;
-  margin: 20px 20%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  margin: 20px 20%; }
+
+.buyMe {
+  grid-row: 1/2;
+  width: 100%;
+  grid-column: 1/-1;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: 50px; }
+
+#modal-1, #modal-2, #modal-3 {
+  grid-row: 1/2;
+  display: none;
+  grid-column: 2/4; }
+
+#textForSticky p {
+  margin-top: 10px;
+  font-family: "Arial", sans-serif;
+  line-height: 1.6; }
 
 .prod {
   background-color: #0f0f0f;
   line-height: 1.8;
   color: white;
   font-size: 18px;
-  height: 100%; }
+  height: max-content; }
 
 .prod img {
   width: 100%; }
@@ -173,7 +194,7 @@ div p {
 .buy-button {
   width: max-content;
   padding: 0 5px;
-  margin: 0 auto;
+  margin: 20px auto;
   background-color: grey;
   text-align: center;
   cursor: pointer;

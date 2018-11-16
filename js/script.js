@@ -130,7 +130,7 @@ $('#mybut').on('click', function () {
         data.forEach(function (d) {
             d.price = +d.price;
             d.priceOld = +d.priceOld;
-            d.date = parseDate(d.date )
+            d.date = parseDate(d.date)
         });
         xScale.domain([parseDate('2018-04-15'), parseDate('2018-11-30')]);
         // xScale.domain(d3.extent(data, function(d) { return d.date; }));

@@ -79,12 +79,12 @@ $('#card-3 .buy-button').on("click", function(){
 
 
 
-var el = $(".prod img")[0].getBoundingClientRect();
-console.log();
-console.log();
+// var el = $(".prod img")[0].getBoundingClientRect();
+// console.log();
+// console.log();
 
-var chartWidth =  (el.width * 2),
-    chartHeight = el.height,
+var chartWidth = window.innerWidth / 4,
+    chartHeight = 150,
     chartMargin = { top: 30, right: 0, bottom: 40, left: 40};
 
 
@@ -105,52 +105,62 @@ var yAx = d3.axisLeft()
 
 var xAx = d3.axisBottom()
         .scale(x)
-        .tickSize(-el.height)
+        .tickSize(-chartHeight)
         .ticks(9)
         .tickFormat(formatTime);
 
 var valueline = d3.line()
     .defined(function(d) {
-        return d.price !== 0;
+        return d.pinkLine !== 0;
     })
-    .x(function(d) { return x(d.date);  })
-    .y(function(d) { return y(d.price);  });
+    .x(function(d) {
+        return x(d.date);
+    })
+    .y(function(d) { return y(d.pinkLine);  });
 
 
 var valuelineOld = d3.line()
     .defined(function(d) {
-        return d.priceOld !== 0;
+        return d.whiteDashed === d.whiteDashed;
     })
     .x(function(d) { return x(d.date); })
-    .y(function(d) { return y(d.priceOld); });
+    .y(function(d) { return y(d.whiteDashed); });
 
-d3.csv("data/dataset.csv", function(error, dataset){
-
-    dataset = dataset.filter(function (d) {
-        return d.id === "4099745"
-    });
+d3.csv("data/categoriesData.csv", function(error, dataset){
 
     dataset.forEach(function (d) {
-        d.price = +d.price;
-        d.priceOld = +d.priceOld;
-        d.date = parseDate(d.date )
+        d.pinkLine = +d.pinkLine;
+        d.whiteDashed = +d.whiteDashed;
+        d.date = parseDate(d.date)
     });
 
+
+    dataset = dataset.sort(function(a, b) {
+        return a.date - b.date;
+
+    });
+
+
+    var dataset1 = d3.nest()
+        .key(function(d) { return d.product; })
+        .entries(dataset);
+
     x.domain([parseDate('2018-04-15'), parseDate('2018-11-30')]);
-    y.domain([0, d3.max(dataset, function (d) {
-            return d.priceOld;
-    })]);
+    y.domain([0, 5]);
 
-    var imagelink = 'img/'+ dataset[1].imglink;
-
-    $("#card-3").find('img').attr('src', imagelink);
-    $("#card-3").find('#price-old-3').html('&nbsp;&nbsp;'+ dataset[1].priceOld +'&nbsp;&nbsp;');
-    $("#card-3").find('#current-price-3').html(dataset[1].price);
-    $("#card-3").find('p.prod-name').html(dataset[1].name);
+    // var imagelink = 'img/'+ dataset[1].imglink;
+    //
+    // $("#card-3").find('img').attr('src', imagelink);
+    // $("#card-3").find('#price-old-3').html('&nbsp;&nbsp;'+ dataset[1].priceOld +'&nbsp;&nbsp;');
+    // $("#card-3").find('#current-price-3').html(dataset[1].price);
+    // $("#card-3").find('p.prod-name').html(dataset[1].name);
 
 
 
-    var buyMeChart = d3.selectAll(".example")
+    var buyMeChart = d3.select("#categories")
+        .selectAll("svg")
+        .data(dataset1)
+        .enter()
         .append("svg")
         .attr("width", chartWidth + chartMargin.left + chartMargin.right)
         .attr("height", chartHeight + chartMargin.bottom + chartMargin.top)
@@ -158,20 +168,37 @@ d3.csv("data/dataset.csv", function(error, dataset){
         .attr("transform", "translate(" + chartMargin.left + "," + chartMargin.top + ")");
 
     buyMeChart.append("g").attr("id", "yAxisG").attr("class", "axis").call(yAx);
-    buyMeChart.append("g").attr("id", "xAxisG").attr("class", "axis").attr("transform", "translate(0," + el.height + ")")
+    buyMeChart.append("g").attr("id", "xAxisG").attr("class", "axis").attr("transform", "translate(0," + chartHeight + ")")
         .call(xAx);
     d3.selectAll("path.domain").remove();
 
     buyMeChart.append('path')
         .attr("class", "line")
-        .attr("d", function() {
-            return valueline(dataset);
+        .attr("d", function(d) {
+            return valueline(d.values);
         });
 
     buyMeChart.append('path')
         .attr("class", "lineOld")
-        .attr("d", function() {
-            return valuelineOld(dataset);
+        .attr("d", function(d) {
+            return valuelineOld(d.values);
+        });
+
+    buyMeChart.append("text")
+        .attr("x", 0)
+        .attr("y", 0 - (chartMargin.top / 2))
+        .attr("text-anchor", "left")
+        .style("font-size", "12px")
+        .attr("fill", "white")
+        .text(function (d) {
+            return d.key
         });
 
 });
+
+
+function sortByDateAscending(a, b) {
+    // Dates will be cast to numbers automagically:
+
+}
+

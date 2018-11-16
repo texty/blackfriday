@@ -17,6 +17,10 @@ p.text {
   width: 60%;
   margin: 50px  auto; }
 
+#categories {
+  width: 90%;
+  margin: 0 auto; }
+
 /* ------- HEADER ANIMATION --------- */
 #header {
   margin: 0;

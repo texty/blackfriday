@@ -73,12 +73,6 @@ $('#card-3 .buy-button').on("click", function(){
 
 });
 
-
-
-
-
-
-
 // var el = $(".prod img")[0].getBoundingClientRect();
 // console.log();
 // console.log();

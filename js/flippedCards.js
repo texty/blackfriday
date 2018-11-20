@@ -17,61 +17,7 @@ $('.buy-button').on("click", function(){
 // });
 
 
-$('#card-2 .buy-button').on("click", function(){
-   
-    $('#card-1').css("display", "none");
-    $('#card-3').css("display", "none");
-    // //визначаємо межі поточної і першої картки
-    // var rect1 = document.getElementById("phantom").getBoundingClientRect();
-    // var rect2 = document.getElementById("card-2").getBoundingClientRect();
-    // var mymargin = rect2.left - rect1.left;
-    //
-    // // ховаємо непотрібні картки
-    // $('#card-1, #card-3').css("opacity", "0");
-    //
-    // // додаємо ефект анімації за разунок марджинів
-    // $(this).closest('.prod').animate({
-    //     "margin-left": -mymargin,
-    //     "margin-right": mymargin
-    // }, 1000);
-    //
-    //  // після завершення анімації показуємо вікно з текстом і графіком
-    // setTimeout(function(){
-        $('#modal-1').css("display", "grid");
-    // }, 1010);
-    //
-    // /*--- 1. прибираємо мінусові марджини і підміняємо їх зміною гріду на відповідний
-    //       2. зважаючи, що тепер друга картка є першою, змінюємо їй айдішник на першу картку  ---*/
-    // setTimeout(function(){
-    //     $('#card-2').attr("id", "card-1").css({"grid-column": "1/2", "grid-row": "1/2",
-    //         "margin-left": 0, "margin-right": 0  });
-    // }, 1020);
-    //
-    // // айдішник першої змінюємо на айдішник другої, вони просто помінялись місцями
-    // setTimeout(function(){
-    //     $('#card-1').attr("id", "card-2")
-    // }, 1100);
-});
 
-$('#card-1 .buy-button').on("click", function(){
-
-    $('#card-2').css("display", "none");
-    $('#card-3').css("display", "none");
-    $('.modal').css("display", "none");
-    $('#modal-1').css("display", "grid");
-
-});
-
-
-
-$('#card-3 .buy-button').on("click", function(){
-
-    $('#card-1').css("display", "none");
-    $('#card-2').css("display", "none");
-    $('.modal').css("display", "none");
-    $('#modal-3').css("display", "grid");
-
-});
 
 // var el = $(".prod img")[0].getBoundingClientRect();
 // console.log();

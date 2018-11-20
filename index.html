@@ -13,83 +13,152 @@
     </div>
 </div>
 <div class="text">
-    <p></p>
-
-<h2 style="text-align: center">Які товари ви зазвичай купуєте?</h2>
 
 <p>Розповсюдженою маніпуляцією є завищення так званої старої ціни. Перекреслена стара ціна у понад 20 тис. грн і можливість купити товар в 5 разів нижче спонукає людей витрачати гроші, особливо, коли таймер показує - "до кінця акції залишився 1 день" </p>
 
-<p>Ми пропонуємо вам подивитись на різницю між так званою "старою" і поточною ціною на різні категорії товарів. Чим більша різниця між старою ціною <span id="sparkline-dashed"></span> і ціною за яку пропонують купити товар <span id="sparkline-pink"></span> тим більше маніпуляцій зі старою ціною використовується.</p>
-    <p>На графіку представлена середня ціна на кожну групу товарів. За 100% взята остання ціна по кожному товару. Поточна ціна (рожева лінія) завжди близька до 100% (тобто до ціни за останню дату моніторингу), бо за час моніторингу, ціни особливо не мінялись. Коливання реальної і старої цін протягом півроку переведені у відновшення до цих 100% (тобто до останньої ціни поки що це 17 листопада). Потім товари сгруповано по категоріям і місяцям і взята середнє значення відсотка з кожної групи.</p>
+<p>Ми пропонуємо вам подивитись на різницю між так званою "старою" <span id="sparkline-dashed"></span>і поточною ціною <span id="sparkline-pink"></span> на різні категорії товарів. Чим більша різниця між старою ціною і ціною за яку пропонують купити товар  тим більше маніпуляцій зі старою ціною використовується.</p>
+    <p>На графіку представлена середня ціна на кожну групу товарів. За 100% взята остання ціна по кожному товару. Поточна ціна (рожева лінія) завжди близька до 100% (тобто до ціни за останню дату моніторингу), бо за час моніторингу, ціни особливо не мінялись. Коливання реальної і старої цін протягом півроку переведені у відновшення до цих 100%. Потім товари сгруповано по категоріям і місяцям і взята середнє значення відсотка з кожної групи. </p>
+    <p>Наприклад, реальна ціна (за яким товар можна купити) на конкретний товар становить в середньому 99%, але ціна, що вказана як стара становить у більшості випадків 300 - 400% від реальної останньої. Якби в минулому товар дійсно продавали за такою ціною, значення "рожевої" лінії було б значно вищим з 100%. Але це так. Тобто стара ціна взята з потолка. </p>
+
+    <h2 style="text-align: center">Які товари ви зазвичай купуєте?</h2>
 </div>
 
 <section id="mySticky">
-    <!--<div class="buyMe">-->
+    <div class="buyMe">
 
-            <!--<div class="prod" id="card-1">-->
-            <!--<img src="img/1397157.jpg"/>-->
-                <!--<div class="buyMeChart"></div>-->
-            <!--<div class="price-grid">-->
-                <!--<p>Сукня яскрава</p>-->
-                <!--<div class="price-container">-->
-                    <!--<p id="price-old-2" class="price-old">&nbsp;&nbsp;8010&nbsp;&nbsp;</p>-->
-                    <!--<p id="current-price-2" class="current-price">2349</p>-->
-                <!--</div>-->
-                <!--<div class="count-days"></div>-->
-            <!--</div>-->
-            <!--<div id="clockdiv1" class="clockdiv">-->
-                <!--<div>-->
-                    <!--<span class="hours">00 :</span><span class="minutes"> 00 :</span><span class="seconds">00</span>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="buy-button">-->
-                <!--<h2>Не встигли</h2>-->
-            <!--</div>-->
-        <!--</div>-->
+        <div class="prod" id="card-1">
+            <img src="img/any.jpg"/>
+            <div class="price-grid">
+                <p>Планшети, ноутбуки</p>
+                <div class="price-container">
+                    <p id="price-old-2" class="price-old">&nbsp;&nbsp;8010&nbsp;&nbsp;</p>
+                    <p id="current-price-2" class="current-price">2349</p>
+                </div>
+                <div class="count-days"></div>
+            </div>
+            <div class="buy-button">
+                <h2>Далі</h2>
+            </div>
+        </div>
 
-        <!--<div class="prod" id="card-2">-->
-            <!--<img src="img/4241614.jpg"/>-->
-            <!--<div class="buyMeChart"></div>-->
-
-            <!--<div class="price-grid">-->
-                    <!--<p>Сумочка індіго</p>-->
-                <!--<div class="price-container">-->
-                    <!--<p id="price-old-1" class="price-old">&nbsp;&nbsp;5300&nbsp;&nbsp;</p>-->
-                    <!--<p id="current-price-1" class="current-price">1200</p>-->
-                <!--</div>-->
-                <!--<div class="count-days"></div>-->
-            <!--</div>-->
+        <div class="prod" id="card-2">
+            <img src="img/any.jpg"/>
+            <div class="price-grid">
+                    <p>Телефони, аксесуари</p>
+                <div class="price-container">
+                    <p id="price-old-1" class="price-old">&nbsp;&nbsp;5300&nbsp;&nbsp;</p>
+                    <p id="current-price-1" class="current-price">1200</p>
+                </div>
+                <div class="count-days"></div>
+            </div>
             <!--<div id="clockdiv2" class="clockdiv">-->
                 <!--<div>-->
                     <!--<span class="hours"></span><span class="minutes"></span><span class="seconds"></span>-->
                 <!--</div>-->
             <!--</div>-->
-            <!--<div class="buy-button first-blink">-->
-                <!--<h2>Тисни</h2>-->
-            <!--</div>-->
-        <!--</div>-->
+            <div class="buy-button first-blink">
+                <h2>Далі</h2>
+            </div>
+        </div>
 
-        <!--<div class="prod" id="card-3">-->
-            <!--<img src=""/>-->
-            <!--<div class="buyMeChart"></div>-->
-            <!--<div class="price-grid">-->
-                <!--<p class="prod-name"></p>-->
-                <!--<div class="price-container">-->
-                    <!--<p id="price-old-3" class="price-old"></p>-->
-                    <!--<p id="current-price-3" class="current-price"></p>-->
-                <!--</div>-->
-                <!--<div class="count-days"></div>-->
-            <!--</div>-->
-            <!--<div id="clockdiv3" class="clockdiv">-->
-                <!--<div>-->
-                    <!--<span class="hours"></span><span class="minutes"></span><span class="seconds"></span>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="buy-button first-blink">-->
-                <!--<h2>Купити</h2>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
+        <div class="prod" id="card-3">
+            <img src="img/any.jpg"/>
+            <div class="price-grid">
+                <p class="prod-name">Телевізори</p>
+                <div class="price-container">
+                    <p id="price-old-3" class="price-old">&nbsp;&nbsp;5300&nbsp;&nbsp;</p>
+                    <p id="current-price-3" class="current-price">1200</p>
+                </div>
+                <div class="count-days"></div>
+            </div>
+            <div class="buy-button first-blink">
+                <h2>Далі</h2>
+            </div>
+        </div>
+
+        <div class="prod" id="card-4">
+            <img src="img/any.jpg"/>
+            <div class="price-grid">
+                <p class="prod-name">Велика побутова техніка</p>
+                <div class="price-container">
+                    <p id="price-old-4" class="price-old">&nbsp;&nbsp;5300&nbsp;&nbsp;</p>
+                    <p id="current-price-4" class="current-price">1200</p>
+                </div>
+                <div class="count-days"></div>
+            </div>
+            <div class="buy-button first-blink">
+                <h2>Далі</h2>
+            </div>
+        </div>
+
+
+        <div class="prod" id="card-5">
+            <img src="img/any.jpg"/>
+            <div class="price-grid">
+                <p class="prod-name">Дрібна побутова техніка</p>
+                <div class="price-container">
+                    <p id="price-old-5" class="price-old">&nbsp;&nbsp;5300&nbsp;&nbsp;</p>
+                    <p id="current-price-5" class="current-price">1200</p>
+                </div>
+                <div class="count-days"></div>
+            </div>
+            <div class="buy-button first-blink">
+                <h2>Далі</h2>
+            </div>
+        </div>
+
+
+        <div class="prod" id="card-6">
+            <img src="img/any.jpg"/>
+            <div class="price-grid">
+                <p class="prod-name">Одяг</p>
+                <div class="price-container">
+                    <p id="price-old-6" class="price-old">&nbsp;&nbsp;5300&nbsp;&nbsp;</p>
+                    <p id="current-price-6" class="current-price">1200</p>
+                </div>
+                <div class="count-days"></div>
+            </div>
+            <div class="buy-button first-blink">
+                <h2>Далі</h2>
+            </div>
+        </div>
+
+
+        <div class="prod" id="card-7">
+            <img src="img/any.jpg"/>
+            <div class="price-grid">
+                <p class="prod-name">Сумки</p>
+                <div class="price-container">
+                    <p id="price-old-7" class="price-old">&nbsp;&nbsp;5300&nbsp;&nbsp;</p>
+                    <p id="current-price-7" class="current-price">1200</p>
+                </div>
+                <div class="count-days"></div>
+            </div>
+            <div class="buy-button first-blink">
+                <h2>Далі</h2>
+            </div>
+        </div>
+
+
+        <div class="prod" id="card-8">
+            <img src="img/any.jpg"/>
+            <div class="price-grid">
+                <p class="prod-name">Парфуми</p>
+                <div class="price-container">
+                    <p id="price-old-8" class="price-old">&nbsp;&nbsp;5300&nbsp;&nbsp;</p>
+                    <p id="current-price-8" class="current-price">1200</p>
+                </div>
+                <div class="count-days"></div>
+            </div>
+            <div class="buy-button first-blink">
+                <h2>Далі</h2>
+            </div>
+        </div>
+
+
+
+
+    </div>
 
 
 

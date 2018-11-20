@@ -4,6 +4,10 @@
 @font-face {
   font-family: Prisma Pro;
   src: url(../fonts/PrismaPro.otf); }
+* {
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0; }
+
 body {
   background-color: black;
   color: white;
@@ -11,10 +15,6 @@ body {
 
 p {
   margin-bottom: 10px; }
-
-.text {
-  width: 70%;
-  margin: 10px auto; }
 
 .content {
   width: 60%;
@@ -46,60 +46,52 @@ p {
   text-align: center !important;
   text-transform: uppercase;
   color: #ff36ad; }
-
-#neon {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); }
-
-#neon > p {
-  -webkit-margin-before: 0;
-  -webkit-margin-after: 0; }
-
-#black {
-  color: #fff; }
-
-#black span {
-  opacity: 0.2;
-  animation: whiteBlink 3.5s linear 1; }
-
-#friday span {
-  opacity: 0.2;
-  animation: redBlink 3s linear 1; }
-
-#friday span:nth-of-type(3) {
-  animation: redBlink1 3s linear 1; }
-
-#friday span:nth-of-type(1) {
-  animation: redBlink2 3s linear 1; }
-
+  #header #neon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+  #header #neon > p {
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0; }
+  #header #black {
+    color: #fff; }
+  #header #black span {
+    opacity: 0.2;
+    animation: whiteBlink 3.5s linear 1; }
+  #header #friday span {
+    opacity: 0.2;
+    animation: redBlink 3s linear 1; }
+  #header #friday span:nth-of-type(3) {
+    animation: redBlink1 3s linear 1; }
+  #header #friday span:nth-of-type(1) {
+    animation: redBlink2 3s linear 1; }
 @keyframes whiteBlink {
-  0%, 60%,62%, 63%, 97%, 99%, 100% {
+  0%, 60%, 62%, 63%, 97%, 99%, 100% {
     opacity: .99;
-    text-shadow: 0 0 80px #ffffff,0 0 30px #008000,0 0 6px #0000ff; }
-  61%,62.5%, 98%,99.5% {
+    text-shadow: 0 0 80px #ffffff, 0 0 30px #008000, 0 0 6px #0000ff; }
+  61%, 62.5%, 98%, 99.5% {
     opacity: 0.2;
     text-shadow: none; } }
 @keyframes redBlink {
-  0%,12%,18.999%,23%,31.999%,37%,44.999%,46%,49.999%,51%,58.999%,61%,68.999%,71%,85.999%,96%,100% {
+  0%, 12%, 18.999%, 23%, 31.999%, 37%, 44.999%, 46%, 49.999%, 51%, 58.999%, 61%, 68.999%, 71%, 85.999%, 96%, 100% {
     opacity: 0.99;
     text-shadow: 0 0 80px #ff36ad, 0 0 30px #008000, 0 0 6px #0000ff; }
-  86%,95.999% {
+  86%, 95.999% {
     opacity: 0.2;
     text-shadow: none; } }
 @keyframes redBlink1 {
-  0%,12%,12.8%,13.2%,44.999%,46%,49.999%,51%,58.94%,62%,68.999%,71%,85.999%,96% {
+  0%, 12%, 12.8%, 13.2%, 44.999%, 46%, 49.999%, 51%, 58.94%, 62%, 68.999%, 71%, 85.999%, 96% {
     opacity: 0.99;
     text-shadow: 0 0 80px #ff36ad, 0 0 30px #008000, 0 0 6px #0000ff; }
-  12.3%,13%,45%,45.999%,50%,50.99%,59%,60.39%,69%,70.999%,86%,95.999%,100% {
+  12.3%, 13%, 45%, 45.999%, 50%, 50.99%, 59%, 60.39%, 69%, 70.999%, 86%, 95.999%, 100% {
     opacity: 0.2;
     text-shadow: none; } }
 @keyframes redBlink2 {
-  0%,48.999%,61%,62%,68.999%,71%,85.999%,96% {
+  0%, 48.999%, 61%, 62%, 68.999%, 71%, 85.999%, 96% {
     opacity: 0.99;
     text-shadow: 0 0 80px #ff36ad, 0 0 30px #008000, 0 0 6px #0000ff; }
-  50.5%,95.999%,100% {
+  50.5%, 95.999%, 100% {
     opacity: 0.4;
     text-shadow: none; } }
 /* ----- Select MEnu-------*/
@@ -156,79 +148,83 @@ p {
   background-color: #39f;
   color: white; }
 
+.text {
+  width: 60%;
+  margin: 10px auto; }
+  .text h2 {
+    margin-top: 50px; }
+
 /* ----- Buy Me Section  ------ */
 #mySticky {
-  width: 60%;
+  width: 90%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  margin: 20px 20%; }
-
-.buyMe {
-  grid-row: 1/2;
-  width: 100%;
-  grid-column: 1/-1;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-gap: 50px; }
-
-#modal-1, #modal-2, #modal-3 {
-  grid-row: 1/2;
-  display: none;
-  grid-column: 2/4; }
-
-#textForSticky p {
-  margin-top: 10px;
-  font-family: "Arial", sans-serif;
-  line-height: 1.6; }
-
-.prod {
-  background-color: #0f0f0f;
-  line-height: 1.8;
-  color: white;
-  font-size: 18px;
-  height: max-content; }
-
-.prod img {
-  width: 100%; }
-
-.prod p {
-  padding-left: 10px;
-  text-align: left; }
-
-.price-old {
-  font-weight: 100;
-  color: #ff36ad;
-  font-size: 20px;
-  text-decoration: line-through; }
-
-.current-price {
-  font-weight: 800;
-  letter-spacing: 1px;
-  font-size: 20px; }
-
-.buy-button {
-  width: max-content;
-  padding: 0 5px;
-  margin: 20px auto;
-  background-color: grey;
-  text-align: center;
-  cursor: pointer;
-  font-size: 13px; }
-
-.first-blink {
-  background-color: #ff36ad;
-  animation: buy 0.5s linear 50; }
-
+  grid-template-columns: repeat(auto-fill, minmax(1fr, 1fr));
+  margin: 20px auto; }
+  #mySticky p {
+    display: block;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0; }
+  #mySticky .buyMe {
+    grid-row: 1/2;
+    width: 100%;
+    grid-column: 1/-1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 50px; }
+  #mySticky #modal-1, #mySticky #modal-2, #mySticky #modal-3 {
+    grid-row: 1/2;
+    display: none;
+    grid-column: 2/4; }
+  #mySticky #textForSticky p {
+    margin-top: 10px;
+    font-family: "Arial", sans-serif;
+    line-height: 1.6; }
+  #mySticky .prod {
+    background-color: #0f0f0f;
+    line-height: 1.8;
+    color: white;
+    font-size: 18px;
+    height: max-content; }
+  #mySticky .prod img {
+    width: 100%; }
+  #mySticky .prod p {
+    padding-left: 10px;
+    text-align: left; }
+  #mySticky .price-container {
+    display: flex;
+    justify-content: space-between; }
+  #mySticky .price-old {
+    font-weight: 100;
+    color: #ff36ad;
+    font-size: 20px;
+    text-decoration: line-through; }
+  #mySticky .current-price {
+    font-weight: 800;
+    letter-spacing: 1px;
+    font-size: 20px;
+    margin-right: 10%; }
+  #mySticky .buy-button {
+    width: max-content;
+    padding: 0 5px;
+    margin: 5px auto 15px auto;
+    background-color: grey;
+    text-align: center;
+    cursor: pointer;
+    font-size: 13px; }
+  #mySticky .first-blink {
+    background-color: #ff36ad;
+    animation: buy 0.5s linear 50; }
 @keyframes buy {
-  0%,100% {
+  0%, 100% {
     background-color: #ff36ad; }
   50% {
     background-color: grey; } }
-.hidden {
-  display: none; }
-
-.buyMeChartSvg {
-  margin-bottom: 10px; }
+  #mySticky .hidden {
+    display: none; }
+  #mySticky .buyMeChartSvg {
+    margin-bottom: 10px; }
 
 /*------ countdown -----*/
 .clockdiv {

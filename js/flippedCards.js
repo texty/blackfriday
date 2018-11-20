@@ -22,7 +22,7 @@ $('#card-2 .buy-button').on("click", function(){
     $('#card-1').css("display", "none");
     $('#card-3').css("display", "none");
     // //визначаємо межі поточної і першої картки
-    // var rect1 = document.getElementById("card-1").getBoundingClientRect();
+    // var rect1 = document.getElementById("phantom").getBoundingClientRect();
     // var rect2 = document.getElementById("card-2").getBoundingClientRect();
     // var mymargin = rect2.left - rect1.left;
     //
@@ -77,7 +77,9 @@ $('#card-3 .buy-button').on("click", function(){
 // console.log();
 // console.log();
 
-var chartWidth = window.innerWidth / 4,
+var rect1 = document.getElementById("phantom").getBoundingClientRect();
+
+var chartWidth = rect1.width,
     chartHeight = 150,
     chartMargin = { top: 30, right: 0, bottom: 40, left: 40};
 
@@ -156,6 +158,9 @@ d3.csv("data/categoriesData.csv", function(error, dataset){
         .data(dataset1)
         .enter()
         .append("svg")
+        .attr("class", function (d, i) {
+            return "svg-" + i;
+        })
         .attr("width", chartWidth + chartMargin.left + chartMargin.right)
         .attr("height", chartHeight + chartMargin.bottom + chartMargin.top)
         .append("g")
@@ -191,8 +196,43 @@ d3.csv("data/categoriesData.csv", function(error, dataset){
 });
 
 
-function sortByDateAscending(a, b) {
-    // Dates will be cast to numbers automagically:
+$("#categories > img").on("click", function(){
 
-}
+    var theClass = $(this).attr("class");
+    $(this).css("display", "none");
+    $("svg."+ theClass).css("display", "block");
+
+});
+
+
+$("#sparkline-dashed").sparkline([7,9,7,7,6,7], {
+    type: 'line',
+    width: '80',
+    height: '10',
+    lineColor: '#ffffff',
+    fillColor: '#000000',
+    lineWidth: 1,
+    spotColor: '#',
+    minSpotColor: '#',
+    maxSpotColor: '#',
+    highlightSpotColor: '#',
+    highlightLineColor: '#',
+    spotRadius: 0,
+    normalRangeColor: '#'});
+
+
+$("#sparkline-pink").sparkline([0,3,2,2,2.2,2,2 ], {
+    type: 'line',
+    width: '80',
+    height: '10',
+    lineColor: '#ff36ad',
+    fillColor: '#000000',
+    lineWidth: 1,
+    spotColor: '#',
+    minSpotColor: '#',
+    maxSpotColor: '#',
+    highlightSpotColor: '#',
+    highlightLineColor: '#',
+    spotRadius: 0,
+    normalRangeColor: '#'});
 

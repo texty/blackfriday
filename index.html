@@ -12,7 +12,16 @@
     <p id="friday"><span>п'</span><span>я</span><span>т</span><span>н</span><span>и</span><span>ц</span><span>я</span></p>
     </div>
 </div>
+<div class="text">
+    <p></p>
+
 <h2 style="text-align: center">Які товари ви зазвичай купуєте?</h2>
+
+<p>Розповсюдженою маніпуляцією є завищення так званої старої ціни. Перекреслена стара ціна у понад 20 тис. грн і можливість купити товар в 5 разів нижче спонукає людей витрачати гроші, особливо, коли таймер показує - "до кінця акції залишився 1 день" </p>
+
+<p>Ми пропонуємо вам подивитись на різницю між так званою "старою" і поточною ціною на різні категорії товарів. Чим більша різниця між старою ціною <span id="sparkline-dashed"></span> і ціною за яку пропонують купити товар <span id="sparkline-pink"></span> тим більше маніпуляцій зі старою ціною використовується.</p>
+</div>
+
 <section id="mySticky">
     <!--<div class="buyMe">-->
 
@@ -118,7 +127,16 @@
     </div>
 
 </section>
-<div id="categories"></div>
+
+
+<div id="categories">
+    <div id="phantom"></div>
+    <!--<img class="svg-0" style="grid-column:1/2; grid-row:1/2; width:80%;" src="img/notes.png"/>-->
+    <!--<img class="svg-1" style="grid-column:2/3; grid-row:1/2; width:80%;" src="img/svg-1-img.png"/>-->
+    <!--<img class="svg-2" style="grid-column:3/4; grid-row:1/2; width:80%;" src="img/svg-2-img.png"/>-->
+    <!--<img class="svg-3" style="grid-column:4/5; grid-row:1/2; width:80%;" src="img/svg-3-img.png"/>-->
+
+</div>
 
 <div class="content">
     <p> Оберіть категорію товару, аби подивитись, як змінювались ціни на товари протягом півроку</p>
@@ -140,6 +158,7 @@
 <script src ="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
 <script src="js/script.js"></script>
+<script src="lib/jquery.sparkline.min.js"></script>
 <script src="js/flippedCards.js"></script>
 
 <script>

@@ -9,8 +9,11 @@ body {
   color: white;
   font-family: 'Montserrat Alternates', sans-serif; }
 
-p.text {
-  width: 50%;
+p {
+  margin-bottom: 10px; }
+
+.text {
+  width: 70%;
   margin: 10px auto; }
 
 .content {
@@ -18,8 +21,19 @@ p.text {
   margin: 50px  auto; }
 
 #categories {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   width: 90%;
   margin: 0 auto; }
+  #categories svg.svg-0 {
+    grid-column: 1/2;
+    grid-row: 1/2; }
+  #categories #phantom {
+    pointer-events: none;
+    grid-row: 1/2;
+    width: 80%;
+    grid-column: 1/2;
+    opacity: 0; }
 
 /* ------- HEADER ANIMATION --------- */
 #header {
@@ -39,12 +53,9 @@ p.text {
   left: 50%;
   transform: translate(-50%, -50%); }
 
-p {
+#neon > p {
   -webkit-margin-before: 0;
   -webkit-margin-after: 0; }
-
-div p {
-  margin: 0; }
 
 #black {
   color: #fff; }

@@ -70,46 +70,9 @@ function onchangeLim() {
    ---- SMALL MULTIPLES ----
    ------------------------- */
 
-
 var parseDate = d3.timeParse("%Y-%m-%d");
 var formatTime = d3.timeFormat("%b");
 
-var margin = {top: 30, right: 0, bottom: 40, left: 40},
-    width = 250 - margin.left - margin.right,
-    height = 250 - margin.top - margin.bottom;
-
-var xScale = d3.scaleTime()
-    .range([0, width]);
-
-var yScale = d3.scaleLinear()
-    .range([height, 0]);
-
-var yAxis = d3.axisLeft()
-    .scale(yScale)
-    .ticks(5);
-
-var xAxis = d3.axisBottom()
-    .scale(xScale)
-    .tickSize(-height)
-    .ticks(9)
-    .tickFormat(formatTime)
-    ;
-
-var line = d3.line()
-    .defined(function(d) {
-        return d.price !== 0;
-    })
-    .x(function(d) { return xScale(d.date); })
-    .y(function(d) { return yScale(d.price); });
-
-var lineOld = d3.line()
-    .defined(function(d) {
-        return d.priceOld !== 0;
-    })
-    .x(function(d) { return xScale(d.date); })
-    .y(function(d) { return yScale(d.priceOld); });
-
-var bisectDate = d3.bisector(function(d) { return d.date; }).left;
 
 
 $('#mybut').on('click', function () {
@@ -126,6 +89,46 @@ $('#mybut').on('click', function () {
     }).done(function(data) {
         console.log(data);
         $('#charts').find('svg').remove();
+
+        
+
+        var margin = {top: 30, right: 0, bottom: 40, left: 40},
+            width = 250 - margin.left - margin.right,
+            height = 250 - margin.top - margin.bottom;
+
+        var xScale = d3.scaleTime()
+            .range([0, width]);
+
+        var yScale = d3.scaleLinear()
+            .range([height, 0]);
+
+        var yAxis = d3.axisLeft()
+            .scale(yScale)
+            .ticks(5);
+
+        var xAxis = d3.axisBottom()
+                .scale(xScale)
+                .tickSize(-height)
+                .ticks(9)
+                .tickFormat(formatTime)
+            ;
+
+        var line = d3.line()
+            .defined(function(d) {
+                return d.price !== 0;
+            })
+            .x(function(d) { return xScale(d.date); })
+            .y(function(d) { return yScale(d.price); });
+
+        var lineOld = d3.line()
+            .defined(function(d) {
+                return d.priceOld !== 0;
+            })
+            .x(function(d) { return xScale(d.date); })
+            .y(function(d) { return yScale(d.priceOld); });
+
+        var bisectDate = d3.bisector(function(d) { return d.date; }).left;
+
 
         data.forEach(function (d) {
             d.price = +d.price;

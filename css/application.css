@@ -267,13 +267,13 @@ p {
   display: inline-block; }
 
 /* ----- SVG small multiples -----*/
-.line {
+.line, .scrollChartLine {
   fill: none;
   stroke: #ff36ad;
   stroke-width: 1px;
   z-index: 10; }
 
-.lineOld {
+.lineOld, .scrollChartLineOld {
   fill: none;
   stroke: white;
   stroke-width: 1px;

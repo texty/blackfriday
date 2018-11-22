@@ -47,8 +47,10 @@
 //     .y(function(d) { return y(d.whiteDashed); });
 
 d3.csv("data/sales.csv", function(error, dataset){
+//   d3.csv("data/bf_comfy.csv", function(error, dataset){
 
-    dataset.forEach(function (d) {
+
+        dataset.forEach(function (d) {
         d.pinkLine = +d.pinkLine;
         d.whiteDashed = +d.whiteDashed;
         d.date = parseDate(d.date)
@@ -65,7 +67,7 @@ d3.csv("data/sales.csv", function(error, dataset){
         .key(function(d) { return d.bigGat; })
         .entries(dataset);
 
-    x.domain([parseDate('2018-04-15'), parseDate('2018-11-30')]);
+    x.domain([parseDate('2018-04-15'), parseDate('2018-12-30')]);
     y.domain([0, 6]);
 
     var buyMeChart = d3.select("#sale")
@@ -98,13 +100,25 @@ d3.csv("data/sales.csv", function(error, dataset){
             return valuelineOld(d.values);
         });
 
-    buyMeChart.append("text")
-        .attr("x", 0)
-        .attr("y", 0 - (chartMargin.top / 2))
-        .attr("text-anchor", "left")
-        .style("font-size", "12px")
-        .attr("fill", "white")
-        .text(function (d) {
+
+        var left = x(new Date("2018-11-18"));
+        var right = x(new Date("2018-11-25")); //one more day
+        var wid = right - left;
+
+    buyMeChart.append("rect")
+            .attr("x", left)
+            .attr("width", wid)
+            .attr("height", chartHeight)
+            .attr("fill", "yellow")
+            .attr("opacity", "0.05");
+
+        buyMeChart.append("text")
+            .attr("x", 0)
+            .attr("y", 0 - (chartMargin.top / 2))
+            .attr("text-anchor", "left")
+            .style("font-size", "12px")
+            .attr("fill", "white")
+            .text(function (d) {
             return d.key
         });
 

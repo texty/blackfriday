@@ -30,7 +30,7 @@ d3.csv("data/examples.csv", function(error, examples) {
             .tickFormat(formatTime);
 
     xScale.domain([parseDate('2018-04-15'), parseDate('2018-12-30')]);
-    yScale.domain([0, d3.max(theCase, function (d) { return d.priceOld; })]); //TODO зробити гілку на yxis
+    yScale.domain([0, d3.max(theCase, function (d) { return d.price * 2; })]); //TODO зробити гілку на yxis
 
     var line = d3.line()
         .defined(function (d) {

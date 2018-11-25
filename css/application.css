@@ -153,6 +153,7 @@ p {
   color: white; }
 
 .text {
+  position: relative;
   width: 60%;
   margin: 70px auto;
   font-family: 'Fira Sans', sans-serif; }
@@ -317,5 +318,30 @@ header, div#source {
 .tooltip {
   padding: 4px;
   font-size: 12px; }
+
+#area-chart {
+  position: relative;
+  margin-left: 100px;
+  width: calc(100% - 50px);
+  height: calc(400px + 50px); }
+
+.node {
+  box-sizing: border-box;
+  position: absolute;
+  overflow: hidden;
+  opacity: 0.9; }
+
+.node-label {
+  padding: 4px;
+  line-height: 1em;
+  white-space: pre;
+  color: black;
+  font-size: 12px; }
+
+.node-value {
+  padding: 4px;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 9px;
+  margin-top: 1px; }
 
 /*# sourceMappingURL=application.css.map */

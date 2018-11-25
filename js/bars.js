@@ -16,7 +16,7 @@ d3.csv("data/range.csv", function(error, myRange) {
 
     const margin = {top: 40, right: 10, bottom: 10, left: 10};
 
-    var format = d3.format(",d");
+    // var format = d3.format(",d");
 
     var colors = ["#D7D7D7", '#ff36ad'];
 
@@ -48,7 +48,7 @@ d3.csv("data/range.csv", function(error, myRange) {
             .data(tree.leaves())
             .enter().append("div")
             .attr("class", "node")
-            .attr("title", function(d) { return d.id + "\n" + format(d.value); })
+            .attr("title", function(d) { return d.id + "\n" + d.value; })
             .style("left", function(d) { return d.x0 + "px"; })
             .style("top", function(d) { return d.y0 + "px"; })
             .style("width", function(d) { return d.x1 - d.x0 + "px"; })
@@ -63,7 +63,7 @@ d3.csv("data/range.csv", function(error, myRange) {
 
     var nodeValue = node.append("div")
             .attr("class", "node-value")
-            .text(function(d) { return format(d.value); });
+            .text(function(d) { return d.value; });
 
 
 
@@ -83,12 +83,11 @@ d3.csv("data/range.csv", function(error, myRange) {
         node.data(treemap(newRoot).leaves())
             .transition()
             .duration(1500)
-            .attr("title", function(d) { return d.id + "\n" + format(d.value); })
+            .attr("title", function(d) { return d.id + "\n" + d.value; })
             .style("left", function(d) { return d.x0 + "px"; })
             .style("top", function(d) { return d.y0 + "px"; })
             .style("width", function(d) { return d.x1 - d.x0 + "px"; })
             .style("height", function(d) { return d.y1 - d.y0 + "px"; })
-            .attr("title", function(d) { return d.id + "\n" + format(d.valueReal); })
             .style("left", function(d) { return d.x0 + "px"; })
             .style("top", function(d) { return d.y0 + "px"; })
             .style("width", function(d) { return d.x1 - d.x0 + "px"; })
@@ -106,7 +105,7 @@ d3.csv("data/range.csv", function(error, myRange) {
         nodeValue.data(treemap(newRoot).leaves())
             .transition()
             .duration(1500)
-            .text(function(d) { return format(d.value); });
+            .text(function(d) { return d.value; });
 
 
         var nodeLabel = div.datum(newRoot).selectAll(".node-label")

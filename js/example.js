@@ -7,7 +7,7 @@ var scrollChartMargin = {top: 30, right: 0, bottom: 40, left: 40},
     scrollChartWidth = textBlockRect.width - scrollChartMargin.left - scrollChartMargin.right,
     scrollChartHeight = (scrollChartWidth * 0.7) - - scrollChartMargin.top - scrollChartMargin.bottom;
 
-d3.csv("data/examples.csv", function(error, examples) {
+d3.csv("data/bf.csv", function(error, examples) {
 
     examples.forEach(function (d) {
         d.price = +d.price;
@@ -30,9 +30,16 @@ d3.csv("data/examples.csv", function(error, examples) {
             .tickFormat(formatTime);
 
     xScale.domain([parseDate('2018-04-15'), parseDate('2018-12-30')]);
-    yScale.domain([0, d3.max(theCase, function (d) { return d.price * 2; })]); //TODO зробити гілку на yxis
+    yScale.domain([0, d3.max(theCase, function (d) {
+        if(d.priceOld > 0 ) {
+            return d.priceOld;
+        }
+        else {
+            return d.price;
+        }}
+    )]);
 
-    var line = d3.line()
+var line = d3.line()
         .defined(function (d) {
             return d.price !== 0;
         })
@@ -110,6 +117,18 @@ d3.csv("data/examples.csv", function(error, examples) {
         var newCase = examples.filter(function(d){
             return d.id === id ;  });
 
+        var yAxis = d3.axisLeft().scale(yScale);
+
+        yScale.domain([0, d3.max(newCase, function (d) {
+            if(+d.priceOld > 0 ) {
+                return +d.priceOld;
+            }
+            else {
+                return +d.price * 2;
+            }}
+        )]);
+
+
         d3.select("#yAxisG")
             .transition()
             .duration(300)
@@ -143,9 +162,9 @@ d3.csv("data/examples.csv", function(error, examples) {
     // якщо видно показуємо текст, якщо ні, ховаємо.
     $( document ).ready( function() {
         window.addEventListener('scroll', function(e) {
-            if( isOnScreen( $('#r-30918519'))) {
-                redraw('r-30918519')
-            }
+            var elemid =  getElemIsOnView('.block');
+            redraw(elemid);
+
         });
     });
 
@@ -169,4 +188,25 @@ function isOnScreen(elem) {
         (bottom > viewport_top && bottom <= viewport_bottom) ||
         (height > viewport_height && top <= viewport_top && bottom >= viewport_bottom)
 }
+
+
+function getElemIsOnView(elemClass) {
+    var blocks = $(elemClass);
+    var prevId;
+    var targetId;
+    blocks.each(function() {
+        if(isOnScreen(this)) {
+            var prevElem = $(this).previousSibling;
+            prevId = $(prevElem).attr("id");
+            targetId = $(this).attr("id");
+            console.log(targetId);
+            console.log(prevId);
+        }
+    });
+    if(targetId != prevId) {
+        return targetId;
+    }
+
+}
+
 

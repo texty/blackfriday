@@ -1,13 +1,6 @@
 /**
  * Created by yevheniia on 24.11.18.
  */
-// var textBlockRect = document.getElementById("scroll-text").getBoundingClientRect();
-// var scrollChartMargin = {top: 30, right: 40, bottom: 40, left: 40},
-//     // scrollChartWidth = textBlockRect.width - scrollChartMargin.left - scrollChartMargin.right,
-//     scrollChartWidth = (textBlockRect.width * 3) - scrollChartMargin.left - scrollChartMargin.right,
-//     //scrollChartHeight = scrollChartWidth * 1.6;
-//
-//     scrollChartHeight = scrollChartWidth / 3;
 
 d3.csv("data/range.csv", function(error, myRange) {
 
@@ -42,7 +35,8 @@ d3.csv("data/range.csv", function(error, myRange) {
         .style("width", (width + margin.left + margin.right) + "px")
         .style("height", (height + margin.top + margin.bottom) + "px")
         .style("left", margin.left + "px")
-        .style("top", margin.top + "px");
+        .style("top", margin.top + "px")
+        ;
 
         var node = div.datum(root).selectAll(".node")
             .data(tree.leaves())
@@ -53,7 +47,7 @@ d3.csv("data/range.csv", function(error, myRange) {
             .style("top", function(d) { return d.y0 + "px"; })
             .style("width", function(d) { return d.x1 - d.x0 + "px"; })
             .style("height", function(d) { return d.y1 - d.y0 + "px"; })
-            .style("background", function(d) { while (d.depth > 1) d = d.parent; return color(d.id); })
+            .style("background", function(d) { while (d.depth > 1) d = d.parent; return color(d.id); });
 
 
     var nodeLabel = node.append("div")
@@ -73,7 +67,6 @@ d3.csv("data/range.csv", function(error, myRange) {
             .sum(function(d) { return d.valueReal; })
             .sort(function(a, b) { return b.height - a.height || b.valueReal - a.valueReal; });
 
-
         var node = div.datum(newRoot).selectAll(".node")
             .data(tree.leaves());
 
@@ -84,10 +77,6 @@ d3.csv("data/range.csv", function(error, myRange) {
             .transition()
             .duration(1500)
             .attr("title", function(d) { return d.id + "\n" + d.value; })
-            .style("left", function(d) { return d.x0 + "px"; })
-            .style("top", function(d) { return d.y0 + "px"; })
-            .style("width", function(d) { return d.x1 - d.x0 + "px"; })
-            .style("height", function(d) { return d.y1 - d.y0 + "px"; })
             .style("left", function(d) { return d.x0 + "px"; })
             .style("top", function(d) { return d.y0 + "px"; })
             .style("width", function(d) { return d.x1 - d.x0 + "px"; })
@@ -111,15 +100,52 @@ d3.csv("data/range.csv", function(error, myRange) {
         var nodeLabel = div.datum(newRoot).selectAll(".node-label")
             .data(tree.leaves());
 
+        nodeLabel.data(treemap(newRoot).leaves())
+            .transition()
+            .duration(1500)
+            .text(function(d) {
+                return d.id.substring(d.id.lastIndexOf(".") + 1).split(/(?=[A-Z][^A-Z])/g).join("\n");
+            });
+    }
 
-        // nodeLabel.enter().append("div")
-        //     .attr("class", "node-label")
-        //     .data(treemap(newRoot).leaves())
-        //     .transition()
-        //     .duration(1500)
-        //     .text(function(d) {
-        //         return d.id.substring(d.id.lastIndexOf(".") + 1).split(/(?=[A-Z][^A-Z])/g).join("\n");
-        //     });
+
+    function redrawToMin() {
+        var newRoot = stratify(myRange)
+            .sum(function(d) { return d.valueMin; })
+            .sort(function(a, b) { return b.height - a.height || b.valueMin - a.valueMin; });
+
+        var node = div.datum(newRoot).selectAll(".node")
+            .data(tree.leaves());
+
+        node.enter().append("div")
+            .attr("class", "node");
+
+        node.data(treemap(newRoot).leaves())
+            .transition()
+            .duration(1500)
+            .attr("title", function(d) { return d.id + "\n" + d.value; })
+            .style("left", function(d) { return d.x0 + "px"; })
+            .style("top", function(d) { return d.y0 + "px"; })
+            .style("width", function(d) { return d.x1 - d.x0 + "px"; })
+            .style("height", function(d) { return d.y1 - d.y0 + "px"; })
+            .style("background", function(d) { while (d.depth > 1) d = d.parent; return color(d.id); })
+
+
+        var nodeValue = div.datum(newRoot).selectAll(".node-value")
+            .data(tree.leaves());
+
+        nodeValue.enter().append("div")
+            .attr("class", "node-value");
+
+
+        nodeValue.data(treemap(newRoot).leaves())
+            .transition()
+            .duration(1500)
+            .text(function(d) { return d.value; });
+
+
+        var nodeLabel = div.datum(newRoot).selectAll(".node-label")
+            .data(tree.leaves());
 
         nodeLabel.data(treemap(newRoot).leaves())
             .transition()
@@ -127,32 +153,67 @@ d3.csv("data/range.csv", function(error, myRange) {
             .text(function(d) {
                 return d.id.substring(d.id.lastIndexOf(".") + 1).split(/(?=[A-Z][^A-Z])/g).join("\n");
             });
-
-
-        // nodeLabel.enter().append("div")
-        //     .attr("class", "node-label")
-        //     .data(treemap(newRoot).leaves())
-        //     .transition()
-        //     .duration(1500)
-        //     .text(function(d) { return format(d.value); });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
+    function redrawToShop() {
+
+        var newRoot = stratify(myRange)
+            .sum(function(d) { return d.value; })
+            .sort(function(a, b) { return b.height - a.height || b.value - a.value; });
+
+        var node = div.datum(newRoot).selectAll(".node")
+            .data(tree.leaves());
+
+        node.enter().append("div")
+            .attr("class", "node");
+
+        node.data(treemap(newRoot).leaves())
+            .transition()
+            .duration(1500)
+            .attr("title", function(d) { return d.id + "\n" + d.value; })
+            .style("left", function(d) { return d.x0 + "px"; })
+            .style("top", function(d) { return d.y0 + "px"; })
+            .style("width", function(d) { return d.x1 - d.x0 + "px"; })
+            .style("height", function(d) { return d.y1 - d.y0 + "px"; })
+            .style("background", function(d) { while (d.depth > 1) d = d.parent; return color(d.id); })
+
+
+        var nodeValue = div.datum(newRoot).selectAll(".node-value")
+            .data(tree.leaves());
+
+        nodeValue.enter().append("div")
+            .attr("class", "node-value");
+
+
+        nodeValue.data(treemap(newRoot).leaves())
+            .transition()
+            .duration(1500)
+            .text(function(d) { return d.value; });
+
+
+        var nodeLabel = div.datum(newRoot).selectAll(".node-label")
+            .data(tree.leaves());
+
+        nodeLabel.data(treemap(newRoot).leaves())
+            .transition()
+            .duration(1500)
+            .text(function(d) {
+                return d.id.substring(d.id.lastIndexOf(".") + 1).split(/(?=[A-Z][^A-Z])/g).join("\n");
+            });
+    }
+
+
+
+
     $("#redraw").on("click", function() {
-        redrawToReal() ; })
+        redrawToReal() ; });
+
+    $("#redrawToMin").on("click", function() {
+        redrawToMin() ; });
+
+    $("#redrawToShop").on("click", function() {
+        redrawToShop() ; });
+
     });
 
 

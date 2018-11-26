@@ -36,7 +36,8 @@ d3.csv("data/bf.csv", function(error, examples) {
         }
         else {
             return d.price;
-        }}
+        }
+    }
     )]);
 
 var line = d3.line()
@@ -117,19 +118,21 @@ var line = d3.line()
         var newCase = examples.filter(function(d){
             return d.id === id ;  });
 
-        var yAxis = d3.axisLeft().scale(yScale);
+
 
         yScale.domain([0, d3.max(newCase, function (d) {
-            if(+d.priceOld > 0 ) {
-                return +d.priceOld;
+            if(d.priceOld > 0 ) {
+                return d.priceOld;
             }
             else {
-                return +d.price * 2;
-            }}
+                return d.price * 1.3;
+            }
+            }
+
         )]);
 
 
-        d3.select("#yAxisG")
+        svg.select("#yAxisG")
             .transition()
             .duration(300)
             .call(yAxis);

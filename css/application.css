@@ -152,6 +152,11 @@ p {
   background-color: #39f;
   color: white; }
 
+#treemapContainer p {
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 100; }
+
 .text {
   position: relative;
   width: 60%;
@@ -320,28 +325,31 @@ header, div#source {
   font-size: 12px; }
 
 #area-chart {
-  position: relative;
-  margin-left: 100px;
   width: calc(100% - 50px);
-  height: calc(400px + 50px); }
+  height: calc(80vh + 50px); }
 
 .node {
   box-sizing: border-box;
   position: absolute;
   overflow: hidden;
-  opacity: 0.9; }
+  opacity: 0.9;
+  align-items: center; }
 
 .node-label {
-  padding: 4px;
   line-height: 1em;
   white-space: pre;
   color: black;
-  font-size: 12px; }
+  font-size: 13px;
+  font-weight: 800;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
 
 .node-value {
   padding: 4px;
   color: rgba(0, 0, 0, 0.8);
-  font-size: 9px;
-  margin-top: 1px; }
+  font-size: 10px;
+  margin-top: 0; }
 
 /*# sourceMappingURL=application.css.map */

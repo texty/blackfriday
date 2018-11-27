@@ -22,16 +22,14 @@ p {
 
 #categories {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   width: 90%;
-  margin: 0 auto; }
-  #categories svg.svg-0 {
-    grid-column: 1/2;
-    grid-row: 1/2; }
+  margin: 0 auto;
+  grid-gap: 40px; }
   #categories #phantom {
     pointer-events: none;
     grid-row: 1/2;
-    width: 80%;
+    width: 100%;
     grid-column: 1/2;
     opacity: 0; }
 
@@ -39,7 +37,7 @@ p {
   width: 90%;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 40px; }
 
 /* ------- HEADER ANIMATION --------- */
@@ -177,7 +175,7 @@ p {
     font-weight: 100;
     margin: 20px auto; }
   .text h2 {
-    margin: 0 0 25px 0;
+    margin: 50px 0 15px 0;
     font-family: 'Montserrat Alternates', sans-serif; }
   .text .block {
     height: 100vh; }
@@ -389,9 +387,9 @@ header, div#source {
 .redraw {
   font-family: 'Montserrat Alternates', sans-serif;
   margin-bottom: 10px;
-  font-size: 18px;
+  font-size: 14px;
   padding: 5px;
-  width: 80%;
+  width: 40%;
   text-align: center;
   cursor: pointer; }
 
@@ -419,13 +417,16 @@ header, div#source {
 
 .multTreemaps {
   display: grid;
-  grid-template-columns: 50% 50%;
-  grid-auto-rows: auto; }
-  .multTreemaps .shop_type {
+  grid-template-columns: calc(50% - 30px) calc(50% - 30px);
+  grid-auto-rows: auto;
+  grid-gap: 30px; }
+  .multTreemaps .clothes_type {
     grid-column: 1/2;
-    grid-row: 1/2; }
-  .multTreemaps .real_type {
+    grid-row: 1/2;
+    text-align: center; }
+  .multTreemaps .appl_type {
     grid-column: 2/3;
-    grid-row: 1/2; }
+    grid-row: 1/2;
+    text-align: center; }
 
 /*# sourceMappingURL=application.css.map */

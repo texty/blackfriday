@@ -5,11 +5,11 @@
 
 
 var rect1 = document.getElementById("phantom").getBoundingClientRect();
-chartHeight = rect1.height;
 
-var chartWidth = 200,
-    chartHeight = 150,
-    chartMargin = { top: 30, right: 0, bottom: 40, left: 40};
+var chartMargin = { top: 30, right: 40, bottom: 40, left: 40},
+    chartWidth = rect1.width - chartMargin.left - chartMargin.right,
+    chartHeight = 307 - chartMargin.bottom - chartMargin.top - 25;
+
 
 
 
@@ -74,7 +74,7 @@ setTimeout(function (){
             .entries(dataset);
 
         x.domain([parseDate('2018-04-15'), parseDate('2018-12-30')]);
-        y.domain([0, 6]);
+        y.domain([0, 4]);
 
         var cardsContainer= d3.select("#sale").selectAll("div")
             .data(dataset1)
@@ -83,7 +83,8 @@ setTimeout(function (){
             .enter()
             .append("div")
             .attr("class","prod")
-            .attr("height", 150)
+            .attr("height", chartHeight)
+            .attr("width", chartWidth)
             .attr("id", function(d, i) {
                 return "prod-"+i;
             });
@@ -97,7 +98,8 @@ setTimeout(function (){
         ;
 
         var theCard = cardsContainer.append("div")
-            .attr("class", "card");
+            .attr("class", "card")
+            .attr("width", chartWidth);
 
         theCard.append("img")
             .attr("src","img/any.jpg")

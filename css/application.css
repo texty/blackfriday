@@ -357,8 +357,8 @@ header, div#source {
   font-size: 12px; }
 
 #area-chart {
-  width: calc(100% - 50px);
-  height: calc(80vh + 50px);
+  width: auto;
+  height: auto;
   grid-row: 2/3;
   grid-column: 1/2; }
 
@@ -410,5 +410,22 @@ header, div#source {
 
 .text-bold {
   font-weight: 600; }
+
+#shop_clothes {
+  width: auto;
+  height: auto;
+  grid-row: 1/2;
+  grid-column: 1/2; }
+
+.multTreemaps {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-auto-rows: auto; }
+  .multTreemaps .shop_type {
+    grid-column: 1/2;
+    grid-row: 1/2; }
+  .multTreemaps .real_type {
+    grid-column: 2/3;
+    grid-row: 1/2; }
 
 /*# sourceMappingURL=application.css.map */

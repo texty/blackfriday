@@ -230,7 +230,7 @@ d3.csv("data/range.csv", function(error, myRange) {
      function redrawToClothesReal() {
          $("#redrawClothesChart").removeClass("first-blink");
          $("#redrawClothesChart").html("Обіцяні");
-         $("#treeTitleClothes").html("Знижки до середньої ціни за півроку");
+         $("#treeTitleClothes").html("Реальні знижки... і націнки. Одяг");
          var newRoot = stratify(clothes)
              .sum(function(d) { return +d.valueReal; })
              .sort(function(a, b) { return b.height - a.height || b.valueReal - a.valueReal; });
@@ -397,7 +397,7 @@ d3.csv("data/range.csv", function(error, myRange) {
     function redrawToApplienceToReal() {
         $("#redrawApplienceChart").removeClass("first-blink");
         $("#redrawApplienceChart").html("Обіцяні");
-        $("#treeTitleApplience").html("Знижки до середньої ціни за півроку");
+        $("#treeTitleApplience").html("Реальні знижки. Техніка.");
         var newRoot = stratify(applience)
             .sum(function(d) { return +d.valueReal; })
             .sort(function(a, b) { return b.height - a.height || b.valueReal - a.valueReal; });

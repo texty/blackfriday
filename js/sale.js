@@ -52,9 +52,7 @@ var valuelineOld = d3.line()
 
 setTimeout(function (){
 
-    d3.csv("data/bf.csv", function(error, dataset){
-//   d3.csv("data/bf_comfy.csv", function(error, dataset){
-
+    d3.csv("data/bf.csv", function(error, dataset) {
 
         dataset.forEach(function (d) {
             d.pinkLine = +d.pinkLine;
@@ -62,105 +60,30 @@ setTimeout(function (){
             d.date = parseDate(d.date)
         });
 
-
-        dataset = dataset.sort(function(a, b) {
+        dataset = dataset.sort(function (a, b) {
             return a.date - b.date;
 
         });
 
-
-        var dataset1 = d3.nest()
-            .key(function(d) { return d.bigGat; })
-            .entries(dataset);
-
-        x.domain([parseDate('2018-04-15'), parseDate('2018-12-30')]);
-        y.domain([0, 4]);
-
-        var cardsContainer= d3.select("#sale").selectAll("div")
-            .data(dataset1)
-            // .data(["Телефони, аксесуари", "Ноутбуки, планшети", "Велика побутова техніка", "Дрібна побутова техніка",
-            // "Телевізори", "Одяг", "Сумки", "Парфумерія"])
-            .enter()
-            .append("div")
-            .attr("class","prod")
-            .attr("height", chartHeight)
-            .attr("width", chartWidth)
-            .attr("id", function(d, i) {
-                return "prod-"+i;
-            });
-
-        cardsContainer.append("p")
-            .attr("class", "theTitle")
-            .style("font-size", '14px')
-            .text(function(d) {
-                return d.key;
-            })
-        ;
-
-        var theCard = cardsContainer.append("div")
-            .attr("class", "card")
-            .attr("width", chartWidth);
-
-        theCard.append("img")
-            .attr("src","img/any.jpg")
-            .attr("width", "100%");
-
-
-
-        theCard.append("div")
-            .attr("class","buy-button")
-            .append("h2")
-            .text("Обрати");
-
-
-        $(".buy-button").on("click", function() {
-            $(this).closest(".card").toggleClass("hidden");
-            $(this).closest(".prod").find("svg").css("display", "block");
-
+        var smartsOnly = dataset.filter(function (d) {
+            return d.bigGat === "Телефони, аксесуари" || d.bigGat === "Ноутбуки, планшети";
         });
 
-        var buyMeChart =  cardsContainer.append("svg")
-            .attr("id", function (d, i) {
-                return "svg-" + i;
-            })
-            .attr("class", "multiples")
-            .attr("width", chartWidth + chartMargin.left + chartMargin.right)
-            .attr("height", chartHeight + chartMargin.bottom + chartMargin.top)
-            .append("g")
-            .attr("transform", "translate(" + chartMargin.left + "," + chartMargin.top + ")");
+        var applienceOnly = dataset.filter(function (d) {
+            return d.bigGat === "Побутова техніка" || d.bigGat === "Телевізори";
+        });
 
-        buyMeChart.append("g").attr("id", "yAxisG").attr("class", "axis").call(yAx);
-        buyMeChart.append("g").attr("id", "xAxisG").attr("class", "axis").attr("transform", "translate(0," + chartHeight + ")")
-            .call(xAx);
-        d3.selectAll("path.domain").remove();
-
-        buyMeChart.append('path')
-            .attr("class", "line")
-            .attr("d", function(d) {
-                return valueline(d.values);
-            });
-
-        buyMeChart.append('path')
-            .attr("class", "lineOld")
-            .attr("d", function(d) {
-                return valuelineOld(d.values);
-            });
+        var clothesOnly = dataset.filter(function (d) {
+            return d.bigGat === "Одяг" || d.bigGat === "Сумки";
+        });
 
 
-        var left = x(new Date("2018-11-18"));
-        var right = x(new Date("2018-11-25")); //one more day
-        var wid = right - left;
 
-        buyMeChart.append("rect")
-            .attr("x", left)
-            .attr("width", wid)
-            .attr("height", chartHeight)
-            .attr("fill", "yellow")
-            .attr("opacity", "0.05");
-
+        drawMeThis(smartsOnly, "#smallMultiplesContainer1");
+        drawMeThis(applienceOnly, "#smallMultiplesContainer2");
+        drawMeThis(clothesOnly, "#smallMultiplesContainer3");
 
     });
-
 
 }, 4000);
 
@@ -169,5 +92,96 @@ setTimeout(function (){
 // setTimeout(function() {  $("svg#svg-0").clone().appendTo("#cont-1"); }, 4000);
 
 
+function drawMeThis(df, container) {
+    var dataset1 = d3.nest()
+        .key(function (d) {
+            return d.bigGat
+        })
+        .entries(df);
+
+
+    x.domain([parseDate('2018-04-15'), parseDate('2018-12-30')]);
+    y.domain([0, 4]);
+
+    var cardsContainer = d3.select(container).selectAll("div")
+        .data(dataset1)
+
+        .enter()
+        .append("div")
+        .attr("class", "prod")
+        .attr("height", chartHeight)
+        .attr("width", chartWidth)
+        .attr("id", function (d, i) {
+            return "prod-" + i;
+        });
+
+    cardsContainer.append("h5")
+        .attr("class", "theTitle")
+        .style("font-size", '14px')
+        .text(function (d) {
+            return d.key;
+        })
+    ;
+
+    // var theCard = cardsContainer.append("div")
+    //     .attr("class", "card")
+    //     .attr("width", chartWidth);
+    //
+    // theCard.append("img")
+    //     .attr("src", "img/any.jpg")
+    //     .attr("width", "100%");
+    //
+    //
+    // theCard.append("div")
+    //     .attr("class", "buy-button")
+    //     .append("h2")
+    //     .text("Обрати");
+
+
+    $(".buy-button").on("click", function () {
+        $(this).closest(".card").toggleClass("hidden");
+        $(this).closest(".prod").find("svg").css("display", "block");
+
+    });
+
+    var buyMeChart = cardsContainer.append("svg")
+        .attr("id", function (d, i) {
+            return "svg-" + i;
+        })
+        .attr("class", "multiples")
+        .attr("width", chartWidth + chartMargin.left + chartMargin.right)
+        .attr("height", chartHeight + chartMargin.bottom + chartMargin.top)
+        .append("g")
+        .attr("transform", "translate(" + chartMargin.left + "," + chartMargin.top + ")");
+
+    buyMeChart.append("g").attr("id", "yAxisG").attr("class", "axis").call(yAx);
+    buyMeChart.append("g").attr("id", "xAxisG").attr("class", "axis").attr("transform", "translate(0," + chartHeight + ")")
+        .call(xAx);
+    d3.selectAll("path.domain").remove();
+
+    buyMeChart.append('path')
+        .attr("class", "line")
+        .attr("d", function (d) {
+            return valueline(d.values);
+        });
+
+    buyMeChart.append('path')
+        .attr("class", "lineOld")
+        .attr("d", function (d) {
+            return valuelineOld(d.values);
+        });
+
+
+    var left = x(new Date("2018-11-18"));
+    var right = x(new Date("2018-11-25")); //one more day
+    var wid = right - left;
+    buyMeChart.append("rect")
+        .attr("x", left)
+        .attr("width", wid)
+        .attr("height", chartHeight)
+        .attr("fill", "yellow")
+        .attr("opacity", "0.05");
+
+}
 
 

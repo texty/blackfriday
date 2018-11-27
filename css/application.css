@@ -13,8 +13,11 @@ body {
   color: white;
   font-family: 'Montserrat Alternates', sans-serif; }
 
-p {
-  margin-bottom: 10px; }
+.main-content p {
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 100;
+  margin: 20px auto; }
 
 .content {
   width: 60%;
@@ -22,10 +25,15 @@ p {
 
 #categories {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 70% 30%;
   width: 90%;
   margin: 0 auto;
   grid-gap: 40px; }
+  #categories #phantomContainer {
+    grid-column: 1/2;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px; }
   #categories #phantom {
     pointer-events: none;
     grid-row: 1/2;
@@ -34,11 +42,39 @@ p {
     opacity: 0; }
 
 #sale {
-  width: 90%;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 70% 30%;
+  grid-template-rows: auto auto auto;
+  width: 90%;
   grid-gap: 40px; }
+  #sale p {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 100;
+    margin: 0 auto 25px auto;
+    line-height: 1.6; }
+
+#smallMultiplesContainer1 {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px; }
+
+#smallMultiplesContainer2 {
+  grid-column: 1/2;
+  grid-row: 2/3;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px; }
+
+#smallMultiplesContainer3 {
+  grid-column: 1/2;
+  grid-row: 3/4;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px; }
 
 /* ------- HEADER ANIMATION --------- */
 #header {
@@ -275,9 +311,6 @@ p {
 
 .buyMeChartSvg {
   margin-bottom: 10px; }
-
-.multiples {
-  display: none; }
 
 .hidden {
   display: none; }

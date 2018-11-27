@@ -11,7 +11,7 @@ d3.csv("data/range.csv", function(error, myRange) {
         height = window.innerHeight * 0.8,
         ratio = 4;
 
-    const margin = {top: 40, right: 10, bottom: 10, left: 10};
+    const margin = {top: 5, right: 10, bottom: 10, left: 10};
 
     // var format = d3.format(",d");
 
@@ -241,19 +241,44 @@ d3.csv("data/range.csv", function(error, myRange) {
         }
     });
 
+    $("#redrawToMean").on("click", function(d) {
+        //жирний шрифт на обране
+        $(this).addClass("text-bold");
+        $("#redrawToShop").removeClass("text-bold");
 
+        //прибираємо блінк
+        $(this).removeClass("first-blink");
 
+        //змінюємо заголовок чарту
+        $("#treemapTitle").html("Такими є знижки до середньої ціни за півроку");
 
+        //перемальовуємо графік
+        redrawToReal();
 
+        //показуємо додаткову інфу під кнопками
+        $("#redrawToShop").css("display", "block");
+        $(".treemaplegend").css("display", "block");
     });
 
+    $("#redrawToShop").on("click", function(d) {
+        $(this).removeClass("first-blink");
+        $(this).addClass("text-bold");
+        $("#redrawToMean").removeClass("text-bold");
+        $("#treemapTitle").html("Такі знижки обійяли магазини");
+        redrawToShop() ;
+    });
+
+});
 
 
 
-    function type(d) {
-        d.value = +d.value;
-        return d;
-    }
+
+
+    //
+    // function type(d) {
+    //     d.value = +d.value;
+    //     return d;
+    // }
 
 
 

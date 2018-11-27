@@ -37,7 +37,10 @@ p {
 
 #sale {
   width: 90%;
-  margin: 0 auto; }
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 40px; }
 
 /* ------- HEADER ANIMATION --------- */
 #header {
@@ -62,7 +65,7 @@ p {
     color: #fff; }
   #header #black span {
     opacity: 0.2;
-    animation: whiteBlink 3.5s linear 1; }
+    animation: whiteBlink 3.2s linear 1; }
   #header #friday span {
     opacity: 0.2;
     animation: redBlink 3s linear 1; }
@@ -71,10 +74,10 @@ p {
   #header #friday span:nth-of-type(1) {
     animation: redBlink2 3s linear 1; }
 @keyframes whiteBlink {
-  0%, 60%, 62%, 63%, 97%, 99%, 100% {
+  0%, 60%, 62%, 63%, 97%, 98%, 100% {
     opacity: .99;
     text-shadow: 0 0 80px #ffffff, 0 0 30px #008000, 0 0 6px #0000ff; }
-  61%, 62.5%, 98%, 99.5% {
+  61%, 62.5%, 97.5%, 98.6% {
     opacity: 0.2;
     text-shadow: none; } }
 @keyframes redBlink {
@@ -152,10 +155,16 @@ p {
   background-color: #39f;
   color: white; }
 
+#treemapContainer {
+  display: grid;
+  grid-template-columns: 70% 25%;
+  grid-template-rows: auto auto; }
+
 #treemapContainer p {
   font-family: 'Fira Sans', sans-serif;
   font-size: 16px;
-  font-weight: 100; }
+  font-weight: 100;
+  margin: 20px auto; }
 
 .text {
   position: relative;
@@ -165,7 +174,8 @@ p {
   .text p {
     font-size: 16px;
     line-height: 1.6;
-    font-weight: 100; }
+    font-weight: 100;
+    margin: 20px auto; }
   .text h2 {
     margin: 0 0 25px 0;
     font-family: 'Montserrat Alternates', sans-serif; }
@@ -186,71 +196,93 @@ p {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(1fr, 1fr));
   margin: 20px auto; }
-  #mySticky p {
-    display: block;
-    -webkit-margin-before: 0;
-    -webkit-margin-after: 0;
-    -webkit-margin-start: 0;
-    -webkit-margin-end: 0; }
-  #mySticky .buyMe {
-    grid-row: 1/2;
-    width: 100%;
-    grid-column: 1/-1;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-gap: 50px; }
-  #mySticky #modal-1, #mySticky #modal-2, #mySticky #modal-3 {
-    grid-row: 1/2;
-    display: none;
-    grid-column: 2/4; }
-  #mySticky #textForSticky p {
-    margin-top: 10px;
-    font-family: "Arial", sans-serif;
-    line-height: 1.6; }
-  #mySticky .prod {
-    background-color: #0f0f0f;
-    line-height: 1.8;
-    color: white;
-    font-size: 18px;
-    height: max-content; }
-  #mySticky .prod img {
-    width: 100%; }
-  #mySticky .prod p {
-    padding-left: 10px;
-    text-align: left; }
-  #mySticky .price-container {
-    display: flex;
-    justify-content: space-between; }
-  #mySticky .price-old {
-    font-weight: 100;
-    color: #ff36ad;
-    font-size: 20px;
-    text-decoration: line-through; }
-  #mySticky .current-price {
-    font-weight: 800;
-    letter-spacing: 1px;
-    font-size: 20px;
-    margin-right: 10%; }
-  #mySticky .buy-button {
-    width: max-content;
-    padding: 0 5px;
-    margin: 5px auto 15px auto;
-    background-color: grey;
-    text-align: center;
-    cursor: pointer;
-    font-size: 13px; }
-  #mySticky .first-blink {
-    background-color: #ff36ad;
-    animation: buy 0.5s linear 50; }
+
+p {
+  display: block;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0; }
+
+.buyMe {
+  grid-row: 1/2;
+  width: 100%;
+  grid-column: 1/-1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 50px; }
+
+#modal-1, #modal-2, #modal-3 {
+  grid-row: 1/2;
+  display: none;
+  grid-column: 2/4; }
+
+#textForSticky p {
+  margin-top: 10px;
+  font-family: "Arial", sans-serif;
+  line-height: 1.6; }
+
+.prod {
+  background-color: #0f0f0f;
+  line-height: 1.8;
+  color: white;
+  font-size: 18px;
+  height: max-content; }
+
+.prod img {
+  width: 100%; }
+
+.prod p {
+  padding-left: 10px;
+  text-align: left; }
+
+.price-container {
+  display: flex;
+  justify-content: space-between; }
+
+.price-old {
+  font-weight: 100;
+  color: #ff36ad;
+  font-size: 20px;
+  text-decoration: line-through; }
+
+.current-price {
+  font-weight: 800;
+  letter-spacing: 1px;
+  font-size: 20px;
+  margin-right: 10%; }
+
+.buy-button {
+  width: max-content;
+  padding: 0 5px;
+  margin: 20px auto 20px auto;
+  background-color: grey;
+  text-align: center;
+  cursor: pointer;
+  font-size: 13px; }
+
+.first-blink {
+  border: none;
+  padding: 5px;
+  background-color: #d7d7d7;
+  animation: buy 0.5s linear Infinite; }
+
 @keyframes buy {
   0%, 100% {
-    background-color: #ff36ad; }
+    background-color: #d7d7d7; }
   50% {
-    background-color: grey; } }
-  #mySticky .hidden {
-    display: none; }
-  #mySticky .buyMeChartSvg {
-    margin-bottom: 10px; }
+    background-color: #ff3fb3; } }
+.hidden {
+  display: none; }
+
+.buyMeChartSvg {
+  margin-bottom: 10px; }
+
+.multiples {
+  display: none; }
+
+.hidden {
+  display: none; }
 
 /*------ countdown -----*/
 .clockdiv {
@@ -326,7 +358,9 @@ header, div#source {
 
 #area-chart {
   width: calc(100% - 50px);
-  height: calc(80vh + 50px); }
+  height: calc(80vh + 50px);
+  grid-row: 2/3;
+  grid-column: 1/2; }
 
 .node {
   box-sizing: border-box;
@@ -351,5 +385,30 @@ header, div#source {
   color: rgba(0, 0, 0, 0.8);
   font-size: 10px;
   margin-top: 0; }
+
+.redraw {
+  font-family: 'Montserrat Alternates', sans-serif;
+  margin-bottom: 10px;
+  font-size: 18px;
+  padding: 5px;
+  width: 80%;
+  text-align: center;
+  cursor: pointer; }
+
+#redrawToShop {
+  display: none; }
+
+.treemaplegend {
+  display: none; }
+
+#treemapTitle {
+  font-weight: 100;
+  grid-row: 1/2;
+  grid-column: 1/2;
+  font-size: 18px;
+  text-align: center; }
+
+.text-bold {
+  font-weight: 600; }
 
 /*# sourceMappingURL=application.css.map */

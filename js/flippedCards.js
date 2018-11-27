@@ -151,34 +151,4 @@ $("#categories > img").on("click", function(){
 });
 
 
-$("#sparkline-dashed").sparkline([7,9,7,7,6,7], {
-    type: 'line',
-    width: '80',
-    height: '10',
-    lineColor: '#ffffff',
-    fillColor: '#000000',
-    lineWidth: 1,
-    spotColor: '#',
-    minSpotColor: '#',
-    maxSpotColor: '#',
-    highlightSpotColor: '#',
-    highlightLineColor: '#',
-    spotRadius: 0,
-    normalRangeColor: '#'});
-
-
-$("#sparkline-pink").sparkline([0,3,2,2,2.2,2,2 ], {
-    type: 'line',
-    width: '80',
-    height: '10',
-    lineColor: '#ff36ad',
-    fillColor: '#000000',
-    lineWidth: 1,
-    spotColor: '#',
-    minSpotColor: '#',
-    maxSpotColor: '#',
-    highlightSpotColor: '#',
-    highlightLineColor: '#',
-    spotRadius: 0,
-    normalRangeColor: '#'});
 

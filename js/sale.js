@@ -1,9 +1,13 @@
 /**
  * Created by yevheniia on 21.11.18.
  */
-var rect1 = document.getElementById("phantom").getBoundingClientRect();
 
-var chartWidth = rect1.width,
+
+
+var rect1 = document.getElementById("phantom").getBoundingClientRect();
+chartHeight = rect1.height;
+
+var chartWidth = 200,
     chartHeight = 150,
     chartMargin = { top: 30, right: 0, bottom: 40, left: 40};
 
@@ -46,80 +50,122 @@ var valuelineOld = d3.line()
     .x(function(d) { return x(d.date); })
     .y(function(d) { return y(d.whiteDashed); });
 
-d3.csv("data/bf.csv", function(error, dataset){
+setTimeout(function (){
+
+    d3.csv("data/bf.csv", function(error, dataset){
 //   d3.csv("data/bf_comfy.csv", function(error, dataset){
 
 
         dataset.forEach(function (d) {
-        d.pinkLine = +d.pinkLine;
-        d.whiteDashed = +d.whiteDashed;
-        d.date = parseDate(d.date)
-    });
-
-
-    dataset = dataset.sort(function(a, b) {
-        return a.date - b.date;
-
-    });
-
-
-    var dataset1 = d3.nest()
-        .key(function(d) { return d.bigGat; })
-        .entries(dataset);
-
-    x.domain([parseDate('2018-04-15'), parseDate('2018-12-30')]);
-    y.domain([0, 6]);
-
-    var buyMeChart = d3.select("#sale")
-        .selectAll("svg")
-        .data(dataset1)
-        .enter()
-        .append("svg")
-        .attr("class", function (d, i) {
-            return "svg-" + i;
-        })
-        .attr("width", chartWidth + chartMargin.left + chartMargin.right)
-        .attr("height", chartHeight + chartMargin.bottom + chartMargin.top)
-        .append("g")
-        .attr("transform", "translate(" + chartMargin.left + "," + chartMargin.top + ")");
-
-    buyMeChart.append("g").attr("id", "yAxisG").attr("class", "axis").call(yAx);
-    buyMeChart.append("g").attr("id", "xAxisG").attr("class", "axis").attr("transform", "translate(0," + chartHeight + ")")
-        .call(xAx);
-    d3.selectAll("path.domain").remove();
-
-    buyMeChart.append('path')
-        .attr("class", "line")
-        .attr("d", function(d) {
-            return valueline(d.values);
+            d.pinkLine = +d.pinkLine;
+            d.whiteDashed = +d.whiteDashed;
+            d.date = parseDate(d.date)
         });
 
-    buyMeChart.append('path')
-        .attr("class", "lineOld")
-        .attr("d", function(d) {
-            return valuelineOld(d.values);
+
+        dataset = dataset.sort(function(a, b) {
+            return a.date - b.date;
+
         });
+
+
+        var dataset1 = d3.nest()
+            .key(function(d) { return d.bigGat; })
+            .entries(dataset);
+
+        x.domain([parseDate('2018-04-15'), parseDate('2018-12-30')]);
+        y.domain([0, 6]);
+
+        var cardsContainer= d3.select("#sale").selectAll("div")
+            .data(dataset1)
+            // .data(["Телефони, аксесуари", "Ноутбуки, планшети", "Велика побутова техніка", "Дрібна побутова техніка",
+            // "Телевізори", "Одяг", "Сумки", "Парфумерія"])
+            .enter()
+            .append("div")
+            .attr("class","prod")
+            .attr("height", 150)
+            .attr("id", function(d, i) {
+                return "prod-"+i;
+            });
+
+        cardsContainer.append("p")
+            .attr("class", "theTitle")
+            .style("font-size", '14px')
+            .text(function(d) {
+                return d.key;
+            })
+        ;
+
+        var theCard = cardsContainer.append("div")
+            .attr("class", "card");
+
+        theCard.append("img")
+            .attr("src","img/any.jpg")
+            .attr("width", "100%");
+
+
+
+        theCard.append("div")
+            .attr("class","buy-button")
+            .append("h2")
+            .text("Обрати");
+
+
+        $(".buy-button").on("click", function() {
+            $(this).closest(".card").toggleClass("hidden");
+            $(this).closest(".prod").find("svg").css("display", "block");
+
+        });
+
+        var buyMeChart =  cardsContainer.append("svg")
+            .attr("id", function (d, i) {
+                return "svg-" + i;
+            })
+            .attr("class", "multiples")
+            .attr("width", chartWidth + chartMargin.left + chartMargin.right)
+            .attr("height", chartHeight + chartMargin.bottom + chartMargin.top)
+            .append("g")
+            .attr("transform", "translate(" + chartMargin.left + "," + chartMargin.top + ")");
+
+        buyMeChart.append("g").attr("id", "yAxisG").attr("class", "axis").call(yAx);
+        buyMeChart.append("g").attr("id", "xAxisG").attr("class", "axis").attr("transform", "translate(0," + chartHeight + ")")
+            .call(xAx);
+        d3.selectAll("path.domain").remove();
+
+        buyMeChart.append('path')
+            .attr("class", "line")
+            .attr("d", function(d) {
+                return valueline(d.values);
+            });
+
+        buyMeChart.append('path')
+            .attr("class", "lineOld")
+            .attr("d", function(d) {
+                return valuelineOld(d.values);
+            });
 
 
         var left = x(new Date("2018-11-18"));
         var right = x(new Date("2018-11-25")); //one more day
         var wid = right - left;
 
-    buyMeChart.append("rect")
+        buyMeChart.append("rect")
             .attr("x", left)
             .attr("width", wid)
             .attr("height", chartHeight)
             .attr("fill", "yellow")
             .attr("opacity", "0.05");
 
-        buyMeChart.append("text")
-            .attr("x", 0)
-            .attr("y", 0 - (chartMargin.top / 2))
-            .attr("text-anchor", "left")
-            .style("font-size", "12px")
-            .attr("fill", "white")
-            .text(function (d) {
-            return d.key
-        });
 
-});
+    });
+
+
+}, 4000);
+
+
+
+// setTimeout(function() {  $("svg#svg-0").clone().appendTo("#cont-1"); }, 4000);
+
+
+
+

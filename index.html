@@ -13,58 +13,79 @@
     <p id="friday"><span>п'</span><span>я</span><span>т</span><span>н</span><span>и</span><span>ц</span><span>я</span></p>
     </div>
 </div>
+
+
 <div class="text">
+
+    <p>В таких країнах, як Західна Європа і Штати розпродажі завжди означають справжні відчутні знижки на товари, можливість купити дорогу річ в рази дешевше. Чи не найбільшим святом шопінгу  є Чорна пʼятниця, з якої стартують різдвяні розпродажі. І хоча в Україні існує усталена практика піднімати ціни на свята, саме на Чорну пʼятницю магазини пропонують клієнтам шалені знижки.</p>
+
+    <p>Можливо, Ви також встигли прикупити щось довгоочікуване і бажане, або дозволили собі незаплановані покупки -  коли як не зараз?!  Але чи дійсно Чорна пʼятниця є проявом небаченої щедрості з боку продавців, які звикли заробляти на великих відсотках, а не товарообороті?</p>
+
+    <p> Ми вирішили це перевірити. Тож протягом півроку кілька разів на місяць збирали ціни на …. товарів кількох популярних інтернет магазинів, а саме на смартфони, ноутбуки, телевізори, велику побутову техніку, дрібну побутову техніку, одяг, верхній одяг, сумки, парфуми. Серед цих товарів ми вибрали ті, які магазини пропонували на розпродажі і порівняли акційну ціну з цінами на товар за півроку.
+    </p>
+
+    </div>
+<div class="text">
+    <h2>Заявлена знижка vs реальна знижка. </h2>
+    <p>Cеред тих товарів, по яких ми систематично збирали дані, на ЧП розпродаж були виставлені майже 7.5 тис. Тож наші висновки будуть стосуватися саме цієї кількості товарів, ми не узагальнюємо їх на інші товари в зазначеному іи іношому магазині. До нашох вибірки потрапили магазини електроної техніки комфі, розетка, а також популярний магазин одягу "лєбутік". </p>
+
+    <p>"Справжня" ціна товара зазвичай перекреслена і у рази перевищує пропоновану, аби ви розуміли, що втратите, якщо не поквапитесь, адже "акційний товар закінчується дуже швидко" і "до кінця акції залишилось три, два, один, день".</p>
+
+    <p> Порівнявши ціни Чорної пʼятниці з цінами протягом травня-листопада, ми зʼясували, що знижки дійсно мають місце. А порівнявши їх з тими, що були зазначені як старі (перекреслена стара ціна), виявили, що не варно вірити магазинам наслово про розмір цих знижок. Лише у 403 випадках заявлена магазином знижка відповідала реальній або була близькою до неї (до 2% різниці). Реальну знижку ми рахували як середню ціну на товар за півроку. Якщо Вам вдалось купити товар дешевше, ніж він коштує зазвичай, це вже непогано.</p>
+
+        <p><b>На графіку нижче представлено які знижки пропонували магазини. Чим більше розмір поля, тим більше товарів пропонувались із зазначеною знижкою. Якщо вірити магазинам, на більшість товарів ви зекономили від 50%. Виглядає непогано, чи не так? Нажаль, реальна картина не така райдужна.  Насправді, в день найбільшого розпродажу року можна не тільки зекономити, але й переплатити. Щоб подивитись на реальні знижки, клікніть на кнопку праворуч від графіку. </b></p>
+
+</div>
+
+<div id="treemapContainer">
+
+    <h2 id="treemapTitle">Такі знижки обійяли магазини</h2>
+    <div id="area-chart"></div>
+
+
+    <div style="height:calc(100vh - 50px); grid-row:2/3; grid-column: 2/3;" id="treemap-1">
+        <button class="redraw first-blink" id="redrawToMean">Реальні знижки</button><br>
+        <button class="redraw" id="redrawToShop">Заявлені знижки</button><br>
+
+        <!--<input type="radio" name="discount" value="redrawToShop" checked>Заявлена знижка<br>-->
+        <!--&lt;!&ndash;<input type="radio" name="discount" value="redrawToMin">Реальна від мінімальної ціни<br>&ndash;&gt;-->
+        <!--<input type="radio" name="discount" value="redrawToMean" style="margin-bottom:30px" >Реальна від середньої ціни<br>-->
+
+        <p  class="treemaplegend" style="margin: 3px 3px 0px 5px;"><span><svg width="25" height="15">
+  <rect width="15" height="15" style="fill:#d7d7d7;margin-right:10px;" />
+</svg></span>Знижка</p>
+        <p class="treemaplegend" style="margin: 3px 3px 50px 5px;"><span><svg width="25" height="15">
+  <rect width="15" height="15" style="fill:#ff36ad;margin-right:10px;" />
+</svg></span>Націнка</p>
+        <p class="treemaplegend">Заявлена і реальна знижка суттєво відрізняється в залежності від категорії товару. Спробуйте вгадати, на чому продавці малюють набільше</p>
+        <p class="treemaplegend"><span style="font-weight: 400">Клікніть на будь-яку клітинку, аби подивитись співідношення скільки товарів категорії техніка і одяг мали таку знижку або націнку.</span></p>
+
 
 
     </div>
+</div>
+
+
+<div class="text">
+
+    <p>Розповсюдженою маніпуляцією є завищення так званої старої ціни. Перекреслена стара ціна у понад 20 тис. грн і можливість купити товар в 5 разів нижче спонукає людей витрачати гроші, особливо, коли таймер показує - "до кінця акції залишився 1 день" </p>
+
+    <p>Ми пропонуємо вам подивитись на різницю між так званою "старою" <span id="sparkline-dashed"></span>і поточною ціною <span id="sparkline-pink"></span> на різні категорії товарів. Чим більша різниця між старою ціною і ціною за яку пропонують купити товар  тим більше маніпуляцій зі старою ціною використовується.</p>
+    <p>На графіку представлена середня ціна на кожну групу товарів. За 100% взята остання ціна по кожному товару. Поточна ціна (рожева лінія) завжди близька до 100% (тобто до ціни за останню дату моніторингу), бо за час моніторингу, ціни особливо не мінялись. Коливання реальної і старої цін протягом півроку переведені у відновшення до цих 100%. Потім товари сгруповано по категоріям і місяцям і взята середнє значення відсотка з кожної групи. </p>
+    <p>Наприклад, реальна ціна (за яким товар можна купити) на конкретний товар становить в середньому 99%, але ціна, що вказана як стара становить у більшості випадків 300 - 400% від реальної останньої. Якби в минулому товар дійсно продавали за такою ціною, значення "рожевої" лінії було б значно вищим з 100%. Але це так. Тобто стара ціна взята з потолка. </p>
+
+</div>
 
 <div id="sale">
-
 </div>
 
 
 <div id="categories">
     <div id="phantom"></div>
 </div>
-<div class="text">
-    <h2>Заявлена знижка vs реальна знижка. </h2>
-
-    <p>Cеред тих товарів, по яких ми систематично збирали дані протягом півроку, на ЧП розпродаж були виставлені майже 7.5 тис. З них лише у 403 випадках заявлена знижка відповідала реальній або була близькою до неї (до 2% різниці)</p>
-
-    </div>
-<!--<form id="radio">-->
-    <!--<label class="radio-inline">-->
-        <!--<input type="radio" name="discount" value="redrawToShop" checked>Заявлена знижка-->
-    <!--</label>-->
-    <!--<label class="radio-inline">-->
-        <!--<input type="radio" name="discount" value="redrawToMin">Реальна від мінімальної ціни-->
-    <!--</label>-->
-    <!--<label class="radio-inline">-->
-        <!--<input type="radio" name="discount" value="redrawToMean">Реальна від середньої ціни-->
-    <!--</label>-->
-<!--</form>-->
-
-<div id="treemapContainer" style="display:grid; grid-template-columns: 70% 25%; grid-template-rows:none;">
-    <div id="area-chart"></div>
-    <div style="height:calc(100vh - 50px); margin-top:50px;" id="treemap-1">
-
-        <input type="radio" name="discount" value="redrawToShop" checked>Заявлена знижка<br>
-        <!--<input type="radio" name="discount" value="redrawToMin">Реальна від мінімальної ціни<br>-->
-        <input type="radio" name="discount" value="redrawToMean" style="margin-bottom:30px" >Реальна від середньої ціни<br>
-
-        <p style="margin: 3px 3px 0px 5px;"><span><svg width="25" height="15">
-  <rect width="15" height="15" style="fill:#d7d7d7;margin-right:10px;" />
-</svg></span>Знижка</p>
-        <p style="margin: 3px 3px 50px 5px;"><span><svg width="25" height="15">
-  <rect width="15" height="15" style="fill:#ff36ad;margin-right:10px;" />
-</svg></span>Націнка</p>
-        <p>Заявлена і реальна знижка суттєво відрізняється в залежності від категорії товару. Спробуйте вгадати, на чому продавці малюють набільше</p>
-        <p><span style="font-weight: 400">Клікніть на будь-яку клітинку, аби подивитись співідношення скільки товарів категорії техніка і одяг мали таку знижку або націнку.</span></p>
 
 
-
-    </div>
-</div>
+>
 
 
 
@@ -75,163 +96,94 @@
     <ul>
    <li>Дійсно купити товар зі знижкою (памʼятаємо про понад 400 товарів з 7500, в яких заявлена знижка співпадала з реальною);</li>
    <li>Купити товар за мінімальною ціною. Часто ціна товару у чорну пʼятницю дорівнює його найнижчій ціни за півроку</li>
-    <li>Переплатити зайві 10-20% за красиву сукню на тлі загальної істерії</li>
+    <li>Переплатити зайві 1-100% (як пощастить) за красиву сукню, модну шубу, сумку або новеньку модель смартфона на тлі загальної істерії</li>
 </ul>
 
-    <p>Розповсюдженою маніпуляцією є завищення так званої старої ціни. Перекреслена стара ціна у понад 20 тис. грн і можливість купити товар в 5 разів нижче спонукає людей витрачати гроші, особливо, коли таймер показує - "до кінця акції залишився 1 день" </p>
 
-    <p>Ми пропонуємо вам подивитись на різницю між так званою "старою" <span id="sparkline-dashed"></span>і поточною ціною <span id="sparkline-pink"></span> на різні категорії товарів. Чим більша різниця між старою ціною і ціною за яку пропонують купити товар  тим більше маніпуляцій зі старою ціною використовується.</p>
-    <p>На графіку представлена середня ціна на кожну групу товарів. За 100% взята остання ціна по кожному товару. Поточна ціна (рожева лінія) завжди близька до 100% (тобто до ціни за останню дату моніторингу), бо за час моніторингу, ціни особливо не мінялись. Коливання реальної і старої цін протягом півроку переведені у відновшення до цих 100%. Потім товари сгруповано по категоріям і місяцям і взята середнє значення відсотка з кожної групи. </p>
-    <p>Наприклад, реальна ціна (за яким товар можна купити) на конкретний товар становить в середньому 99%, але ціна, що вказана як стара становить у більшості випадків 300 - 400% від реальної останньої. Якби в минулому товар дійсно продавали за такою ціною, значення "рожевої" лінії було б значно вищим з 100%. Але це так. Тобто стара ціна взята з потолка. </p>
 
 </div>
 
-<section id="mySticky">
-    <div class="buyMe">
+<!--<section id="mySticky">-->
+    <!--<div class="buyMe">-->
 
-        <div class="prod" id="card-1">
-            <img src="img/any.jpg"/>
-            <div class="price-grid">
-                <p>Планшети, ноутбуки</p>
-                <!--<div class="price-container">-->
-                    <!--<p id="price-old-2" class="price-old">&nbsp;&nbsp;8010&nbsp;&nbsp;</p>-->
-                    <!--<p id="current-price-2" class="current-price">2349</p>-->
-                <!--</div>-->
-                <div class="count-days"></div>
-            </div>
-            <div class="buy-button">
-                <h2>Далі</h2>
-            </div>
-        </div>
-
-        <div class="prod" id="card-2">
-            <img src="img/any.jpg"/>
-            <div class="price-grid">
-                <p>Телефони, аксесуари</p>
-                <!--<div class="price-container">-->
-                    <!--<p id="price-old-1" class="price-old">&nbsp;&nbsp;5300&nbsp;&nbsp;</p>-->
-                    <!--<p id="current-price-1" class="current-price">1200</p>-->
-                <!--</div>-->
-                <div class="count-days"></div>
-            </div>
-            <!--<div id="clockdiv2" class="clockdiv">-->
-            <!--<div>-->
-            <!--<span class="hours"></span><span class="minutes"></span><span class="seconds"></span>-->
+        <!--<div class="prod" value="Велика побутова техніка">-->
+            <!--<div id="card-1" class="cards">-->
+                <!--<img src="img/any.jpg"/>-->
+                <!--<p>Планшети, ноутбуки</p>-->
+                <!--<div class="buy-button">Далі</div>-->
             <!--</div>-->
-            <!--</div>-->
-            <div class="buy-button first-blink">
-                <h2>Далі</h2>
-            </div>
-        </div>
+        <!--</div>-->
 
-        <div class="prod" id="card-3">
-            <img src="img/any.jpg"/>
-            <div class="price-grid">
-                <p class="prod-name">Телевізори</p>
-                <!--<div class="price-container">-->
-                    <!--<p id="price-old-3" class="price-old">&nbsp;&nbsp;5300&nbsp;&nbsp;</p>-->
-                    <!--<p id="current-price-3" class="current-price">1200</p>-->
+        <!--<div class="prod" value='Ноутбуки, планшети'>-->
+            <!--<div id="card-2" class="cards">-->
+            <!--<img src="img/any.jpg"/>-->
+                <!--<p>Телефони, аксесуари</p>-->
+            <!--<div class="buy-button first-blink">Далі</div>-->
                 <!--</div>-->
-                <div class="count-days"></div>
-            </div>
-            <div class="buy-button first-blink">
-                <h2>Далі</h2>
-            </div>
-        </div>
+        <!--</div>-->
 
-        <div class="prod" id="card-4">
-            <img src="img/any.jpg"/>
-            <div class="price-grid">
-                <p class="prod-name">Велика побутова техніка</p>
-                <!--<div class="price-container">-->
-                    <!--<p id="price-old-4" class="price-old">&nbsp;&nbsp;5300&nbsp;&nbsp;</p>-->
-                    <!--<p id="current-price-4" class="current-price">1200</p>-->
+        <!--<div class="prod" >-->
+            <!--<div id="card-3" class="cards">-->
+            <!--<img src="img/any.jpg"/>-->
+            <!--<p class="prod-name">Телевізори</p>-->
+            <!--<div class="buy-button first-blink">Далі</div>-->
                 <!--</div>-->
-                <div class="count-days"></div>
-            </div>
-            <div class="buy-button first-blink">
-                <h2>Далі</h2>
-            </div>
-        </div>
+        <!--</div>-->
 
-
-        <div class="prod" id="card-5">
-            <img src="img/any.jpg"/>
-            <div class="price-grid">
-                <p class="prod-name">Дрібна побутова техніка</p>
-                <div class="price-container">
-                    <p id="price-old-5" class="price-old">&nbsp;&nbsp;5300&nbsp;&nbsp;</p>
-                    <p id="current-price-5" class="current-price">1200</p>
-                </div>
-                <div class="count-days"></div>
-            </div>
-            <div class="buy-button first-blink">
-                <h2>Далі</h2>
-            </div>
-        </div>
-
-
-        <div class="prod" id="card-6">
-            <img src="img/any.jpg"/>
-            <div class="price-grid">
-                <p class="prod-name">Одяг</p>
-                <!--<div class="price-container">-->
-                    <!--<p id="price-old-6" class="price-old">&nbsp;&nbsp;5300&nbsp;&nbsp;</p>-->
-                    <!--<p id="current-price-6" class="current-price">1200</p>-->
+        <!--<div class="prod" >-->
+            <!--<div id="card-4" class="cards">-->
+            <!--<img src="img/any.jpg"/>-->
+            <!--<p class="prod-name">Велика побутова техніка</p>-->
+             <!--<div class="buy-button first-blink">Далі</div>-->
                 <!--</div>-->
-                <div class="count-days"></div>
-            </div>
-            <div class="buy-button first-blink">
-                <h2>Далі</h2>
-            </div>
-        </div>
+        <!--</div>-->
 
 
-        <div class="prod" id="card-7">
-            <img src="img/any.jpg"/>
-            <div class="price-grid">
-                <p class="prod-name">Сумки</p>
-                <div class="price-container">
-                    <p id="price-old-7" class="price-old">&nbsp;&nbsp;5300&nbsp;&nbsp;</p>
-                    <p id="current-price-7" class="current-price">1200</p>
-                </div>
-                <div class="count-days"></div>
-            </div>
-            <div class="buy-button first-blink">
-                <h2>Далі</h2>
-            </div>
-        </div>
+        <!--<div class="prod">-->
+            <!--<div id="card-5" class="cards">-->
+            <!--<img src="img/any.jpg"/>-->
+                <!--<p class="prod-name">Дрібна побутова техніка</p>-->
+            <!--<div class="buy-button">Далі</div>-->
+                <!--</div>-->
+        <!--</div>-->
 
 
-        <div class="prod" id="card-8">
-            <img src="img/any.jpg"/>
-            <div class="price-grid">
-                <p class="prod-name">Парфуми</p>
-                <div class="price-container">
-                    <p id="price-old-8" class="price-old">&nbsp;&nbsp;5300&nbsp;&nbsp;</p>
-                    <p id="current-price-8" class="current-price">1200</p>
-                </div>
-                <div class="count-days"></div>
-            </div>
-            <div class="buy-button first-blink">
-                <h2>Далі</h2>
-            </div>
-        </div>
-    </div>
+        <!--<div class="prod" >-->
+            <!--<div id="card-6" class="cards">-->
+            <!--<img src="img/any.jpg"/>-->
+            <!--<p class="prod-name">Одяг</p>-->
+            <!--<div class="buy-button">Далі</div>-->
+                <!--</div>-->
+        <!--</div>-->
 
-    </div>
 
-    <div id="modal-1" class="modal">
-        <div style="position:relative;">
-            <p class="times" style="position:absolute; top:-10px; right:-10px; text-decoration:none;color:white;cursor:pointer;font-size:30px" aria-label="Закрити">&times;</p>
-        </div>
-        <p>111Lorem ipsum dolor sit amet, sit choro noster nemore eu, agam tantas malorum ex sit. Pri te cibo porro clita, no dolores nominati eum. Cu iudico percipitur sit. Ea eum alii munere fabulas. Saepe consul fabulas ne nam. Ei laudem saperet nec, his at modus omnes quando. Minimum atomorum te mei, te constituam neglegentur vis. Usu ferri reprimique te, cum solum summo vituperata ea, ei aeque veritus quo. Vim ne assum regione. Est vidisse integre te. Mea eu viderer appetere efficiendi.
-        </p>
-        <div class="example"></div>
-    </div>
+        <!--<div class="prod" >-->
+            <!--<div id="card-7" class="cards">-->
+            <!--<img src="img/any.jpg"/>-->
+            <!--<p class="prod-name">Сумки</p>-->
+            <!--<div class="buy-button">Далі</div>-->
+                <!--</div>-->
+        <!--</div>-->
 
-</section>
 
+        <!--<div class="prod">-->
+            <!--<div id="card-8" class="cards">-->
+            <!--<img src="img/any.jpg"/>-->
+            <!--<p class="prod-name">Парфуми</p>-->
+            <!--<div class="buy-button first-blink">Далі</div>-->
+                <!--</div>-->
+        <!--</div>-->
+
+
+
+
+    <!--</div>-->
+
+
+
+
+
+<!--</section>-->
 
 
 
@@ -342,6 +294,36 @@
 //    initializeClock('clockdiv2', deadline);
 //    initializeClock('clockdiv3', deadline);
 
+$("#sparkline-dashed").sparkline([7,9,7,7,6,7], {
+    type: 'line',
+    width: '80',
+    height: '10',
+    lineColor: '#ffffff',
+    fillColor: '#000000',
+    lineWidth: 1,
+    spotColor: '#',
+    minSpotColor: '#',
+    maxSpotColor: '#',
+    highlightSpotColor: '#',
+    highlightLineColor: '#',
+    spotRadius: 0,
+    normalRangeColor: '#'});
+
+
+$("#sparkline-pink").sparkline([0,3,2,2,2.2,2,2 ], {
+    type: 'line',
+    width: '80',
+    height: '10',
+    lineColor: '#ff36ad',
+    fillColor: '#000000',
+    lineWidth: 1,
+    spotColor: '#',
+    minSpotColor: '#',
+    maxSpotColor: '#',
+    highlightSpotColor: '#',
+    highlightLineColor: '#',
+    spotRadius: 0,
+    normalRangeColor: '#'});
 
 </script>
 

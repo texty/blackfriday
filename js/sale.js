@@ -50,7 +50,7 @@ var valuelineOld = d3.line()
     .x(function(d) { return x(d.date); })
     .y(function(d) { return y(d.whiteDashed); });
 
-setTimeout(function (){
+// setTimeout(function (){
 
     d3.csv("data/bf.csv", function(error, dataset) {
 
@@ -79,13 +79,36 @@ setTimeout(function (){
 
 
 
-        drawMeThis(smartsOnly, "#smallMultiplesContainer1");
-        drawMeThis(applienceOnly, "#smallMultiplesContainer2");
-        drawMeThis(clothesOnly, "#smallMultiplesContainer3");
+        // drawMeThis(smartsOnly, "#smallMultiplesContainer1");
+
+        $( document ).ready( function() {
+            window.addEventListener('scroll', function(e) {
+                if(isOnScreen("#scrollText2")){
+                    drawMeThis(applienceOnly, "#smallMultiplesContainer1");
+                }
+            });
+        });
+
+        $( document ).ready( function() {
+            window.addEventListener('scroll', function(e) {
+                if(isOnScreen("#scrollText3")){
+                    drawMeThis(clothesOnly, "#smallMultiplesContainer1");
+                }
+            });
+        });
+
+        $( document ).ready( function() {
+            window.addEventListener('scroll', function(e) {
+                if(isOnScreen("#scrollText1")){
+                    drawMeThis(smartsOnly, "#smallMultiplesContainer1");
+                }
+            });
+        });
+
 
     });
 
-}, 4000);
+// }, 4000);
 
 
 
@@ -93,6 +116,7 @@ setTimeout(function (){
 
 
 function drawMeThis(df, container) {
+    $('#smallMultiplesContainer1').html("")
     var dataset1 = d3.nest()
         .key(function (d) {
             return d.bigGat
@@ -183,5 +207,10 @@ function drawMeThis(df, container) {
         .attr("opacity", "0.05");
 
 }
+
+
+
+
+
 
 

@@ -121,15 +121,8 @@ var line = d3.line()
 
 
         yScale.domain([0, d3.max(newCase, function (d) {
-            if(d.priceOld > 0 ) {
-                return d.priceOld;
-            }
-            else {
-                return d.price * 1.3;
-            }
-            }
-
-        )]);
+            if(d.priceOld > 0 ) { return d.priceOld; }
+            else { return d.price * 1.3; }})]);
 
 
         svg.select("#yAxisG")
@@ -188,7 +181,7 @@ function isOnScreen(elem) {
     var bottom = top + height;
 
     return (top >= viewport_top && top < viewport_bottom) ||
-        (bottom > viewport_top && bottom <= viewport_bottom) ||
+        (bottom > viewport_top && bottom <= viewport_bottom/2) ||
         (height > viewport_height && top <= viewport_top && bottom >= viewport_bottom)
 }
 

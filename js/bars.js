@@ -3,20 +3,20 @@
  */
 
 d3.csv("data/range.csv", function(error, myRange) {
-    // var rect = document.getElementById("treemapContainer").getBoundingClientRect();
-    // var width = rect.width * 0.65,
-    //     height = window.innerHeight * 0.8,
-     var   ratio = 4;
+     var ratio = 4;
 
 
-    var total = myRange.filter(function(d){
-        return d.type !== "applience" && d.type !== "clothes"
-    });
+    // //загальні дані
+    // var total = myRange.filter(function(d){
+    //     return d.type !== "applience" && d.type !== "clothes"
+    // });
 
+    //одяг
     var clothes = myRange.filter(function(d){
         return d.type !== "applience" && d.type !== "total"
     });
 
+    //техніка
     var applience = myRange.filter(function(d){
         return d.type !== "total" && d.type !== "clothes"
     });

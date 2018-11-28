@@ -62,22 +62,25 @@
 
 </div>
 
-<div class="multTreemaps">
-    <div id="shop_clothes" class="clothes_type">
-        <div style="display:flex; justify-content: space-between;">
-            <h5 id="treeTitleClothes">Заявлені знижки на одяг</h5>
-            <button class="redraw first-blink" id="redrawClothesChart" >А насправді?</button>
-        </div>
+    <!--<div id="scatterplot"></div>-->
+<svg  id="scatter" viewBox="0 0 900 600"></svg>
+<!--<div class="multTreemaps">-->
+    <!--<div id="shop_clothes" class="clothes_type">-->
+        <!--<div style="display:flex; justify-content: space-between;">-->
+            <!--<h5 id="treeTitleClothes">Заявлені знижки на одяг</h5>-->
+            <!--<button class="redraw first-blink" id="redrawClothesChart" >А насправді?</button>-->
+        <!--</div>-->
 
-    </div>
+    <!--</div>-->
 
-    <div id="shop_appl" class="appl_type">
-        <div style="display:flex; justify-content: space-between;">
-            <h5 id="treeTitleApplience">Заявлені знижки на техніку</h5>
-            <button class="redraw first-blink" id="redrawApplienceChart">Показати реальні</button>
-        </div>
-    </div>
-</div>
+    <!--<div id="shop_appl" class="appl_type">-->
+        <!--<div style="display:flex; justify-content: space-between;">-->
+            <!--<h5 id="treeTitleApplience">Заявлені знижки на техніку</h5>-->
+            <!--<button class="redraw first-blink" id="redrawApplienceChart">Показати реальні</button>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
 
 
 <div class="text">
@@ -86,6 +89,8 @@
     <p>Завишати стару (перекреслену) ціну товару, аби знижка казалась більш вагомою - розповсюджене явище і достатньо дієве. Пересічний покупець збирає ціни на товар протягом півроку, аби вирахувати нечесного продавця.</p>
 
     <p>І якщо рішення про купівлю техніки - зазвичай приймається не спонтанно і ймовірність того, що покупець слідкує за ціною (адже це дорогий товар) вища. З одягом ситуація інша, рішення про купівлю сукні, пальта або сумки приймаються, зазвичай спонтанно - сподобалось і купила. А якщо вам пропонують купити річ у кілька разів дешевше за реальну ціну і таймер тікає, то скоріше за все покупець не буде таким уж розсудливим.</p>
+
+    <p></p>
 
     <h2>Стара ціна зі стелі</h2>
     <p> Для того, аби надурити покупця або навпаки продати йому товар зі знижкою, продавцям не треба чекати спеціальної пʼятниці. Вони розблять і те і інше регулярно. Тож Чорна пʼятниця дає покупцям відразу три можливості:
@@ -103,22 +108,17 @@
 
 <div id="sale">
     <div id="smallMultiplesContainer1"></div>
-    <div id="scrollText1">
-
-        <p>На ноутбуки, телефони, планшети, смарт-годинники стара ціна зазвичай дійсно є справдньої старою ціною. Ви бачите, як біла лінія переплітається з червоної на графіках. Проте не можна забувати про те, що подібна техніка дійсно постійно втрачає в ціні через появу нових більш потужних моделей. Придивіться до позиції рожевої лінії в день Чорної п'ятниці. <b>Телефони</b> і Побутова техніка найбільше втратили в ціні. Тож це ті категорії товару, які варто купляти на розпродажах </p>
-
-        <p></p>
-
-
-
+    <div id="scrollText1" class="scroll-block2">
+        <p>На ноутбуки, телефони, планшети, смарт-годинники стара ціна зазвичай дійсно є справдньої старою ціною. Ви бачите, як біла лінія переплітається з червоної на графіках. Проте не можна забувати про те, що подібна техніка дійсно постійно втрачає в ціні через появу нових більш потужних моделей. Придивіться до позиції рожевої лінії в день Чорної п'ятниці. <b>Телефони</b> і Побутова техніка найбільше втратили в ціні. Середня знижка на смартфони склала 14%, смарт-годинники - 18%, навушники - 23%. Ноутбуки в середньому продавались на 12,5 % дешевше. Але на дорогих моедлях можна було зекономити понад 10 тис. грн (наприклад, Ноутбук Lenovo Yoga 910-13IKB (80VF00DGRA) Silver Розетка віддавала на 38 тис. грн, в той час як середня ціна протягом року складала 50.5 тис. грн. </p>
     </div>
     <div id="smallMultiplesContainer2"></div>
-    <div class="" id="scrollText2"><p>Друга категорія - це телевізори і побутова техніка. Життя цього товару трохи подовше, ніж смартфонів, і цінова політика цілком відповідає цьому. "Стара ціна" майже завжди знаходиться в невеликому відриві від поточної. Такий собі спосіб тримати покупця в тонусі. Якщо Ви купити цю річ зараз Ви можете трохи зекомити. На чорну пʼятницю більшість товарів продавались із знижкою до 30%.н</p></div>
+    <div class="scroll-block2" id="scrollText2" ><p>Друга категорія - це телевізори і побутова техніка. Життя цього товару трохи подовше, ніж смартфонів, і цінова політика цілком відповідає цьому. Водночас на моделі телевізорів вартістю понад 50 тис. грн на Чорну пʼятницю були помітні знижки. Наприклад, <b>Телевізор LG OLED55B8PLA</b> середня ціна якого за півроку склала понад 67199 грн, в день знижок продавали за 41999 грн. Дрібна побутова техніка більше втратила в ціні ніж велика. Тостери, блендери та соковитискачи продавлись в цілому на 18% дешевше. </p></div>
     <div id="smallMultiplesContainer3"></div>
-    <div id="scrollText3">
-        <p>Одяг модних брендів - не є товаров першої необхідності. Cукні не загрожує більш нова модель і, зазвичай, сукня не коштує, як телевізор чи холодильник. Тож якщо людина купляє одяг в модних магазинах, значить в неї є кошти. Тож продавці можуть активно цим користатись. Вказана на сайті стара ціна це майжи завжди приманка для покупців. Жодного відношення до реальної ціни, стара ціна не має, її єдине завдання створити у покупця хибне враження, що не купи він товар зараз, ризикує сильно переплатити потім. </p>
-        <p></p>
-    </div>
+    <div id="scrollText3" class="scroll-block2">
+        <p>Одяг модних брендів - не є товаром першої необхідності. Cукні не загрожує більш нова модель і, зазвичай, сукня не коштує, як телевізор чи холодильник. Тож якщо людина купляє одяг в модних магазинах, значить в неї є кошти. На це і розраховують продавці. Тож вказана стара ціна - це майжи завжди приманка, її єдине завдання створити у покупця хибне враження, що не купи він товар зараз, ризикує сильно переплатити потім. Водночс зазначимо, що одяг - єдина категорія, де знижки сягали за 50%. Понад 300 суконь продавались з такою знижкою (у порівнянні до їх середньої ціни за півроку), а середня знижка на цей товар становила близько 20%. А от знижки на верхній одяг не були настільки привабливими - лише 7.6%. Зате він є лідерам по націнках - 14.5%. Середня знижка на сумки становила 12%. Все це без врахування товарів, які продавались з націнками. Максимальна ціна сукні, яка мала велику знижку 3382 грн. Більш дорогих речей в категорії знижок понад 50% не було. </p>
+       </div>
+
+
 </div>
 
 <!-- не чіпати! Привід для розрахунку ширини контейнеру для svh small-multiples;-->
@@ -224,25 +224,33 @@
     </div>
 
     <div id="scroll-text">
-    <h2>Трохи прикладів</h2>
-        <div id = "c-1390021" class="block">
-        <p>Розпродажі стартовали за кілька днів до пʼятниці. Магазини пропонували купляти зі снижками вже зараз, називаючи це репетицією чорної пʼятниці, чорною середою тощо</p>
-        <p>То чи були ці знижки справжніми зижками? І так, і ні. Залежить від товару.</p>
+    <h2>Зліт і падіння Холодильників та інші приклади</h2>
+
+        <div id = "c-1341606" class="block">
+            <p>Наприклад, купивши Смарт-годинник Apple Watch Series 3 GPS на передпʼтничному розпродажі можна було зекономити реальну 1000 грн, заплативши 8 - 9 тис. грн, замість 9 - 10 тис. грн відповідно. А на <b>Смарт-годинник Garmin Fenix 5x Plus </b> Sapphire Black w/Black Band (c-1353335) магазин комфі за кілька днів до пʼятниці зкинув ціну з 31299 грн до 25599 грн. Водночас деякі </p>
             </div>
 
-        <div id = "c-1353335" class="block">
-            <p>Наприклад, купивши Смарт-годинник Apple Watch Series 3 GPS на передпʼтничному розпродажі можна було зекономити реальну 1000 грн, заплативши 8 - 9 тис. грн, замість 9 - 10 тис. грн відповідно. А на <b>Смарт-годинник Garmin Fenix 5x Plus </b> Sapphire Black w/Black Band (c-1353335) магазин комфі за кілька днів до пʼятниці зкинув ціну з 31299 грн до 25599 грн.</p>
-            </div>
-        <div id = "r-30918519" class="block">
-            <p>Зі знижками можна було купити також ноутбуки. Так Ноутбук ASUS ZenBook UX410UA-GV347T, звичайна ціна якого складає 32-34 тис. грн, напередодні Розетка продавала за 30 тис. грн. На Ноутбук Dell Inspiron 7577 (i757161S3DL-418) знижка склала майже 4.5 тис. грн.</p>
+
+        <div id="c-1023088" class="block">
+            <p>Холодильник Hitachi R-V720PUC1KXINX yf 23% дорожче звичайної ціни</p>
+
         </div>
-        <div id="l-3946487" class="block">
+        <div id = "c-1309062" class="block">
+            <p>ЗСмартфон Huawei P20 Black
+            </p>
+        </div>
+
+        <div id = "c-1104145" class="block">
+            <p>Розпродажі стартовали за кілька днів до пʼятниці. Магазини пропонували купляти зі снижками вже зараз, називаючи це репетицією чорної пʼятниці, чорною середою тощо</p>
+            <p>То чи були ці знижки справжніми зижками? І так, і ні. Залежить від товару.</p>
+        </div>
+
+        <div id="r-51927894" class="block">
     <p>З побутовою технікою, знайшлись поодинокі маніпуляції. Так, наприклад, деякі моделі Холодильників Hitachi завжди мали вказівку щодо завищеної старої ціни, навіть тоді, коли реальна ціна підіймалась і реальна стара ціна ставала нижче за поточну, покупцям показували ще вичщу стару ціна.Принаймні за останні півроку, нам не вдалось зафіксувати, аби товар продавався за такою ціною.</p>
         </div>
-        <div id="l-2717962" class="block">
+        <div id="c-1167115" class="block">
     <p>Шаленими знижками намагаються заманити покупців магазин жіночого одягу, пропонуючи купити в 5-6 разів дешевше.</p>
 
-    <p>Якби ми жили десь у Сполучених Штатах, то перспектива купити одяг зі знижкою 80% була б цілком реальною, але у нас нажаль, подібні знижки скоріше будуть обманом ніж правдою.</p>
             </div>
         </div>
 
@@ -267,7 +275,6 @@
 <div id="charts">
 
 </div>
-
 <!--<script src="server.js"></script>-->
 <script src="lib/jquery-2.1.4.min.js"></script>
 <!--<script src="lib/d3.min.js"></script>-->
@@ -275,53 +282,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
 <script src="js/script.js"></script>
 <script src="lib/jquery.sparkline.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
 <!--<script src="js/flippedCards.js"></script>-->
 <script src="js/sale.js"></script>
 <script src="js/example.js"></script>
-<script src="js/bars.js"></script>
+<!--<script src="js/bars.js"></script>-->
+<script src="js/scatterplot.js"></script>
+
 <script>
-//    function getTimeRemaining(endtime) {
-//        var t = Date.parse(endtime) - Date.parse(new Date());
-//        var seconds = Math.floor((t / 1000) % 60);
-//        var minutes = 41;
-//        var hours = 2;
-////        var days = 0;
-//        return {
-//            'total': t,
-////            'days': days,
-//            'hours': hours,
-//            'minutes': minutes,
-//            'seconds': seconds
-//        };
-//    }
-//
-//    function initializeClock(id, endtime) {
-//        var clock = document.getElementById(id);
-////        var daysSpan = clock.querySelector('.days');
-//        var hoursSpan = clock.querySelector('.hours');
-//        var minutesSpan = clock.querySelector('.minutes');
-//        var secondsSpan = clock.querySelector('.seconds');
-//
-//        function updateClock() {
-//            var t = getTimeRemaining(endtime);
-//
-////            daysSpan.innerHTML = t.days;
-//            hoursSpan.innerHTML = ('0' + t.hours).slice(-2) + "  :";
-//            minutesSpan.innerHTML = ('0' + t.minutes).slice(-2) + "  :";
-//            secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
-//
-//            if (t.total <= 0) {
-//                clearInterval(timeinterval);
-//            }
-//        }
-//
-//        updateClock();
-//        var timeinterval = setInterval(updateClock, 1000);
-//    }
-//
-//    var deadline = new Date(Date.parse(new Date()) + 15 * 24 * 60 * 60 * 1000);
-//    initializeClock('clockdiv2', deadline);
-//    initializeClock('clockdiv3', deadline);
+
+
 
 $("#sparkline-dashed").sparkline([7,9,7,7,6,7], {
     type: 'line',
@@ -353,6 +323,45 @@ $("#sparkline-pink").sparkline([0,3,2,2,2.2,2,2 ], {
     highlightLineColor: '#',
     spotRadius: 0,
     normalRangeColor: '#'});
+
+function isOnScreen(elem) {
+    // if the element doesn't exist, abort
+    if (elem.length == 0) {
+        return;
+    }
+    var $window = $(window);
+    var viewport_top = $window.scrollTop();
+    var viewport_height = $window.height();
+    var viewport_bottom = viewport_top + viewport_height;
+    var $elem = $(elem);
+    var top = $elem.offset().top;
+    var height = $elem.height();
+    var bottom = top + height;
+
+    return (top >= viewport_top && top < viewport_bottom) ||
+            (bottom > viewport_top && bottom <= viewport_bottom/2) ||
+            (height > viewport_height && top <= viewport_top && bottom >= viewport_bottom)
+}
+
+
+function getElemIsOnView(elemClass) {
+    var blocks = $(elemClass);
+    var prevId;
+    var targetId;
+    blocks.each(function() {
+        if(isOnScreen(this)) {
+            var prevElem = $(this).previousSibling;
+            prevId = $(prevElem).attr("id");
+            targetId = $(this).attr("id");
+            console.log(targetId);
+            console.log(prevId);
+        }
+    });
+    if(targetId != prevId) {
+        return targetId;
+    }
+
+}
 
 </script>
 

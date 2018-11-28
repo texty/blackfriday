@@ -31,152 +31,13 @@ d3.csv("data/range.csv", function(error, myRange) {
     var stratify = d3.stratify()
         .parentId(function(d) { return d.id.substring(0, d.id.lastIndexOf(".")); });
 
-    // var treemap = d3.treemap()
-    //     .tile(d3.treemapSquarify.ratio(1))
-    //     .size([width / ratio, height]);
-    
-   // var root = stratify(total)
-   //          .sum(function(d) {
-   //              return +d.value;
-   //          })
-   //          .sort(function(a, b) { return b.height - a.height || b.value - a.value; });
-   //
-   //  const tree = treemap(root);
-   //
-   //  const div = d3.select("#area-chart").append("div")
-   //      .style("position", "relative")
-   //      .style("width", (width + margin.left + margin.right) + "px")
-   //      .style("height", (height + margin.top + margin.bottom) + "px")
-   //      .style("left", margin.left + "px")
-   //      .style("top", margin.top + "px")
-   //      ;
-   //
-   //      var node = div.datum(root).selectAll(".node")
-   //          .data(tree.leaves())
-   //          .enter().append("div")
-   //          .attr("class", "node")
-   //          .attr("title", function(d) { return d.data.label + " на " + d.value + " товара(-ів)"})
-   //          .style("left", function(d) { return Math.round(d.x0 * ratio) + "px"; })
-   //          .style("top", function(d) { return Math.round(d.y0) + "px"; })
-   //          .style("width", function(d) { return Math.round(d.x1 * ratio) - Math.round(d.x0 * ratio) - 1 + "px"; })
-   //          .style("height", function(d) { return Math.round(d.y1) - Math.round(d.y0) - 1 + "px"; })
-   //          .style("background", function(d) { while (d.depth > 1) d = d.parent; return color(d.id); });
-   //
-   //
-   //  var nodeLabel = node.append("div")
-   //          .attr("class", "node-label")
-   //          .attr("height", "min-content")
-   //          .text(function(d) {
-   //              if(+d.value > 1) {
-   //                  return d.id.substring(d.id.lastIndexOf(".") + 1).split(/(?=[A-Z][^A-Z])/g).join("\n");
-   //              }
-   //
-   //          });
-   //
-   //
-   //  function redrawToReal() {
-   //      var newRoot = stratify(total)
-   //          .sum(function(d) { return +d.valueReal; })
-   //          .sort(function(a, b) { return b.height - a.height || b.valueReal - a.valueReal; });
-   //
-   //      var node = div.datum(newRoot).selectAll(".node")
-   //          .data(tree.leaves());
-   //
-   //      node.enter().append("div")
-   //          .attr("class", "node");
-   //
-   //      node.data(treemap(newRoot).leaves())
-   //          .transition()
-   //          .duration(1500)
-   //          .attr("title", function(d) { return d.data.label + " на " + d.value + " товара(-ів)"})
-   //          .style("left", function(d) { return Math.round(d.x0 * ratio) + "px"; })
-   //          .style("top", function(d) { return Math.round(d.y0) + "px"; })
-   //          .style("width", function(d) { return Math.round(d.x1 * ratio) - Math.round(d.x0 * ratio) - 1 + "px"; })
-   //          .style("height", function(d) { return Math.round(d.y1) - Math.round(d.y0) - 1 + "px"; })
-   //          .style("background", function(d) { while (d.depth > 1) d = d.parent; return color(d.id); });
-   //
-   //
-   //      var nodeValue = div.datum(newRoot).selectAll(".node-value")
-   //          .data(tree.leaves());
-   //
-   //      nodeValue.enter().append("div")
-   //          .attr("class", "node-value");
-   //
-   //
-   //      nodeValue.data(treemap(newRoot).leaves())
-   //          .transition()
-   //          .duration(1500)
-   //          .text(function(d) {
-   //              if(d.value > 0) {
-   //                  return d.value;
-   //              }
-   //          });
-   //
-   //
-   //      var nodeLabel = div.datum(newRoot).selectAll(".node-label")
-   //          .data(tree.leaves());
-   //
-   //      nodeLabel.data(treemap(newRoot).leaves())
-   //          .transition()
-   //          .duration(1500)
-   //          .text(function(d) {
-   //              return d.id.substring(d.id.lastIndexOf(".") + 1).split(/(?=[A-Z][^A-Z])/g).join("\n");
-   //
-   //
-   //          });
-   //  }
-
-
-    // function redrawToShop() {
-    //
-    //     var newRoot = stratify(total)
-    //         .sum(function(d) { return d.value; })
-    //         .sort(function(a, b) { return b.height - a.height || b.value - a.value; });
-    //
-    //     var node = div.datum(newRoot).selectAll(".node")
-    //         .data(tree.leaves());
-    //
-    //     node.enter().append("div")
-    //         .attr("class", "node");
-    //
-    //     node.data(treemap(newRoot).leaves())
-    //         .transition()
-    //         .duration(1500)
-    //         .attr("title", function(d) { return d.data.label + " на " + d.value + " товарiв"})
-    //         .style("left", function(d) { return Math.round(d.x0 * ratio) + "px"; })
-    //         .style("top", function(d) { return Math.round(d.y0) + "px"; })
-    //         .style("width", function(d) { return Math.round(d.x1 * ratio) - Math.round(d.x0 * ratio) - 1 + "px"; })
-    //         .style("height", function(d) { return Math.round(d.y1) - Math.round(d.y0) - 1 + "px"; })
-    //         .style("background", function(d) { while (d.depth > 1) d = d.parent; return color(d.id); })
-    //
-    //
-    //     var nodeValue = div.datum(newRoot).selectAll(".node-value")
-    //         .data(tree.leaves());
-    //
-    //     nodeValue.enter().append("div")
-    //         .attr("class", "node-value");
-    //
-    //
-    //     nodeValue.data(treemap(newRoot).leaves())
-    //         .transition()
-    //         .duration(1500)
-    //         .text(function(d) { return d.value; });
-    //
-    //
-    //     var nodeLabel = div.datum(newRoot).selectAll(".node-label")
-    //         .data(tree.leaves());
-    //
-    //     nodeLabel.data(treemap(newRoot).leaves())
-    //         .transition()
-    //         .duration(1500)
-    //         .text(function(d) {
-    //             return d.id.substring(d.id.lastIndexOf(".") + 1).split(/(?=[A-Z][^A-Z])/g).join("\n");
-    //         });
-    // }
-
 
     
 /* ----------------- Одяг ------------------------*/
+
+    var initFun = true;
+
+
     var smallTreemapRect = document.getElementById("shop_clothes").getBoundingClientRect();
     var sm_width = smallTreemapRect.width,
         sm_height = 300,
@@ -225,15 +86,24 @@ d3.csv("data/range.csv", function(error, myRange) {
 
         });
 
-    var initFun = true;
+     //Функція перемальовки графіку ОДЯГ по вилику і на ресайз
 
-     function redrawToClothesReal() {
+     function redrawClothes(myvar, navstatus, buttonText, titleText) {
+         var smallTreemapRect = document.getElementById("shop_clothes").getBoundingClientRect();
+         var sm_width = smallTreemapRect.width,
+             sm_height = 300,
+             sm_ratio = 4;
+
+         var treemap_sm = d3.treemap()
+             .tile(d3.treemapSquarify.ratio(1))
+             .size([sm_width / sm_ratio, sm_height]);
+
          $("#redrawClothesChart").removeClass("first-blink");
-         $("#redrawClothesChart").html("Обіцяні");
-         $("#treeTitleClothes").html("Реальні знижки... і націнки. Одяг");
+         $("#redrawClothesChart").html(buttonText);
+         $("#treeTitleClothes").html(titleText);
          var newRoot = stratify(clothes)
-             .sum(function(d) { return +d.valueReal; })
-             .sort(function(a, b) { return b.height - a.height || b.valueReal - a.valueReal; });
+             .sum(function(d) { return +d[myvar]; })
+             .sort(function(a, b) { return b.height - a.height || b[myvar] - a[myvar]; });
 
          var node = clothesDiv.datum(newRoot).selectAll(".node")
              .data(clothesTree.leaves());
@@ -279,80 +149,14 @@ d3.csv("data/range.csv", function(error, myRange) {
                  return d.id.substring(d.id.lastIndexOf(".") + 1).split(/(?=[A-Z][^A-Z])/g).join("\n");
              });
 
-         initFun = false;
+         initFun = navstatus;
      }
 
 
-    function redrawToClothesShop() {
-        $("#redrawClothesChart").html("А насправді?");
-        $("#treeTitleClothes").html("Заявлені знижки на одяг");
-
-        var newRoot = stratify(clothes)
-            .sum(function(d) { return +d.value; })
-            .sort(function(a, b) { return b.height - a.height || b.value - a.value; });
-
-        var node = clothesDiv.datum(newRoot).selectAll(".node")
-            .data(clothesTree.leaves());
-
-        node.enter().append("div")
-            .attr("class", "node");
-
-        node.data(treemap_sm(newRoot).leaves())
-            .transition()
-            .duration(1500)
-            .attr("title", function(d) { d.value + " товара(-ів)"})
-            .style("left", function(d) { return Math.round(d.x0 * ratio) + "px"; })
-            .style("top", function(d) { return Math.round(d.y0) + "px"; })
-            .style("width", function(d) { return Math.round(d.x1 * ratio) - Math.round(d.x0 * ratio) - 1 + "px"; })
-            .style("height", function(d) { return Math.round(d.y1) - Math.round(d.y0) - 1 + "px"; })
-            .style("background", function(d) { while (d.depth > 1) d = d.parent; return color(d.id); });
-
-
-        var nodeValue = clothesDiv.datum(newRoot).selectAll(".node-value")
-            .data(clothesTree.leaves());
-
-        nodeValue.enter().append("div")
-            .attr("class", "node-value");
-
-
-        nodeValue.data(treemap_sm(newRoot).leaves())
-            .transition()
-            .duration(1500)
-            .text(function(d) {
-                if(d.value > 0) {
-                    return d.value;
-                }
-            });
-
-
-        var nodeLabel = clothesDiv.datum(newRoot).selectAll(".node-label")
-            .data(clothesTree.leaves());
-
-        nodeLabel.data(treemap_sm(newRoot).leaves())
-            .transition()
-            .duration(1500)
-            .text(function(d) {
-                return d.id.substring(d.id.lastIndexOf(".") + 1).split(/(?=[A-Z][^A-Z])/g).join("\n");
-
-
-            });
-        initFun = true;
-    }
-
-
-    function toggleNav() {
-        initFun ? redrawToClothesReal() : redrawToClothesShop();
-    }
-
-
-
-
-
-
-    /*--------------------------------------------------*/
-
 
     /*------------------------ Техніка ---------------------------*/
+    var initFun_2 = true;
+
 
     var applRoot = stratify(applience)
         .sum(function(d) {
@@ -392,15 +196,31 @@ d3.csv("data/range.csv", function(error, myRange) {
 
         });
 
-     var initFun_2 = true;
 
-    function redrawToApplienceToReal() {
+
+
+    //Функція перемальовки графіку ТЕХНІКА по вилику і на ресайз
+
+    function redrawApplience(myvar, navstatus, buttonText, titleText) {
+        var smallTreemapRect = document.getElementById("shop_clothes").getBoundingClientRect();
+        var sm_width = smallTreemapRect.width,
+            sm_height = 300,
+            sm_ratio = 4;
+
+        var treemap_sm = d3.treemap()
+            .tile(d3.treemapSquarify.ratio(1))
+            .size([sm_width / sm_ratio, sm_height]);
+
         $("#redrawApplienceChart").removeClass("first-blink");
-        $("#redrawApplienceChart").html("Обіцяні");
-        $("#treeTitleApplience").html("Реальні знижки. Техніка.");
+        $("#redrawApplienceChart").html(buttonText);
+        $("#treeTitleApplience").html(titleText);
+
+
         var newRoot = stratify(applience)
-            .sum(function(d) { return +d.valueReal; })
-            .sort(function(a, b) { return b.height - a.height || b.valueReal - a.valueReal; });
+            .sum(function(d) {
+                return  +d[myvar]; })
+            .sort(function(a, b) {
+                return b.height - a.height || b[myvar] - a[myvar]; });
 
         var node = applDiv.datum(newRoot).selectAll(".node")
             .data(applTree.leaves());
@@ -448,84 +268,8 @@ d3.csv("data/range.csv", function(error, myRange) {
                 }
             });
 
-        initFun_2 = false;
+        initFun_2 = navstatus;
     }
-
-
-    function redrawApplienceToShop() {
-        $("#redrawApplienceChart").removeClass("first-blink");
-        $("#redrawApplienceChart").html("Реальні");
-        $("#treeTitleApplience").html("Заявлені знижки на техніку");
-        var newRoot = stratify(applience)
-            .sum(function(d) { return +d.value; })
-            .sort(function(a, b) { return b.height - a.height || b.value - a.value; });
-
-        var node = applDiv.datum(newRoot).selectAll(".node")
-            .data(applTree.leaves());
-
-        node.enter().append("div")
-            .attr("class", "node");
-
-        node.data(treemap_sm(newRoot).leaves())
-            .transition()
-            .duration(1500)
-            .attr("title", function(d) { d.value + " товара(-ів)"})
-            .style("left", function(d) { return Math.round(d.x0 * ratio) + "px"; })
-            .style("top", function(d) { return Math.round(d.y0) + "px"; })
-            .style("width", function(d) { return Math.round(d.x1 * ratio) - Math.round(d.x0 * ratio) - 1 + "px"; })
-            .style("height", function(d) { return Math.round(d.y1) - Math.round(d.y0) - 1 + "px"; })
-            .style("background", function(d) { while (d.depth > 1) d = d.parent; return color(d.id); });
-
-
-        var nodeValue = applDiv.datum(newRoot).selectAll(".node-value")
-            .data(applTree.leaves());
-
-        nodeValue.enter().append("div")
-            .attr("class", "node-value");
-
-
-        nodeValue.data(treemap_sm(newRoot).leaves())
-            .transition()
-            .duration(1500)
-            .text(function(d) {
-                if(d.value > 20) {
-                    return d.value;
-                }
-            });
-
-
-        var nodeLabel = applDiv.datum(newRoot).selectAll(".node-label")
-            .data(applTree.leaves());
-
-        nodeLabel.data(treemap_sm(newRoot).leaves())
-            .transition()
-            .duration(1500)
-            .text(function(d) {
-                if(d.value > 20 ) {
-                    return d.id.substring(d.id.lastIndexOf(".") + 1).split(/(?=[A-Z][^A-Z])/g).join("\n");
-                }
-            });
-
-        initFun_2 = true;
-    }
-
-
-
-
-
-
-
-
-
-
-    function toggleNav2() {
-        initFun_2 ? redrawToApplienceToReal() : redrawApplienceToShop();
-    }
-
-
-
-    /*-----------------------------------------------------*/
-
 
     $("#redrawClothesChart").on("click", function(d) {
         //перемальовуємо графік
@@ -539,29 +283,38 @@ d3.csv("data/range.csv", function(error, myRange) {
     });
 
 
+    //Перемикач одягу
+    function toggleNav() {
+        initFun ? redrawClothes("valueReal", false, "Реальні",  "Реальні знижки. Одяг.") : redrawClothes("value", true, "Обіцяні", "Заявлені знижки. Одяг.");
+    }
+
+
+    //Перемикач техніки
+    function toggleNav2() {
+        initFun_2 ? redrawApplience("valueReal", false, "Реальні", "Реальні знижки. Техніка.") : redrawApplience("value", true, "Обіцяні",  "Заявлені знижки. Техніка.");
+    }
+
+
+    $( window ).resize(function() {
+        initFun ? redrawClothes("value", true, "Обіцяні", "Заявлені знижки. Одяг.") : redrawClothes("valueReal", false, "Реальні",  "Реальні знижки. Одяг.");
+        initFun_2 ? redrawApplience("value", true, "Обіцяні",  "Заявлені знижки. Техніка.") :  redrawApplience("valueReal", false, "Реальні", "Реальні знижки. Техніка.");
+    });
+
+
+    /*-----------------------------------------------------*/
+
+
+
+
+
+
+
+
 });
 
 
 
 
 
-    //
-    // function type(d) {
-    //     d.value = +d.value;
-    //     return d;
-    // }
 
-
-
-$('input[type=radio][name=discount]').change(function() {
-    if (this.value == 'redrawToShop') {
-        // redrawToShop() ;
-    }
-    else if (this.value == 'redrawToMean') {
-        // redrawToReal();
-    }
-    else if (this.value == 'redrawToMin') {
-        redrawToMin();
-    }
-});
 

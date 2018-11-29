@@ -406,11 +406,6 @@ g.tick > text {
   margin-bottom: 60px;
   margin-left: 5%; }
 
-g#xAxisG text, g#yAxisG text {
-  stroke: none;
-  fill: silver;
-  font-size: 9px; }
-
 header, div#source {
   margin-left: 40px;
   margin-bottom: 38px; }
@@ -536,12 +531,14 @@ div.tooltip {
   display: none;
   position: absolute;
   text-align: center;
-  width: 200px;
+  width: 250px;
   height: 200px;
   font: 10px sans-serif;
-  background: black;
+  background: white;
+  border: 0.5px solid #c5c5c5;
   opacity: 1;
-  pointer-events: all; }
+  pointer-events: all;
+  z-index: 10000; }
 
 #scatter-legend {
   grid-row: 1/2;

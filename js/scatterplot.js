@@ -249,7 +249,7 @@ $(document).ready(function () {
 
             // var textBlockRect = document.getElementById("scroll-text").getBoundingClientRect();
             var scrollChartMargin = {top: 30, right: 0, bottom: 40, left: 40},
-                scrollChartWidth = 200 - scrollChartMargin.left - scrollChartMargin.right,
+                scrollChartWidth = 250 - scrollChartMargin.left - scrollChartMargin.right,
                 scrollChartHeight = 200 - scrollChartMargin.top - scrollChartMargin.bottom;
 
             var xScale = d3.scaleTime().range([0, scrollChartWidth]);
@@ -317,8 +317,8 @@ $(document).ready(function () {
                 });
 
 
-            svg.append("g").attr("id", "yAxisG").call(yAxis);
-            svg.append("g").attr("id", "xAxisG").attr("class", "axis").attr("transform", "translate(0," + scrollChartHeight + ")")
+            svg.append("g").call(yAxis);
+            svg.append("g").attr("class", "axis").attr("transform", "translate(0," + scrollChartHeight + ")")
                 .call(xAxis);
             d3.selectAll("path.domain").remove();
 
@@ -347,12 +347,12 @@ $(document).ready(function () {
                 .attr("opacity", "0.05");
 
             svg.append("text")
-                .attr("id", "scrollChartTitle")
+                // .attr("id", "scrollChartTitle")
                 .attr("x", 0)
                 .attr("y", -10)
                 .attr("text-anchor", "left")
                 .style("font-size", "9px")
-                .attr("fill", "white")
+                .attr("fill", "black")
                 .text(function () {
                     return theCase[0].name
                 });

@@ -13,7 +13,7 @@ body {
   padding: 0;
   background-color: white;
   color: black;
-  font-family: 'Montserrat Alternates', sans-serif; }
+  font-family: 'Fira Sans', sans-serif; }
 
 .main-content p {
   font-family: 'Fira Sans', sans-serif;
@@ -31,6 +31,9 @@ body {
   width: 90%;
   margin: 0 auto;
   grid-gap: 40px; }
+  @media only screen and (max-width: 800px) {
+    #categories {
+      display: block; } }
   #categories #phantomContainer {
     grid-column: 1/2;
     display: grid;
@@ -50,6 +53,9 @@ body {
   grid-template-rows: auto auto auto;
   width: 90%;
   grid-gap: 40px; }
+  @media (max-width: 800px) {
+    #sale {
+      display: block; } }
   #sale p {
     font-family: 'Fira Sans', sans-serif;
     font-size: 16px;
@@ -58,6 +64,7 @@ body {
     line-height: 1.6; }
 
 #smallMultiplesContainer1 {
+  background-color: white;
   grid-column: 1/2;
   grid-row: 1/2;
   display: grid;
@@ -66,6 +73,10 @@ body {
   position: sticky;
   top: 20%;
   z-index: 5; }
+  @media (max-width: 800px) {
+    #smallMultiplesContainer1 {
+      position: sticky;
+      top: 0; } }
 
 #smallMultiplesContainer2 {
   grid-column: 1/2;
@@ -76,6 +87,10 @@ body {
   position: sticky;
   top: 20%;
   z-index: 10; }
+  @media (max-width: 800px) {
+    #smallMultiplesContainer2 {
+      position: sticky;
+      top: 0; } }
 
 #smallMultiplesContainer3 {
   grid-column: 1/2;
@@ -84,6 +99,10 @@ body {
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 10px;
   z-index: 15; }
+  @media (max-width: 800px) {
+    #smallMultiplesContainer3 {
+      position: sticky;
+      top: 0; } }
 
 /* ------- HEADER ANIMATION --------- */
 #header {
@@ -103,7 +122,8 @@ body {
     transform: translate(-50%, -50%); }
   #header #neon > p {
     -webkit-margin-before: 0;
-    -webkit-margin-after: 0; }
+    -webkit-margin-after: 0;
+    font-size: 12vw; }
   #header #black {
     color: #fff; }
   #header #black span {
@@ -214,6 +234,9 @@ body {
   width: 60%;
   margin: 70px auto;
   font-family: 'Fira Sans', sans-serif; }
+  @media only screen and (max-width: 800px) {
+    .text {
+      width: 90%; } }
   .text p {
     font-size: 16px;
     line-height: 1.6;
@@ -225,13 +248,22 @@ body {
   .text .block {
     height: 100vh; }
   .text #scroll-chart {
+    padding: 5px;
     grid-column: 2/3;
     position: sticky;
     top: 70px;
-    height: 50vh; }
+    height: max-content; }
+    .text #scroll-chart path.domain {
+      stroke: none;
+      opacity: 0; }
   .text #scroll-text {
     grid-column: 1/2;
     grid-row: 1/2; }
+
+span.rectangle {
+  display: inline-block;
+  height: 10px;
+  width: 10px; }
 
 /* ----- Buy Me Section  ------ */
 #mySticky {
@@ -266,9 +298,8 @@ p {
   line-height: 1.6; }
 
 .prod {
-  background-color: #0f0f0f;
+  background-color: white;
   line-height: 1.8;
-  color: white;
   font-size: 18px;
   height: max-content; }
 
@@ -348,13 +379,13 @@ p {
 .line, .scrollChartLine {
   fill: none;
   stroke: #ff36ad;
-  stroke-width: 1px;
+  stroke-width: 2px;
   z-index: 10; }
 
 .lineOld, .scrollChartLineOld {
   fill: none;
-  stroke: white;
-  stroke-width: 1px;
+  stroke: black;
+  stroke-width: 2px;
   stroke-dasharray: 3; }
 
 .area {
@@ -362,6 +393,14 @@ p {
 
 .small-multiples {
   background-color: #020202; }
+
+g.tick > line {
+  stroke: #dbdbdb !important;
+  stroke-width: 0.5px;
+  z-index: 5; }
+
+g.tick > text {
+  fill: #313030; }
 
 #chart svg {
   margin-bottom: 60px;
@@ -470,6 +509,14 @@ header, div#source {
 .scroll-block2 {
   min-height: 100vh; }
 
+#bigContainer {
+  display: grid;
+  grid-template-columns: 2.5fr 1fr;
+  grid-template-rows: none; }
+  #bigContainer path.domain {
+    stroke: #bcbcbc;
+    opacity: 0.2; }
+
 #scatter {
   margin-left: 10%; }
 
@@ -481,15 +528,12 @@ g.scatterX > g > line {
   stroke: #bcbcbc;
   opacity: 0.2; }
 
-path.domain {
-  stroke: #bcbcbc;
-  opacity: 0.2; }
-
 .legend-text {
   font-size: 14px;
   font-family: 'Fira Sans', sans-serif; }
 
 div.tooltip {
+  display: none;
   position: absolute;
   text-align: center;
   width: 200px;
@@ -498,5 +542,33 @@ div.tooltip {
   background: black;
   opacity: 1;
   pointer-events: all; }
+
+#scatter-legend {
+  grid-row: 1/2;
+  grid-column: 2/3;
+  cursor: pointer;
+  width: 90%;
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 100;
+  line-height: 1.6; }
+  @media (max-width: 800px) {
+    #scatter-legend {
+      width: 80%;
+      margin: auto; } }
+
+#turnMe {
+  grid-column: 1/3;
+  grid-row: 1/2;
+  height: 110vh;
+  overflow: hidden; }
+  @media (max-width: 800px) {
+    #turnMe {
+      position: relative;
+      height: 100vh; } }
+
+@media (max-width: 800px) {
+  #mobHide {
+    display: none; } }
 
 /*# sourceMappingURL=application.css.map */

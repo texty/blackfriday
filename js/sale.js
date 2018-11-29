@@ -8,7 +8,7 @@ var rect1 = document.getElementById("phantom").getBoundingClientRect();
 
 var chartMargin = { top: 30, right: 40, bottom: 40, left: 40},
     chartWidth = rect1.width - chartMargin.left - chartMargin.right,
-    chartHeight = 307 - chartMargin.bottom - chartMargin.top - 25;
+    chartHeight = chartWidth  - chartMargin.bottom - chartMargin.top;
 
 
 
@@ -178,8 +178,12 @@ function drawMeThis(df, container) {
         .append("g")
         .attr("transform", "translate(" + chartMargin.left + "," + chartMargin.top + ")");
 
-    buyMeChart.append("g").attr("id", "yAxisG").attr("class", "axis").call(yAx);
-    buyMeChart.append("g").attr("id", "xAxisG").attr("class", "axis").attr("transform", "translate(0," + chartHeight + ")")
+    buyMeChart.append("g")
+        // .attr("id", "yAxisG")
+        .attr("class", "y axis").call(yAx);
+    buyMeChart.append("g")
+        // .attr("id", "xAxisG")
+        .attr("class", "x axis").attr("transform", "translate(0," + chartHeight + ")")
         .call(xAx);
     d3.selectAll("path.domain").remove();
 

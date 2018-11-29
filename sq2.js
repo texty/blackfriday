@@ -47,16 +47,19 @@ app.post('/', function(req, res, next) {
         console.log(req.body.limit);
 
     db.serialize(function() {
+        console.log(req.body.categ);
             db.all("SELECT * " +
                 "FROM database " +                
                 "WHERE id = '"+ req.body.categ + "'",
+ 
+                
                 function(err,rows){
                 if(err)
                     {
                         console.log(err);
                     }
                     else {
-                        console.log(rows);
+                        console.log(req.body.categ);
                         res.send(rows);
                         next();
 

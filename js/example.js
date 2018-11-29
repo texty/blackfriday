@@ -2,10 +2,16 @@
  * Created by yevheniia on 21.11.18.
  */
 
-var textBlockRect = document.getElementById("scroll-text").getBoundingClientRect();
-var scrollChartMargin = {top: 30, right: 0, bottom: 40, left: 40},
+// var rect1 = document.getElementById("phantom").getBoundingClientRect();
+//
+// var chartMargin = { top: 30, right: 40, bottom: 40, left: 40},
+//     chartWidth = rect1.width - chartMargin.left - chartMargin.right,
+//     chartHeight = 307 - chartMargin.bottom - chartMargin.top - 25;
+
+var textBlockRect = document.getElementById("phantom").getBoundingClientRect();
+var scrollChartMargin = {top: 30, right: 40, bottom: 40, left: 40},
     scrollChartWidth = textBlockRect.width - scrollChartMargin.left - scrollChartMargin.right,
-    scrollChartHeight = (scrollChartWidth * 0.7) - - scrollChartMargin.top - scrollChartMargin.bottom;
+    scrollChartHeight = scrollChartWidth  - scrollChartMargin.top - scrollChartMargin.bottom;
 
 d3.csv("data/bf.csv", function(error, examples) {
 
@@ -73,8 +79,12 @@ var line = d3.line()
             .attr("transform", "translate(" + scrollChartMargin.left + "," + scrollChartMargin.top + ")");
 
 
-    svg.append("g").attr("id", "yAxisG").call(yAxis);
-    svg.append("g").attr("id", "xAxisG").attr("class", "axis").attr("transform", "translate(0," + scrollChartHeight + ")")
+    svg.append("g")
+        // .attr("id", "yAxisG")
+        .call(yAxis);
+    svg.append("g")
+        // .attr("id", "xAxisG")
+        .attr("class", "axis").attr("transform", "translate(0," + scrollChartHeight + ")")
         .call(xAxis);
     d3.selectAll("path.domain").remove();
 
@@ -108,7 +118,7 @@ var line = d3.line()
         .attr("y", 0 - (scrollChartMargin.top / 2))
         .attr("text-anchor", "left")
         .style("font-size", "14px")
-        .attr("fill", "white")
+        // .attr("fill", "white")
         .text(function () {
             return theCase[0].name
         });

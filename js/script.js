@@ -3,6 +3,8 @@
  ---- Create Select MENU for category and charts amount ----
  ----------------------------------------------------------- */
 
+var API_ROOT = 'http://localhost:5000';
+
 //категорії
 var dataCat = [
     { value: "", text: '--- Оберіть категорію товару ---'},
@@ -81,11 +83,11 @@ $('#mybut').on('click', function () {
     }, 'slow');
     $('#mybut').html('<b>Ще графічків</b>');
     $.ajax({
-        type: "POST",
+        type: "GET",
         contentType: "application/json",
         dataType: "json",
-        url: "http://localhost:8000/",
-        data: JSON.stringify({ "categ": categ, "limit": limit })
+        url: API_ROOT + "/blackfriday/api/random10/" + categ + "/" + limit
+        // data: JSON.stringify({ "categ": categ, "limit": limit })
     }).done(function(data) {
         console.log(data);
         $('#charts').find('svg').remove();

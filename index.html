@@ -138,9 +138,9 @@
         <li>Переплатити зайві 1-100% (як пощастить) за красиву сукню, модну шубу, сумку на тлі загальної істерії</li>
     </ul>
 
-    <p>Ми пропонуємо вам подивитись, як магазини використовують маніпуляцію зі старою ціною  протягом півроку, що ми збирали дані.  Стара ціна на графіках позначена чорною лінією, поточна пунктиром. Якщо стара ціна на товар зазначена чесно, то вона колись була не старою, а поточною. Тож чорна і рожева лінія мають перенатись.</p>
+    <p>Ми пропонуємо вам подивитись, як магазини використовують маніпуляцію зі старою ціною  протягом півроку, що ми збирали дані.  <b>Стара ціна</b> на графіках позначена <b>чорною лінією</b>, <span style="color:#ff36ad"><b>поточна - рожевою</b></span>. Якщо стара ціна на товар зазначена чесно, то вона колись була не старою, а поточною. Тож чорна і рожева лінії мають перенатись.</p>
 
-    <p>На графіку представлена середня ціна по категоріям. За 100% взята ціна, за який товар пропонували купити у Black friday. Від неї  ми рахували зміни у відсотках на поточну і стару ціну на кожен товар.</p>
+    <p>На графіку представлена середня ціна по категоріям. За 100% взята ціна, за який товар пропонували купити у Black friday. Від неї ми рахували зміни у відсотках на поточну і стару ціну на кожен товар.</p>
 
     <p>В цілому black friday знижки можна умовно поділити на три типи, які є цілком закономірними.</p>
 </div>
@@ -219,7 +219,7 @@
 <script src ="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
 <script src="js/script.js"></script>
-<script src="lib/jquery.sparkline.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.9.7/chartist.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
 <!--<script src="https://unpkg.com/tippy.js@3/dist/tippy.all.min.js"></script>-->
 
@@ -236,36 +236,37 @@
 
 
 
-$("#sparkline-dashed").sparkline([7,9,7,7,6,7], {
-    type: 'line',
-    width: '80',
-    height: '10',
-    lineColor: '#ffffff',
-    fillColor: '#000000',
-    lineWidth: 1,
-    spotColor: '#',
-    minSpotColor: '#',
-    maxSpotColor: '#',
-    highlightSpotColor: '#',
-    highlightLineColor: '#',
-    spotRadius: 0,
-    normalRangeColor: '#'});
 
-
-$("#sparkline-pink").sparkline([0,3,2,2,2.2,2,2 ], {
-    type: 'line',
-    width: '80',
-    height: '10',
-    lineColor: '#ff36ad',
-    fillColor: '#000000',
-    lineWidth: 1,
-    spotColor: '#',
-    minSpotColor: '#',
-    maxSpotColor: '#',
-    highlightSpotColor: '#',
-    highlightLineColor: '#',
-    spotRadius: 0,
-    normalRangeColor: '#'});
+//$("#sparkline-dashed").sparkline([7,9,7,7,6,7], {
+//    type: 'line',
+//    width: '80',
+//    height: '10',
+//    lineColor: '#ffffff',
+//    fillColor: '#000000',
+//    lineWidth: 1,
+//    spotColor: '#',
+//    minSpotColor: '#',
+//    maxSpotColor: '#',
+//    highlightSpotColor: '#',
+//    highlightLineColor: '#',
+//    spotRadius: 0,
+//    normalRangeColor: '#'});
+//
+//
+//$("#sparkline-pink").sparkline([0,3,2,2,2.2,2,2 ], {
+//    type: 'line',
+//    width: '80',
+//    height: '10',
+//    lineColor: '#ff36ad',
+//    fillColor: '#000000',
+//    lineWidth: 1,
+//    spotColor: '#',
+//    minSpotColor: '#',
+//    maxSpotColor: '#',
+//    highlightSpotColor: '#',
+//    highlightLineColor: '#',
+//    spotRadius: 0,
+//    normalRangeColor: '#'});
 
 function isOnScreen(elem) {
     // if the element doesn't exist, abort
@@ -309,7 +310,7 @@ function getElemIsOnView(elemClass) {
 
 </script>
 
-<!--<div class="tooltip" data-tippy-content="Tooltip A"></div>-->
+<div class="tooltip"><div id='tipDiv'><p><span class='ct-chart-pink line'>Ціна продажу - </span><span class='ct-chart-black line'>Стара ціна - </span><button id="closeX">&times;</button></p></div></div>
 
 </body>
 </html>

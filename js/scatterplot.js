@@ -43,7 +43,7 @@ $(document).ready(function () {
         ww = 0.7 * ww;
         hh = 0.7 * hh;
 
-    var margin = {top: 30, right: 30, bottom: 30, left:30};
+    var margin = {top: 30, right: 30, bottom: 50, left:30};
 
 
 
@@ -56,8 +56,7 @@ $(document).ready(function () {
 
 
 // create a clipping region
-    var div = d3.select("body").append("div")
-        .attr("class", "tooltip")
+    var div = d3.select(".tooltip")
         .style("opacity", 1);
 
 
@@ -229,9 +228,23 @@ $(document).ready(function () {
         var limit = 1;
 
         div.style("display", "block")
-            .html("<div id='tipDiv'></div>")
+            // .html("<div id='tipDiv'><p>Ціна продажу - <span class='ct-chart-pink line'></span>Стара ціна - <span class='ct-chart-black line'></span></p></div>")
             .style("left", (d3.event.pageX) + "px")
             .style("top", (d3.event.pageY) + "px");
+
+        var spark = {series: [[8,8,8,8,8,8,8,8, 5]]};
+
+        var sparkOptions = {
+                        height:'1em',
+                        width:'4ex',
+                        showPoint: false,
+                        fullWidth:true,
+                        chartPadding: {top: 0,right: 0,bottom: 0,left: 0},
+                        axisX: {showGrid: false, showLabel: false, offset: 0},
+                        axisY: {showGrid: false, showLabel: false, offset: 0}
+                    };
+        new Chartist.Line('.ct-chart-pink.line', spark, sparkOptions);
+        new Chartist.Line('.ct-chart-black.line', spark, sparkOptions);
 
 
         $.ajax({
@@ -242,7 +255,7 @@ $(document).ready(function () {
             // data: JSON.stringify({"categ": item, "limit": limit})
         }).done(function (data) {
             console.log(data);
-            $('#tipDiv').find('svg').remove();
+            $('#tipDiv').find('svg#tip-svg').remove();
 
             var theCase = data;
 
@@ -251,6 +264,7 @@ $(document).ready(function () {
                 d.priceOld = +d.priceOld;
                 d.date = parseDate(d.date)
             });
+
 
             // var textBlockRect = document.getElementById("scroll-text").getBoundingClientRect();
             var scrollChartMargin = {top: 30, right: 0, bottom: 40, left: 40},
@@ -301,9 +315,15 @@ $(document).ready(function () {
                     return yScale(d.priceOld);
                 });
 
+            d3.select("#closeX")                
+                .attr("aria-label","Закрити графік")
+                .on("click", function(){
+                    div.style("display", "none")
+                });
 
             var svg = d3.select("#tipDiv")
                 .append("svg")
+                .attr("id", "tip-svg")
                 .style("margin-bottom", "10px")
                 .attr("width", scrollChartWidth + scrollChartMargin.left + scrollChartMargin.right)
                 .attr("height", scrollChartHeight + scrollChartMargin.top + scrollChartMargin.bottom)
@@ -311,16 +331,6 @@ $(document).ready(function () {
                 .append("g")
                 .attr("transform", "translate(" + scrollChartMargin.left + "," + scrollChartMargin.top + ")")
                 ;
-
-
-            d3.select("#tipDiv")
-                .append("button")
-                .html("&times;")
-                .attr("aria-label","Закрити графік")
-                .on("click", function(){
-                    div.style("display", "none")
-                });
-
 
             svg.append("g").attr("class", "axis-s").call(yAxis);
             svg.append("g").attr("class", "axis-s").attr("transform", "translate(0," + scrollChartHeight + ")")
@@ -353,7 +363,7 @@ $(document).ready(function () {
 
             svg.append("text")
                 // .attr("id", "scrollChartTitle")
-                .attr("x", 0)
+                .attr("x", -20)
                 .attr("y", -10)
                 .attr("text-anchor", "left")
                 .style("font-size", "9px")
@@ -638,5 +648,37 @@ var annotations = [
     }
 
 ]
+
+
+var sm_annotations = [
+    {
+        "sepalWidth": 2.3,
+        "sepalLength": 2,
+        "path": "M-5,86C-47,82,-55,18,-9,4",
+        "wrap": 10,
+        "text": "Стара ціна",
+        "fill":"black",
+        "size":"10px",
+        "marker":"yes",
+        "textOffset": [
+            36,
+            156
+        ]
+    },
+    {
+        "sepalWidth": 2.3,
+        "sepalLength": 2,
+        "path": "M-5,86C-47,82,-55,18,-9,4",
+        "wrap": 20,
+        "text": "Ціна продажу",
+        "fill":"black",
+        "size":"10px",
+        "marker":"yes",
+        "textOffset": [
+            36,-242
+        ]
+    }
+]
+
 
 

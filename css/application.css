@@ -4,6 +4,31 @@
 @font-face {
   font-family: Prisma Pro;
   src: url(../fonts/PrismaPro.otf); }
+#tipDiv p {
+  padding-top: 5px;
+  display: flex;
+  justify-content: space-around; }
+
+#closeX {
+  display: table-cell;
+  vertical-align: top;
+  cursor: pointer; }
+
+.ct-chart-pink svg {
+  margin: 1px;
+  vertical-align: text-bottom; }
+  .ct-chart-pink svg .ct-series-a .ct-line {
+    stroke: #ff36ad;
+    stroke-width: 2px; }
+
+.ct-chart-black svg {
+  margin: 3px;
+  vertical-align: text-bottom; }
+  .ct-chart-black svg .ct-series-a .ct-line {
+    stroke: black;
+    stroke-width: 2px;
+    stroke-dasharray: 3; }
+
 * {
   -webkit-margin-before: 0;
   -webkit-margin-after: 0; }
@@ -543,7 +568,7 @@ div.tooltip {
   position: absolute;
   text-align: center;
   width: 250px;
-  height: 200px;
+  height: 250px;
   font: 10px sans-serif;
   background: white;
   border: 0.5px solid #c5c5c5;

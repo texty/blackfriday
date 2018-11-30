@@ -317,8 +317,8 @@ $(document).ready(function () {
                 });
 
 
-            svg.append("g").call(yAxis);
-            svg.append("g").attr("class", "axis").attr("transform", "translate(0," + scrollChartHeight + ")")
+            svg.append("g").attr("class", "axis-s").call(yAxis);
+            svg.append("g").attr("class", "axis-s").attr("transform", "translate(0," + scrollChartHeight + ")")
                 .call(xAxis);
             d3.selectAll("path.domain").remove();
 
@@ -395,9 +395,8 @@ $(document).ready(function () {
 
 
         //розмальовуємо негативну шкалу в червоний
-        d3.selectAll("g.tick > text")
+       d3.selectAll("g.tick > text")
             .each(function() {
-
               var tickValue =  d3.select(this).html();
                   if(Number(tickValue) < 0){
                       d3.select(this).attr("fill", "red")

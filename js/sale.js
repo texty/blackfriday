@@ -142,6 +142,7 @@ function drawMeThis(df, container) {
     cardsContainer.append("h5")
         .attr("class", "theTitle")
         .style("font-size", '14px')
+        .style("text-align", 'center')
         .text(function (d) {
             return d.key;
         })

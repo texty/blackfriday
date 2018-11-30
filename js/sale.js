@@ -209,7 +209,7 @@ function drawMeThis(df, container) {
         .attr("width", wid)
         .attr("height", chartHeight)
         .attr("fill", "yellow")
-        .attr("opacity", "0.05");
+        .attr("opacity", "0.2");
 
 }
 

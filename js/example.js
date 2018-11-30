@@ -13,7 +13,7 @@ var scrollChartMargin = {top: 30, right: 40, bottom: 40, left: 40},
     scrollChartWidth = textBlockRect.width - scrollChartMargin.left - scrollChartMargin.right,
     scrollChartHeight = scrollChartWidth  - scrollChartMargin.top - scrollChartMargin.bottom;
 
-d3.csv("data/bf.csv", function(error, examples) {
+d3.csv("data/examples.csv", function(error, examples) {
 
     examples.forEach(function (d) {
         d.price = +d.price;
@@ -22,7 +22,7 @@ d3.csv("data/bf.csv", function(error, examples) {
     });
 
     var theCase = examples.filter(function(d){
-        return d.id === "c-1353335" ;  });
+        return d.id === "c-1341606" ;  });
 
     var xScale = d3.scaleTime().range([0, scrollChartWidth]);
     var yScale = d3.scaleLinear().range([scrollChartHeight, 0]);
@@ -110,7 +110,7 @@ var line = d3.line()
         .attr("width", wid)
         .attr("height", scrollChartHeight)
         .attr("fill", "yellow")
-        .attr("opacity", "0.05");
+        .attr("opacity", "0.2");
 
     svg.append("text")
         .attr("id", "scrollChartTitle")

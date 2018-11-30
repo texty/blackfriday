@@ -155,7 +155,12 @@ $(document).ready(function () {
                     return d.fill;
                 })
                 .attr("font-size", function(d) {
-                return d.size;
+                    if(screen.width > 2000){
+                        return d.bigScreenSize;
+                    } else {
+                        return d.size;
+                    }
+
             })//clear existing text
                 .tspans(d3.wordwrap(d.text, d.wrap)); //wrap after 20 char
         });
@@ -207,7 +212,7 @@ $(document).ready(function () {
                 .attr("fill", function (d) {
                     if(d.bigGat === "Ноутбуки, планшети"|| d.bigGat === "Телефони, аксесуари"||
                         d.bigGat === "Побутова техніка"||d.bigGat === "Телвізори"){
-                        return "grey"
+                        return "#88d78e"
                     } else{
                         return "#FF80B3"
                     }
@@ -519,6 +524,8 @@ var annotations = [
         "wrap": 10,
         "text": "Дорожче, ніж зазвичай",
         "fill":"black",
+        "size":"16px",
+        "bigScreenSize":"10px",
         "marker":"yes",
         "textOffset": [
             36,
@@ -533,6 +540,7 @@ var annotations = [
         "text": "Нечесні знижки",
         "fill":"black",
         "size":"16px",
+        "bigScreenSize":"10px",
         "marker":"yes",
         "textOffset": [
             36,-242
@@ -546,6 +554,7 @@ var annotations = [
         "text": "Чесні знижки",
         "fill":"white",
         "size":"16px",
+        "bigScreenSize":"10px",
         "marker":"yes",
         "textOffset": [
             -242,
@@ -563,6 +572,7 @@ var annotations = [
         "text": "Точки під цією лінією - товари з націнкою",
         "fill":"black",
         "size":"12px",
+        "bigScreenSize":"8px",
         "marker":"no",
         "textOffset": [
             36,
@@ -577,6 +587,7 @@ var annotations = [
         "text": "Фактична знижка менше за оголошену магазином",
         "fill":"black",
         "size":"12px",
+        "bigScreenSize":"8px",
         "marker":"no",
         "textOffset": [
             36,
@@ -591,6 +602,7 @@ var annotations = [
         "text": "Заявлена знижка на товар в Чорну пʼятницю була не менше реальної",
         "fill":"white",
         "size":"12px",
+        "bigScreenSize":"8px",
         "marker":"no",
         "textOffset": [
             -242,-42
@@ -604,6 +616,7 @@ var annotations = [
         "text": "Вісь Y - фактична знижка, %",
         "fill":"grey",
         "size":"10px",
+        "bigScreenSize":"8px",
         "marker":"no",
         "textOffset": [
             361,115
@@ -617,6 +630,7 @@ var annotations = [
         "text": "Вісь X - заявлена магазином знижка, %",
         "fill":"grey",
         "size":"10px",
+        "bigScreenSize":"8px",
         "marker":"no",
         "textOffset": [
             -312,-153

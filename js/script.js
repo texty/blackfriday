@@ -8,13 +8,13 @@ var API_ROOT = 'http://localhost:5000';
 //категорії
 var dataCat = [
     { value: "", text: '--- Оберіть категорію товару ---'},
-    { value: "notebook", text: 'ноутбуки'},
-    { value: "bags", text: 'сумки'},
-    { value: "flag", text: 'плити'},
-    { value: "tv", text: 'телевізори'},
-    { value: "perfumery", text: 'парфуми'},
-    { value: "leatherJackets", text: 'верхній одяг'},
-    { value: "smartfon", text: 'смартфони'}
+    { value: "Ноутбуки, планшети", text: 'Ноутбуки, планшети'},
+    { value: "Побутова техніка", text: 'Побутова техніка'},
+    { value: "Телевізори", text: 'Телевізори'},
+    { value: "Телефони, аксесуари", text: 'Телефони, аксесуари'},
+    { value: "Одяг", text: 'Одяг'},
+    { value: "Сумки", text: 'Сумки'}
+
 
 ];
 
@@ -137,7 +137,7 @@ $('#mybut').on('click', function () {
             d.priceOld = +d.priceOld;
             d.date = parseDate(d.date)
         });
-        xScale.domain([parseDate('2018-04-15'), parseDate('2018-11-30')]);
+        xScale.domain([parseDate('2018-04-15'), parseDate('2018-12-30')]);
         // xScale.domain(d3.extent(data, function(d) { return d.date; }));
 
             yScale.domain([0, d3.max(data, function (d) {
@@ -242,15 +242,15 @@ $('#mybut').on('click', function () {
                     return d.values[0].name
                 });
 
-            var left = xScale(new Date("2018-09-20"));
-            var right = xScale(new Date("2018-09-24")); //one more day
+            var left = xScale(new Date("2018-11-18"));
+            var right = xScale(new Date("2018-11-25")); //one more day
             var wid = right - left;
             svg.append("rect")
                 .attr("x", left)
                 .attr("width", wid)
                 .attr("height", height)
                 .attr("fill", "yellow")
-                .attr("opacity", "0.05");
+                .attr("opacity", "0.2");
 
 
 

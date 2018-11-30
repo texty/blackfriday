@@ -4,7 +4,7 @@
 var parseDate = d3.timeParse("%Y-%m-%d");
 var formatTime = d3.timeFormat("%b");
 
-var API_ROOT = 'http://localhost:5000';
+var API_ROOT = 'http://api-x32.texty.org.ua';
 
 $(document).ready(function () {
 

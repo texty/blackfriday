@@ -3,7 +3,7 @@
  ---- Create Select MENU for category and charts amount ----
  ----------------------------------------------------------- */
 
-var API_ROOT = 'http://localhost:5000';
+var API_ROOT = 'http://api-x32.texty.org.ua';
 
 //категорії
 var dataCat = [

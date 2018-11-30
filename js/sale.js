@@ -3,55 +3,6 @@
  */
 
 
-
-var rect1 = document.getElementById("phantom").getBoundingClientRect();
-
-var chartMargin = { top: 30, right: 40, bottom: 40, left: 40},
-    chartWidth = rect1.width - chartMargin.left - chartMargin.right,
-    chartHeight = chartWidth  - chartMargin.bottom - chartMargin.top;
-
-
-
-
-var parseDate = d3.timeParse("%Y-%m-%d");
-var formatTime = d3.timeFormat("%b");
-
-
-var x = d3.scaleTime()
-    .range([0, chartWidth]);
-
-var y = d3.scaleLinear()
-    .range([chartHeight, 0]);
-
-var yAx = d3.axisLeft()
-    .scale(y)
-    .ticks(5);
-
-var xAx = d3.axisBottom()
-    .scale(x)
-    .tickSize(-chartHeight)
-    .ticks(9)
-    .tickFormat(formatTime);
-
-var valueline = d3.line()
-    .defined(function(d) {
-        return d.pinkLine !== 0;
-    })
-    .x(function(d) {
-        return x(d.date);
-    })
-    .y(function(d) { return y(d.pinkLine);  });
-
-
-var valuelineOld = d3.line()
-    .defined(function(d) {
-        return d.whiteDashed === d.whiteDashed;
-    })
-    .x(function(d) { return x(d.date); })
-    .y(function(d) { return y(d.whiteDashed); });
-
-// setTimeout(function (){
-
     d3.csv("data/bf.csv", function(error, dataset) {
 
         dataset.forEach(function (d) {
@@ -78,9 +29,6 @@ var valuelineOld = d3.line()
         });
 
 
-
-        // drawMeThis(smartsOnly, "#smallMultiplesContainer1");
-
         $( document ).ready( function() {
             window.addEventListener('scroll', function(e) {
                 if(isOnScreen("#scrollText2")){
@@ -106,9 +54,13 @@ var valuelineOld = d3.line()
         });
 
 
+        window.addEventListener('resize', function(e){
+            drawMeThis(applienceOnly, "#smallMultiplesContainer1");
+        });
+
     });
 
-// }, 4000);
+
 
 
 
@@ -117,6 +69,53 @@ var valuelineOld = d3.line()
 
 function drawMeThis(df, container) {
     $('#smallMultiplesContainer1').html("")
+
+    var rect1 = document.getElementById("phantom").getBoundingClientRect();
+
+    var chartMargin = { top: 30, right: 40, bottom: 40, left: 40},
+        chartWidth = rect1.width - chartMargin.left - chartMargin.right,
+        chartHeight = chartWidth  - chartMargin.bottom - chartMargin.top;
+
+
+
+    var parseDate = d3.timeParse("%Y-%m-%d");
+    var formatTime = d3.timeFormat("%b");
+
+
+    var x = d3.scaleTime()
+        .range([0, chartWidth]);
+
+    var y = d3.scaleLinear()
+        .range([chartHeight, 0]);
+
+    var yAx = d3.axisLeft()
+        .scale(y)
+        .ticks(5);
+
+    var xAx = d3.axisBottom()
+        .scale(x)
+        .tickSize(-chartHeight)
+        .ticks(9)
+        .tickFormat(formatTime);
+
+    var valueline = d3.line()
+        .defined(function(d) {
+            return d.pinkLine !== 0;
+        })
+        .x(function(d) {
+            return x(d.date);
+        })
+        .y(function(d) { return y(d.pinkLine);  });
+
+
+    var valuelineOld = d3.line()
+        .defined(function(d) {
+            return d.whiteDashed === d.whiteDashed;
+        })
+        .x(function(d) { return x(d.date); })
+        .y(function(d) { return y(d.whiteDashed); });
+
+
     var dataset1 = d3.nest()
         .key(function (d) {
             return d.bigGat

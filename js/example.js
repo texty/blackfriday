@@ -2,12 +2,6 @@
  * Created by yevheniia on 21.11.18.
  */
 
-// var rect1 = document.getElementById("phantom").getBoundingClientRect();
-//
-// var chartMargin = { top: 30, right: 40, bottom: 40, left: 40},
-//     chartWidth = rect1.width - chartMargin.left - chartMargin.right,
-//     chartHeight = 307 - chartMargin.bottom - chartMargin.top - 25;
-
 var textBlockRect = document.getElementById("phantom").getBoundingClientRect();
 var scrollChartMargin = {top: 30, right: 40, bottom: 40, left: 40},
     scrollChartWidth = textBlockRect.width - scrollChartMargin.left - scrollChartMargin.right,
@@ -124,17 +118,35 @@ var line = d3.line()
         });
 
 
+
+
     function redraw(id) {
+
+        var textBlockRect = document.getElementById("phantom").getBoundingClientRect();
+        var scrollChartMargin = {top: 30, right: 40, bottom: 40, left: 40},
+            scrollChartWidth = textBlockRect.width - scrollChartMargin.left - scrollChartMargin.right,
+            scrollChartHeight = scrollChartWidth  - scrollChartMargin.top - scrollChartMargin.bottom;
+
         var newCase = examples.filter(function(d){
-            return d.id === id ;  });
+            return d.id === id ;  
+        });
 
+        var xScale = d3.scaleTime().range([0, scrollChartWidth]);
+        var yScale = d3.scaleLinear().range([scrollChartHeight, 0]);
 
+        var yAxis = d3.axisLeft().scale(yScale).ticks(5);
+
+        var xAxis = d3.axisBottom()
+            .scale(xScale)
+            .tickSize(-scrollChartHeight)
+            .ticks(9)
+            .tickFormat(formatTime);
 
         yScale.domain([0, d3.max(newCase, function (d) {
             if(d.priceOld > 0 ) { return d.priceOld; }
             else { return d.price * 1.3; }})]);
 
-
+       
         svg.select("#yAxisG")
             .transition()
             .duration(300)
@@ -173,6 +185,15 @@ var line = d3.line()
 
         });
     });
+
+
+    window.addEventListener('resize', function(e){
+        var elemid =  getElemIsOnView('.block');
+        if(elemid) {
+            redraw(elemid);
+        }
+    });
+
 
 });
 

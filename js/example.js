@@ -15,7 +15,7 @@ var yScale = d3.scaleLinear().range([scrollChartHeight, 0]);
 
 var yAxis = d3.axisLeft()
     .scale(yScale)
-    .ticks(5);
+    .ticks(4);
 
 var xAxis = d3.axisBottom()
     .scale(xScale)
@@ -235,6 +235,8 @@ d3.csv("data/examples.csv", function(error, examples) {
         var elemid = getElemIsOnView('.block');
         if(elemid) {
             redraw(elemid);
+        } else {
+            redraw("c-1023088")
         }
     });
 

@@ -595,7 +595,34 @@ var annotations = [
         "textOffset": [
             -242,-42
         ]
+    },
+    {
+        "sepalWidth": 2.3,
+        "sepalLength": 2,
+        "path": "",
+        "wrap": 10,
+        "text": "Вісь Y - фактична знижка, %",
+        "fill":"grey",
+        "size":"10px",
+        "marker":"no",
+        "textOffset": [
+            361,115
+        ]
+    },
+    {
+        "sepalWidth": 2.3,
+        "sepalLength": 2,
+        "path": "",
+        "wrap": 10,
+        "text": "Вісь X - заявлена магазином знижка, %",
+        "fill":"grey",
+        "size":"10px",
+        "marker":"no",
+        "textOffset": [
+            -312,-153
+        ]
     }
+
 ]
 
 

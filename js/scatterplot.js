@@ -125,10 +125,10 @@ $(document).ready(function () {
         .attr("stroke-width",2);
 
     var swoopy = d3.swoopyDrag()
-            .x(d => xScale(d.sepalWidth))
-    .y(d => yScale(d.sepalLength))
-    .draggable(false)
-        .annotations(annotations);
+            .x(function(d){ return  xScale(d.sepalWidth)})
+            .y(function(d){ return  yScale(d.sepalLength)})
+            .draggable(false)
+                .annotations(annotations);
 
     var swoopySel = svg.append('g')
         .attr("fill", "none")
@@ -220,9 +220,7 @@ $(document).ready(function () {
                 // .attr('stroke', "black")
                 .attr('opacity', 0.9)
                 .attr('r', 2)
-                .on('click', function(d) {
-
-                console.log(d);
+                .on('click', function(d) {               
 
         var item = d.id;
         var limit = 1;
@@ -254,7 +252,6 @@ $(document).ready(function () {
             url: API_ROOT + "/blackfriday/api/object/" + item
             // data: JSON.stringify({"categ": item, "limit": limit})
         }).done(function (data) {
-            console.log(data);
             $('#tipDiv').find('svg#tip-svg').remove();
 
             var theCase = data;
@@ -318,6 +315,7 @@ $(document).ready(function () {
             d3.select("#closeX")                
                 .attr("aria-label","Закрити графік")
                 .on("click", function(){
+                    $('#tipDiv').find('svg#tip-svg').remove();
                     div.style("display", "none")
                 });
 

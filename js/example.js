@@ -205,8 +205,7 @@ function getElemIsOnView(elemClass) {
             var prevElem = $(this).previousSibling;
             prevId = $(prevElem).attr("id");
             targetId = $(this).attr("id");
-            console.log(targetId);
-            console.log(prevId);
+           
         }
     });
     if(targetId != prevId) {

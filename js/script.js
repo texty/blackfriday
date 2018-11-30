@@ -78,9 +78,6 @@ var formatTime = d3.timeFormat("%b");
 
 
 $('#mybut').on('click', function () {
-    $('html, body').animate({
-        scrollTop: $("#selectButtons").offset().top
-    }, 'slow');
     $('#mybut').html('<b>Ще графічків</b>');
     $.ajax({
         type: "GET",
@@ -89,14 +86,14 @@ $('#mybut').on('click', function () {
         url: API_ROOT + "/blackfriday/api/random10/" + categ + "/" + limit
         // data: JSON.stringify({ "categ": categ, "limit": limit })
     }).done(function(data) {
-        console.log(data);
+        // $('html, body').animate({
+        //     scrollTop: $("#selectButtons").offset().top
+        // }, 'slow');
         $('#charts').find('svg').remove();
 
-        
-
         var margin = {top: 30, right: 0, bottom: 40, left: 40},
-            width = 250 - margin.left - margin.right,
-            height = 250 - margin.top - margin.bottom;
+            width = 220 - margin.left - margin.right,
+            height = 220 - margin.top - margin.bottom;
 
         var xScale = d3.scaleTime()
             .range([0, width]);
@@ -237,7 +234,7 @@ $('#mybut').on('click', function () {
                 .attr("y", 0 - (margin.top / 2))
                 .attr("text-anchor", "left")
                 .style("font-size", "9px")
-                .attr("fill", "white")
+                .attr("fill", "black")
                 .text(function (d) {
                     return d.values[0].name
                 });

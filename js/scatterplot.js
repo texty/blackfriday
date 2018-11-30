@@ -154,7 +154,7 @@ $(document).ready(function () {
                     return d.fill;
                 })
                 .attr("font-size", function(d) {
-                    if(screen.width > 2000){
+                    if(screen.width > 1500){
                         return d.bigScreenSize;
                     } else {
                         return d.size;

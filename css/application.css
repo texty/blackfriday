@@ -399,6 +399,10 @@ g.tick > line {
 g.tick > text:not(.scatterY g.tick text) {
   fill: #313030; }
 
+#charts {
+  width: 93%;
+  margin-left: 5%; }
+
 #chart svg {
   margin-bottom: 60px;
   margin-left: 5%; }
@@ -556,12 +560,18 @@ div.tooltip {
   grid-row: 1/2;
   height: 110vh;
   overflow: hidden; }
-  @media (max-width: 800px) {
+  @media (max-width: 815px) {
+    #turnMe {
+      position: relative; } }
+  @media (max-width: 815px) and (orientation: landscape) {
     #turnMe {
       position: relative;
       height: 100vh; } }
+  @media (max-width: 815px) and (orientation: portrait) {
+    #turnMe {
+      height: 50vh; } }
 
-@media (max-width: 800px) {
+@media (max-width: 815px) {
   #mobHide {
     display: none; } }
 

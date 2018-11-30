@@ -48,7 +48,7 @@ body {
 
 #myModal {
   position: fixed;
-  grid-template-rows: 70% 30%;
+  grid-template-rows: 60% 40%;
   display: none;
   top: 0;
   left: 0;
@@ -89,7 +89,7 @@ body {
   #myModal #warning {
     font-size: 14px;
     text-align: center;
-    width: 60%;
+    width: 80%;
     margin: auto;
     grid-row: 2/3;
     font-family: 'Montserrat Alternates', sans-serif; }

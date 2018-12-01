@@ -108,8 +108,9 @@ $(document).ready(function () {
 
     var poly = [{"x":5, "y":5},
         {"x":5,"y":100},
-        {"x":90,"y":100},
-        {"x":100,"y":100}
+        {"x":100,"y":100},
+        {"x":100,"y":97},
+        {"x":5,"y":2 }
     ];
 
     points_g.selectAll("polygon")
@@ -614,7 +615,7 @@ var annotations = [
         "sepalLength": 2,
         "path": "0",
         "wrap": 25,
-        "text": "Заявлена знижка на товар в Чорну пʼятницю була не менше реальної",
+        "text": "Заявлена знижка була суттєвою (від 5%) і не менше реальної",
         "fill":"white",
         "size":"12px",
         "bigScreenSize":"8px",

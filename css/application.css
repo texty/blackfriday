@@ -332,6 +332,7 @@ li {
     font-family: 'Montserrat Alternates', sans-serif; }
 
 .block {
+  min-height: max-content !important;
   height: 100vh; }
 
 span.rectangle {

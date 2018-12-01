@@ -28,7 +28,6 @@
             return d.bigGat === "Одяг" || d.bigGat === "Сумки";
         });
 
-        debugger;
 
 
         //Якщо iPadPro, то малюємо в три контейнери
@@ -162,7 +161,7 @@ function drawMeThis(df, container) {
         })
         .entries(df);
 
-debugger;
+
     x.domain([parseDate('2018-04-15'), parseDate('2018-12-30')]);
     y.domain([0, 4]);
 

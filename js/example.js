@@ -7,6 +7,8 @@ var scrollChartMargin = {top: 30, right: 40, bottom: 40, left: 60},
     scrollChartWidth = textBlockRect.width - scrollChartMargin.left - scrollChartMargin.right,
     scrollChartHeight = scrollChartWidth  - scrollChartMargin.top - scrollChartMargin.bottom;
 
+    d3.select("#c-1167115").style("height", scrollChartHeight * 2);
+
 var parseDate = d3.timeParse("%Y-%m-%d");
 var formatTime = d3.timeFormat("%b");
 
@@ -33,18 +35,6 @@ var line = d3.line()
     .y(function (d) {
         return yScale(d.price);
     });
-
-// var lineOld = d3.line()
-//     .defined(function (d) {
-//         return d.priceOld !== 0;
-//     })
-//     .x(function (d) {
-//         return xScale(d.date);
-//     })
-//     .y(function (d) {
-//         return yScale(d.priceOld);
-//     });
-
 
 var svg = d3.select("#scroll-chart")
     .append("svg")
@@ -90,13 +80,6 @@ d3.csv("data/examples.csv", function(error, examples) {
             return line(theCase);
         });
 
-    // svg.append("path")
-    //     .attr("class", "scrollChartLineOld")
-    //     .attr("d", function () {
-    //         return lineOld(theCase);
-    //     });
-
-
     var left = xScale(new Date("2018-11-18"));
     var right = xScale(new Date("2018-11-25")); //one more day
     var wid = right - left;
@@ -110,10 +93,11 @@ d3.csv("data/examples.csv", function(error, examples) {
 
     svg.append("text")
         .attr("id", "scrollChartTitle")
-        .attr("x", -20)
+        .attr("x", 0)
         .attr("y", 0 - (scrollChartMargin.top / 2))
         .attr("text-anchor", "left")
         .style("font-size", "14px")
+        .style("font-weight", 600)
         // .attr("fill", "white")
         .text(function () {
             return theCase[0].name
@@ -129,6 +113,8 @@ d3.csv("data/examples.csv", function(error, examples) {
             scrollChartWidth = textBlockRect.width - scrollChartMargin.left - scrollChartMargin.right,
             scrollChartHeight = scrollChartWidth  - scrollChartMargin.top - scrollChartMargin.bottom;
 
+        d3.select("#c-1167115").style("height", scrollChartHeight);
+
         var left = xScale(new Date("2018-11-18"));
         var right = xScale(new Date("2018-11-25")); //one more day
         var wid = right - left;
@@ -137,13 +123,6 @@ d3.csv("data/examples.csv", function(error, examples) {
             return d.id === id ;  
         });
 
-        // console.log(newCase);
-
-        // newCase.forEach(function (d) {
-        //     d.price = +d.price;
-        //     d.priceOld = +d.priceOld;
-        //     d.date = parseDate(d.date)
-        // });
 
         xScale.range([0, scrollChartWidth]);
         yScale.range([scrollChartHeight, 0]);
@@ -188,14 +167,6 @@ d3.csv("data/examples.csv", function(error, examples) {
             .attr("d", function () {
                 return line(newCase);
             });
-
-
-        // svg.select(".scrollChartLineOld")
-        //     .transition()
-        //     .duration(300)
-        //     .attr("d", function () {
-        //         return lineOld(newCase);
-        //     });
 
 
         svg.select("#scrollChartTitle")
@@ -243,42 +214,11 @@ d3.csv("data/examples.csv", function(error, examples) {
 
 });
 
-// function isOnScreen(elem) {
-//     // if the element doesn't exist, abort
-//     if (elem.length == 0) {
-//         return;
-//     }
-//     var $window = $(window);
-//     var viewport_top = $window.scrollTop();
-//     var viewport_height = $window.height();
-//     var viewport_bottom = viewport_top + viewport_height;
-//     var $elem = $(elem);
-//     var top = $elem.offset().top;
-//     var height = $elem.height();
-//     var bottom = top + height;
-//
-//     return (top >= viewport_top && top < viewport_bottom) ||
-//         (bottom > viewport_top && bottom <= viewport_bottom/2) ||
-//         (height > viewport_height && top <= viewport_top && bottom >= viewport_bottom)
-// }
-//
-//
-// function getElemIsOnView(elemClass) {
-//     var blocks = $(elemClass);
-//     var prevId;
-//     var targetId;
-//     blocks.each(function() {
-//         if(isOnScreen(this)) {
-//             var prevElem = $(this).previousSibling;
-//             prevId = $(prevElem).attr("id");
-//             targetId = $(this).attr("id");
-//           
-//         }
-//     });
-//     if(targetId != prevId) {
-//         return targetId;
-//     }
-//
-// }
+
+
+
+
+
+
 
 

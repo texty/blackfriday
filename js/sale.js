@@ -3,7 +3,7 @@
  */
 
 
-    d3.csv("data/bf.csv", function(error, dataset) {
+    d3.csv("data/bf_filtered.csv", function(error, dataset) {
 
         dataset.forEach(function (d) {
             d.pinkLine = +d.pinkLine;
@@ -28,6 +28,7 @@
             return d.bigGat === "Одяг" || d.bigGat === "Сумки";
         });
 
+        debugger;
 
 
         //Якщо iPadPro, то малюємо в три контейнери
@@ -67,7 +68,6 @@
         //Якщо екран перевертається
         window.addEventListener('resize', function(e){
             if(screen.width === 1024 && screen.height === 1366 && screen.orientation != "landscape"){
-                $('#smallMultiplesContainer1').html("");
                 drawMeThis(smartsOnly, "#smallMultiplesContainer1");
                 drawMeThis(applienceOnly, "#smallMultiplesContainer2");
                 drawMeThis(clothesOnly, "#smallMultiplesContainer3");
@@ -162,7 +162,7 @@ function drawMeThis(df, container) {
         })
         .entries(df);
 
-
+debugger;
     x.domain([parseDate('2018-04-15'), parseDate('2018-12-30')]);
     y.domain([0, 4]);
 

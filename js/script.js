@@ -190,50 +190,38 @@ $('#mybut').on('click', function () {
                 category = svg.datum().key;
             var filtered_data = svg.datum().values;
 
-            var focus = svg.append("g")
-                .attr("class", "focus")
-                .style("display", "none");
-
-            // var focus2 = svg.append("g")
-            //     .attr("class", "focus2")
+            // var focus = svg.append("g")
+            //     .attr("class", "focus")
             //     .style("display", "none");
-
-            focus.append("circle")
-                .attr("r", 3);
-
-
-            focus.append("text")
-                .attr("x", 9)
-                .attr("dy", ".35em");
-
-            // focus2.append("circle")
+            //
+            // focus.append("circle")
             //     .attr("r", 3);
             //
             //
-            // focus2.append("text")
+            // focus.append("text")
             //     .attr("x", 9)
             //     .attr("dy", ".35em");
 
             svg.append("rect")
                 .attr("class", "overlay")
                 .attr("width", width + margin.right)
-                .attr("height", height)
-                .on("mouseover", function () {
-                    focus.style("display", null);
-                    // focus2.style("display", null);
-                })
-                .on("mouseout", function () {
-                    focus.style("display", "none");
-                    // focus2.style("display", "none");
-                })
-                .on("mousemove", mousemove);
+                .attr("height", height);
+                // .on("mouseover", function () {
+                //     focus.style("display", null);
+                //     // focus2.style("display", null);
+                // })
+                // .on("mouseout", function () {
+                //     focus.style("display", "none");
+                //     // focus2.style("display", "none");
+                // });
+                // .on("mousemove", mousemove);
 
 
             svg.append("text")
                 .attr("x", 0)
                 .attr("y", 0 - (margin.top / 2))
-                .attr("text-anchor", "left")
-                .style("font-size", "9px")
+                .attr("text-anchor", "center")
+                .style("font-size", "10px")
                 .attr("fill", "black")
                 .text(function (d) {
                     return d.values[0].name

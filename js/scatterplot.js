@@ -220,157 +220,164 @@ $(document).ready(function () {
                 // .attr('stroke', "black")
                 .attr('opacity', 0.9)
                 .attr('r', 2)
-                .on('click', function(d) {               
-
-        var item = d.id;
-        var limit = 1;
-
-        div.style("display", "block")
-            // .html("<div id='tipDiv'><p>Ціна продажу - <span class='ct-chart-pink line'></span>Стара ціна - <span class='ct-chart-black line'></span></p></div>")
-            .style("left", (d3.event.pageX) + "px")
-            .style("top", (d3.event.pageY) + "px");
-
-        var spark = {series: [[8,8,8,8,8,8,8,8, 5]]};
-
-        var sparkOptions = {
-                        height:'1em',
-                        width:'4ex',
-                        showPoint: false,
-                        fullWidth:true,
-                        chartPadding: {top: 0,right: 0,bottom: 0,left: 0},
-                        axisX: {showGrid: false, showLabel: false, offset: 0},
-                        axisY: {showGrid: false, showLabel: false, offset: 0}
-                    };
-        new Chartist.Line('.ct-chart-pink.line', spark, sparkOptions);
-        new Chartist.Line('.ct-chart-black.line', spark, sparkOptions);
-
-
-        $.ajax({
-            type: "GET",
-            contentType: "application/json",
-            dataType: "json",
-            url: API_ROOT + "/blackfriday/api/object/" + item
-            // data: JSON.stringify({"categ": item, "limit": limit})
-        }).done(function (data) {
-            $('#tipDiv').find('svg#tip-svg').remove();
-
-            var theCase = data;
-
-            theCase.forEach(function (d) {
-                d.price = +d.price;
-                d.priceOld = +d.priceOld;
-                d.date = parseDate(d.date)
-            });
-
-
-            // var textBlockRect = document.getElementById("scroll-text").getBoundingClientRect();
-            var scrollChartMargin = {top: 30, right: 0, bottom: 40, left: 40},
-                scrollChartWidth = 250 - scrollChartMargin.left - scrollChartMargin.right,
-                scrollChartHeight = 200 - scrollChartMargin.top - scrollChartMargin.bottom;
-
-            var xScale = d3.scaleTime().range([0, scrollChartWidth]);
-            var yScale = d3.scaleLinear().range([scrollChartHeight, 0]);
-
-            var yAxis = d3.axisLeft().scale(yScale).ticks(5);
-
-            var xAxis = d3.axisBottom()
-                .scale(xScale)
-                .tickSize(-scrollChartHeight)
-                .ticks(9)
-                .tickFormat(formatTime);
-
-            xScale.domain([parseDate('2018-04-15'), parseDate('2018-12-30')]);
-            yScale.domain([0, d3.max(theCase, function (d) {
-                    if (d.priceOld > 0) {
-                        return d.priceOld;
+                .on('click', function(d) {
+                    //не малюємо точки, якщо маленький екран
+                    if(screen.width < 850) {
+                        return false
                     }
                     else {
-                        return d.price;
+
+
+                        var item = d.id;
+                        var limit = 1;
+
+                        div.style("display", "block")
+                        // .html("<div id='tipDiv'><p>Ціна продажу - <span class='ct-chart-pink line'></span>Стара ціна - <span class='ct-chart-black line'></span></p></div>")
+                            .style("left", (d3.event.pageX) + "px")
+                            .style("top", (d3.event.pageY) + "px");
+
+                        var spark = {series: [[8, 8, 8, 8, 8, 8, 8, 8, 5]]};
+
+                        var sparkOptions = {
+                            height: '1em',
+                            width: '4ex',
+                            showPoint: false,
+                            fullWidth: true,
+                            chartPadding: {top: 0, right: 0, bottom: 0, left: 0},
+                            axisX: {showGrid: false, showLabel: false, offset: 0},
+                            axisY: {showGrid: false, showLabel: false, offset: 0}
+                        };
+                        new Chartist.Line('.ct-chart-pink.line', spark, sparkOptions);
+                        new Chartist.Line('.ct-chart-black.line', spark, sparkOptions);
+
+
+                        $.ajax({
+                            type: "GET",
+                            contentType: "application/json",
+                            dataType: "json",
+                            url: API_ROOT + "/blackfriday/api/object/" + item
+                            // data: JSON.stringify({"categ": item, "limit": limit})
+                        }).done(function (data) {
+                            $('#tipDiv').find('svg#tip-svg').remove();
+
+                            var theCase = data;
+
+                            theCase.forEach(function (d) {
+                                d.price = +d.price;
+                                d.priceOld = +d.priceOld;
+                                d.date = parseDate(d.date)
+                            });
+
+
+                            // var textBlockRect = document.getElementById("scroll-text").getBoundingClientRect();
+                            var scrollChartMargin = {top: 30, right: 0, bottom: 40, left: 40},
+                                scrollChartWidth = 250 - scrollChartMargin.left - scrollChartMargin.right,
+                                scrollChartHeight = 200 - scrollChartMargin.top - scrollChartMargin.bottom;
+
+                            var xScale = d3.scaleTime().range([0, scrollChartWidth]);
+                            var yScale = d3.scaleLinear().range([scrollChartHeight, 0]);
+
+                            var yAxis = d3.axisLeft().scale(yScale).ticks(5);
+
+                            var xAxis = d3.axisBottom()
+                                .scale(xScale)
+                                .tickSize(-scrollChartHeight)
+                                .ticks(9)
+                                .tickFormat(formatTime);
+
+                            xScale.domain([parseDate('2018-04-15'), parseDate('2018-12-30')]);
+                            yScale.domain([0, d3.max(theCase, function (d) {
+                                    if (d.priceOld > 0) {
+                                        return d.priceOld;
+                                    }
+                                    else {
+                                        return d.price;
+                                    }
+                                }
+                            )]);
+
+                            var line = d3.line()
+                                .defined(function (d) {
+                                    return d.price !== 0;
+                                })
+                                .x(function (d) {
+                                    return xScale(d.date);
+                                })
+                                .y(function (d) {
+                                    return yScale(d.price);
+                                });
+
+                            var lineOld = d3.line()
+                                .defined(function (d) {
+                                    return d.priceOld !== 0;
+                                })
+                                .x(function (d) {
+                                    return xScale(d.date);
+                                })
+                                .y(function (d) {
+                                    return yScale(d.priceOld);
+                                });
+
+                            d3.select("#closeX")
+                                .attr("aria-label", "Закрити графік")
+                                .on("click", function () {
+                                    $('#tipDiv').find('svg#tip-svg').remove();
+                                    div.style("display", "none")
+                                });
+
+                            var svg = d3.select("#tipDiv")
+                                    .append("svg")
+                                    .attr("id", "tip-svg")
+                                    .style("margin-bottom", "10px")
+                                    .attr("width", scrollChartWidth + scrollChartMargin.left + scrollChartMargin.right)
+                                    .attr("height", scrollChartHeight + scrollChartMargin.top + scrollChartMargin.bottom)
+                                    // .attr('class', "small-multiples")
+                                    .append("g")
+                                    .attr("transform", "translate(" + scrollChartMargin.left + "," + scrollChartMargin.top + ")")
+                                ;
+
+                            svg.append("g").attr("class", "axis-s").call(yAxis);
+                            svg.append("g").attr("class", "axis-s").attr("transform", "translate(0," + scrollChartHeight + ")")
+                                .call(xAxis);
+                            d3.selectAll("path.domain").remove();
+
+
+                            svg.append("path")
+                                .attr("class", "scrollChartLine")
+                                .attr("d", function () {
+                                    return line(theCase);
+                                });
+
+                            svg.append("path")
+                                .attr("class", "scrollChartLineOld")
+                                .attr("d", function () {
+                                    return lineOld(theCase);
+                                });
+
+
+                            var left = xScale(new Date("2018-11-18"));
+                            var right = xScale(new Date("2018-11-25")); //one more day
+                            var wid = right - left;
+                            svg.append("rect")
+                                .attr("x", left)
+                                .attr("width", wid)
+                                .attr("height", scrollChartHeight)
+                                .attr("fill", "yellow")
+                                .attr("opacity", "0.05");
+
+                            svg.append("text")
+                            // .attr("id", "scrollChartTitle")
+                                .attr("x", -20)
+                                .attr("y", -10)
+                                .attr("text-anchor", "left")
+                                .style("font-size", "9px")
+                                .attr("fill", "black")
+                                .text(function () {
+                                    return theCase[0].name
+                                });
+
+                        });
                     }
-                }
-            )]);
-
-            var line = d3.line()
-                .defined(function (d) {
-                    return d.price !== 0;
-                })
-                .x(function (d) {
-                    return xScale(d.date);
-                })
-                .y(function (d) {
-                    return yScale(d.price);
-                });
-
-            var lineOld = d3.line()
-                .defined(function (d) {
-                    return d.priceOld !== 0;
-                })
-                .x(function (d) {
-                    return xScale(d.date);
-                })
-                .y(function (d) {
-                    return yScale(d.priceOld);
-                });
-
-            d3.select("#closeX")                
-                .attr("aria-label","Закрити графік")
-                .on("click", function(){
-                    $('#tipDiv').find('svg#tip-svg').remove();
-                    div.style("display", "none")
-                });
-
-            var svg = d3.select("#tipDiv")
-                .append("svg")
-                .attr("id", "tip-svg")
-                .style("margin-bottom", "10px")
-                .attr("width", scrollChartWidth + scrollChartMargin.left + scrollChartMargin.right)
-                .attr("height", scrollChartHeight + scrollChartMargin.top + scrollChartMargin.bottom)
-                // .attr('class', "small-multiples")
-                .append("g")
-                .attr("transform", "translate(" + scrollChartMargin.left + "," + scrollChartMargin.top + ")")
-                ;
-
-            svg.append("g").attr("class", "axis-s").call(yAxis);
-            svg.append("g").attr("class", "axis-s").attr("transform", "translate(0," + scrollChartHeight + ")")
-                .call(xAxis);
-            d3.selectAll("path.domain").remove();
-
-
-            svg.append("path")
-                .attr("class", "scrollChartLine")
-                .attr("d", function () {
-                    return line(theCase);
-                });
-
-            svg.append("path")
-                .attr("class", "scrollChartLineOld")
-                .attr("d", function () {
-                    return lineOld(theCase);
-                });
-
-
-            var left = xScale(new Date("2018-11-18"));
-            var right = xScale(new Date("2018-11-25")); //one more day
-            var wid = right - left;
-            svg.append("rect")
-                .attr("x", left)
-                .attr("width", wid)
-                .attr("height", scrollChartHeight)
-                .attr("fill", "yellow")
-                .attr("opacity", "0.05");
-
-            svg.append("text")
-                // .attr("id", "scrollChartTitle")
-                .attr("x", -20)
-                .attr("y", -10)
-                .attr("text-anchor", "left")
-                .style("font-size", "9px")
-                .attr("fill", "black")
-                .text(function () {
-                    return theCase[0].name
-                });
-
-        });
     });
 
 

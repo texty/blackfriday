@@ -108,18 +108,26 @@ body {
     #header {
       height: 55vh; } }
   #header #logo-icons {
+    text-transform: none;
+    font-family: 'Fira Sans', sans-serif;
+    color: white;
+    text-align: left;
     height: 50px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+    width: calc(100% - 20px);
+    display: grid;
+    grid-template-columns: 70%;
+    grid-template-rows: auto auto;
     position: absolute;
     top: 5px;
-    left: 0;
+    left: 10px;
     z-index: 100; }
   #header #logo {
-    width: 160px;
+    width: 210px;
     justify-content: flex-start; }
   #header #social-icons {
+    position: fixed;
+    top: 5px;
+    right: 10px;
     width: 80px;
     display: flex;
     justify-content: space-around; }

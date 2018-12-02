@@ -30,8 +30,12 @@
 
 
 
-        //Якщо iPadPro, то малюємо в три контейнери
-        if(screen.width === 1024 && screen.height === 1366 && screen.orientation != "landscape"){
+        //Якщо iPadPro або мобілка, то малюємо в три контейнери
+        if (screen.width === 1024 && screen.height === 1366 && screen.orientation != "landscape"){
+            drawMeThis(smartsOnly, "#smallMultiplesContainer1");
+            drawMeThis(applienceOnly, "#smallMultiplesContainer2");
+            drawMeThis(clothesOnly, "#smallMultiplesContainer3");
+        } else if (screen.width < 825) {
             drawMeThis(smartsOnly, "#smallMultiplesContainer1");
             drawMeThis(applienceOnly, "#smallMultiplesContainer2");
             drawMeThis(clothesOnly, "#smallMultiplesContainer3");
@@ -41,7 +45,7 @@
         else {
             $(document).ready(function () {
                 window.addEventListener('scroll', function (e) {
-                    if (isOnScreen("#scrollText2")) {
+                    if (isOnScreen("#scrollText2")  === true) {
                         drawMeThis(applienceOnly, "#smallMultiplesContainer1");
                     }
                 });
@@ -49,7 +53,7 @@
 
             $(document).ready(function () {
                 window.addEventListener('scroll', function (e) {
-                    if (isOnScreen("#scrollText3")) {
+                    if (isOnScreen("#scrollText3")  === true) {
                         drawMeThis(clothesOnly, "#smallMultiplesContainer1");
                     }
                 });
@@ -57,7 +61,7 @@
 
             $(document).ready(function () {
                 window.addEventListener('scroll', function (e) {
-                    if (isOnScreen("#scrollText1")) {
+                    if (isOnScreen("#scrollText1")  === true) {
                         drawMeThis(smartsOnly, "#smallMultiplesContainer1");
                     }
                 });
@@ -70,10 +74,21 @@
                 drawMeThis(smartsOnly, "#smallMultiplesContainer1");
                 drawMeThis(applienceOnly, "#smallMultiplesContainer2");
                 drawMeThis(clothesOnly, "#smallMultiplesContainer3");
-            } else {
+            }
+            //для того, щоб модальне вікно відкривлось ок після screen turn треба перемальвувати графіки на ресайзі
+            else if (screen.width < 825) {
+                $('#smallMultiplesContainer1').html("");
+                $('#smallMultiplesContainer2').html("");
+                $('#smallMultiplesContainer3').html("");
+                drawMeThis(smartsOnly, "#smallMultiplesContainer1");
+                drawMeThis(applienceOnly, "#smallMultiplesContainer2");
+                drawMeThis(clothesOnly, "#smallMultiplesContainer3");
+            }
+
+            else {
                 $(document).ready(function () {
                     window.addEventListener('scroll', function (e) {
-                        if (isOnScreen("#scrollText2")) {
+                        if (isOnScreen("#scrollText2") === true) {
                             drawMeThis(applienceOnly, "#smallMultiplesContainer1");
                         }
                     });
@@ -81,7 +96,7 @@
 
                 $(document).ready(function () {
                     window.addEventListener('scroll', function (e) {
-                        if (isOnScreen("#scrollText3")) {
+                        if (isOnScreen("#scrollText3") === true) {
                             drawMeThis(clothesOnly, "#smallMultiplesContainer1");
                         }
                     });
@@ -89,7 +104,7 @@
 
                 $(document).ready(function () {
                     window.addEventListener('scroll', function (e) {
-                        if (isOnScreen("#scrollText1")) {
+                        if (isOnScreen("#scrollText1") === true) {
                             $('#smallMultiplesContainer1').html("");
                             drawMeThis(smartsOnly, "#smallMultiplesContainer1");
                         }
@@ -103,11 +118,12 @@
 
 function drawMeThis(df, container) {
     //для iPAd ProPortrait малюємо в окремі контейнери, тому не видаляємо контент першого
-    if(screen.width != 1024 && screen.height != 1366 && screen.orientation != "landscape") {
+    if(screen.width != 1024 && screen.height != 1366 && screen.orientation != "landscape" && screen.width > 825) {
         $('#smallMultiplesContainer1').html("");
         $('#smallMultiplesContainer2').html("");
         $('#smallMultiplesContainer3').html("");
     }
+
 
     var rect1 = document.getElementById("phantom").getBoundingClientRect();
 

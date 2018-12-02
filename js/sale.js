@@ -46,6 +46,7 @@
             $(document).ready(function () {
                 window.addEventListener('scroll', function (e) {
                     if (isOnScreen("#scrollText2")  === true) {
+                        $('#smallMultiplesContainer1').html("");
                         drawMeThis(applienceOnly, "#smallMultiplesContainer1");
                     }
                 });
@@ -54,6 +55,7 @@
             $(document).ready(function () {
                 window.addEventListener('scroll', function (e) {
                     if (isOnScreen("#scrollText3")  === true) {
+                        $('#smallMultiplesContainer1').html("");
                         drawMeThis(clothesOnly, "#smallMultiplesContainer1");
                     }
                 });
@@ -62,6 +64,7 @@
             $(document).ready(function () {
                 window.addEventListener('scroll', function (e) {
                     if (isOnScreen("#scrollText1")  === true) {
+                        $('#smallMultiplesContainer1').html("");
                         drawMeThis(smartsOnly, "#smallMultiplesContainer1");
                     }
                 });
@@ -89,6 +92,7 @@
                 $(document).ready(function () {
                     window.addEventListener('scroll', function (e) {
                         if (isOnScreen("#scrollText2") === true) {
+                            $('#smallMultiplesContainer1').html("");
                             drawMeThis(applienceOnly, "#smallMultiplesContainer1");
                         }
                     });
@@ -97,6 +101,7 @@
                 $(document).ready(function () {
                     window.addEventListener('scroll', function (e) {
                         if (isOnScreen("#scrollText3") === true) {
+                            $('#smallMultiplesContainer1').html("");
                             drawMeThis(clothesOnly, "#smallMultiplesContainer1");
                         }
                     });
@@ -118,11 +123,11 @@
 
 function drawMeThis(df, container) {
     //для iPAd ProPortrait малюємо в окремі контейнери, тому не видаляємо контент першого
-    if(screen.width != 1024 && screen.height != 1366 && screen.orientation != "landscape" && screen.width > 825) {
-        $('#smallMultiplesContainer1').html("");
-        $('#smallMultiplesContainer2').html("");
-        $('#smallMultiplesContainer3').html("");
-    }
+    // if(screen.width != 1024 && screen.height != 1366 && screen.orientation != "landscape") {
+    //     // $('#smallMultiplesContainer1').html("");
+    //     // $('#smallMultiplesContainer2').html("");
+    //     // $('#smallMultiplesContainer3').html("");
+    // }
 
 
     var rect1 = document.getElementById("phantom").getBoundingClientRect();

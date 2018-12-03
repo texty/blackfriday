@@ -161,6 +161,9 @@ $('#mybut').on('click', function () {
                 .attr("width", width + margin.left + margin.right)
                 .attr("height", height + margin.top + margin.bottom)
                 .attr('class', "small-multiples")
+                .attr("title", function (d) {
+                return d.values[0].name
+                })
                 .append("g")
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
             ;
@@ -218,14 +221,15 @@ $('#mybut').on('click', function () {
 
 
             svg.append("text")
-                .attr("x", 0)
+                .attr("x", -20)
                 .attr("y", 0 - (margin.top / 2))
                 .attr("text-anchor", "center")
                 .style("font-size", "10px")
                 .attr("fill", "black")
                 .text(function (d) {
                     return d.values[0].name
-                });
+                })
+                ;
 
             var left = xScale(new Date("2018-11-18"));
             var right = xScale(new Date("2018-11-25")); //one more day

@@ -590,7 +590,7 @@ var annotations = [
         "marker":"yes",
         "textOffset": [
             36,
-            156
+            172
         ]
     },
     {
@@ -619,10 +619,8 @@ var annotations = [
         "bigScreenSize":"10px",
         "marker":"yes",
         "textOffset": [
-            -242,
-            -67
-
-
+            -243,
+            -72
         ]
     },
 

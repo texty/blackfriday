@@ -408,17 +408,18 @@ $(document).ready(function () {
                     }
     });
 
-
-        // tippy('.circle_s',{
-        //     html: '.tooltip'
-        // });
-
+        // const template = $('#tipDiv')[0];
+        //
+        // // tippy('.circle_s',{
+        // //     html: '.tooltip'
+        // // });
+        //
         // tippy('.circle_s', {
         //     allowHTML: true,
-        //     content: '.tooltip',
+        //     content: template,
         //     delay: 100,
-        //     arrow: true,
-        //     arrowType: 'round',
+        //     // arrow: true,
+        //     // arrowType: 'round',
         //     size: 'large',
         //     duration: 500,
         //     animation: 'scale'

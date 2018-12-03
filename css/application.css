@@ -504,7 +504,7 @@ header, div#source {
       margin-top: 5vh; } }
 
 #turnMe {
-  margin: 10% 0 0 8%;
+  margin: 0 0 0 8%;
   grid-column: 1/3;
   grid-row: 1/2;
   height: 110vh;

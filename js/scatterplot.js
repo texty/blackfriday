@@ -400,7 +400,7 @@ $(document).ready(function () {
             .attr("pointer-events", "none")
             .attr("x",xScale(40))
             .attr("y", yScale(-18))
-            .attr("transform", "translate(200,-500)rotate(45)")
+            .attr("transform", "translate(215,-485)rotate(45)")
             .attr("font-size", "10px")
             .text("Знижка,%");
 

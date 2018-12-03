@@ -129,7 +129,7 @@ $(document).ready(function () {
     var swoopy = d3.swoopyDrag()
             .x(function(d){ return  xScale(d.sepalWidth)})
             .y(function(d){ return  yScale(d.sepalLength)})
-            .draggable(false)
+            .draggable(true)
                 .annotations(annotations);
 
     var swoopySel = svg.append('g')
@@ -597,7 +597,7 @@ var annotations = [
         "sepalWidth": 2.3,
         "sepalLength": 2,
         // "path": "M116,-186C112,-144,90,-115,58,-106",
-        "path": "M28,-233C-20,-206,-45,-157,-32,-80",
+        "path": "M26,-215C-16,-200,-41,-175,-37,-120",
         "wrap": 20,
         "text": "Нечесні знижки",
         "fill":"black",

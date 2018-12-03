@@ -286,6 +286,7 @@ li {
       margin: 50px auto; } }
 
 .select {
+  height: 20px;
   cursor: pointer;
   position: relative;
   color: #343434;

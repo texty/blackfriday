@@ -145,25 +145,50 @@ $(document).ready(function () {
             });
 
 
+    // swoopySel.selectAll('text')
+    //     .each(function(d){
+    //         d3.select(this)
+    //             .text('')
+    //             .attr("stroke", "none")
+    //             .attr("fill", function (d) {
+    //                 return d.fill;
+    //             })
+    //             .attr("font-size", function (d) {
+    //                 return d.bigScreenSize;
+    //             })//clear existing text
+    //             .tspans(d3.wordwrap(d.text, d.wrap)); //wrap after 20 char
+    //     });
+
+
 
     swoopySel.selectAll('text')
         .each(function(d){
-            d3.select(this)
-                .text('')
-                .attr("stroke", "none")
-                .attr("fill", function(d) {
-                    return d.fill;
-                })
-                .attr("font-size", function(d) {
-                    if(screen.width > 1500){
+            if(screen.width > 1500) {
+                d3.select(this)
+                    .text('')
+                    .attr("stroke", "none")
+                    .attr("fill", function (d) {
+                        return d.fill;
+                    })
+                    .attr("font-size", function (d) {
                         return d.bigScreenSize;
-                    } else {
+                    })//clear existing text
+                    .tspans(d3.wordwrap(d.text, d.wrap, d.betweenBig)); //wrap after 20 char
+            }
+            else  {
+                d3.select(this)
+                    .text('')
+                    .attr("stroke", "none")
+                    .attr("fill", function(d) {
+                        return d.fill;
+                    })
+                    .attr("font-size", function(d) {
                         return d.size;
-                    }
-
-            })//clear existing text
-                .tspans(d3.wordwrap(d.text, d.wrap, d.between)); //wrap after 20 char
+                    })//clear existing text
+                    .tspans(d3.wordwrap(d.text, d.wrap, d.between)); //wrap after 20 char
+            }
         });
+
 
     svg.append('marker')
         .attr('id', 'arrow')
@@ -537,11 +562,12 @@ var annotations = [
         "sepalWidth": 2.3,
         "sepalLength": 2,
         "path": "M24,203C3,181,-1,154,13,111",
-        "wrap": 10,
+        "wrap": 5,
         "text": "Дорожче, ніж зазвичай",
         "fill":"black",
         "size":"16px",
-        "between": 15,
+        "between": 18,
+        "betweenBig": 13,
         "bigScreenSize":"10px",
         "marker":"yes",
         "textOffset": [
@@ -591,6 +617,7 @@ var annotations = [
         "fill":"black",
         "size":"12px",
         "between": 15,
+        "betweenBig": 11,
         "bigScreenSize":"8px",
         "marker":"no",
         "textOffset": [
@@ -607,6 +634,7 @@ var annotations = [
         "fill":"black",
         "size":"12px",
         "between": 15,
+        "betweenBig": 11,
         "bigScreenSize":"8px",
         "marker":"no",
         "textOffset": [
@@ -623,6 +651,7 @@ var annotations = [
         "fill":"white",
         "size":"12px",
         "between": 15,
+        "betweenBig": 11,
         "bigScreenSize":"8px",
         "marker":"no",
         "textOffset": [
@@ -638,6 +667,7 @@ var annotations = [
         "fill":"grey",
         "size":"9px",
         "between": 11,
+        "betweenBig": 8,
         "bigScreenSize":"6px",
         "marker":"no",
         "textOffset": [
@@ -653,6 +683,7 @@ var annotations = [
         "fill":"grey",
         "size":"9px",
         "between": 11,
+        "betweenBig": 8,
         "bigScreenSize":"6px",
         "marker":"no",
         "textOffset": [

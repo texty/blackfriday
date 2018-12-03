@@ -75,7 +75,9 @@ function onchangeLim() {
 var parseDate = d3.timeParse("%Y-%m-%d");
 var formatTime = d3.timeFormat("%b");
 
-
+var smTooltip = d3.select("body").append("div")
+    .attr("class", "tooltip2")
+    .style("opacity", 0);
 
 $('#mybut').on('click', function () {
     $('#mybut').html('<b>Ще графічків</b>');
@@ -219,7 +221,8 @@ $('#mybut').on('click', function () {
                 // });
                 // .on("mousemove", mousemove);
 
-
+            tippy('.tooltip2')
+            
             svg.append("text")
                 .attr("x", -20)
                 .attr("y", 0 - (margin.top / 2))
@@ -229,7 +232,23 @@ $('#mybut').on('click', function () {
                 .text(function (d) {
                     return d.values[0].name
                 })
-                ;
+                .attr("data-tippy-content", function(d) {
+                    return d.values[0].name
+                });
+            //     .on("mouseover", function(d) {
+            //     smTooltip.transition()
+            //         .duration(200)
+            //         .style("opacity", .9);
+            //         smTooltip.html(d.values[0].name)
+            //         .style("left", (d3.event.pageX) + "px")
+            //         .style("top", (d3.event.pageY - 28) + "px");
+            // })
+            //     .on("mouseout", function(d) {
+            //         smTooltip.transition()
+            //             .duration(500)
+            //             .style("opacity", 0);
+            //     });
+            //     ;
 
             var left = xScale(new Date("2018-11-18"));
             var right = xScale(new Date("2018-11-25")); //one more day

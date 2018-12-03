@@ -59,6 +59,7 @@ $(document).ready(function () {
     var div = d3.select(".tooltip")
         .style("opacity", 1);
 
+    
 
 
 // create scale objects
@@ -208,6 +209,7 @@ $(document).ready(function () {
     });
 
 
+    
     /*------------------------*/
     //точки і графіки до точок
     /*-------------------------*/
@@ -406,6 +408,21 @@ $(document).ready(function () {
                     }
     });
 
+
+        // tippy('.circle_s',{
+        //     html: '.tooltip'
+        // });
+
+        // tippy('.circle_s', {
+        //     allowHTML: true,
+        //     content: '.tooltip',
+        //     delay: 100,
+        //     arrow: true,
+        //     arrowType: 'round',
+        //     size: 'large',
+        //     duration: 500,
+        //     animation: 'scale'
+        // });
 
         /*------------------------*/
         //навігація

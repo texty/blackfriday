@@ -221,20 +221,21 @@ $('#mybut').on('click', function () {
                 // });
                 // .on("mousemove", mousemove);
 
-            tippy('.tooltip2')
-            
+                        
             svg.append("text")
+                .attr("class", "myTippy")
                 .attr("x", -20)
                 .attr("y", 0 - (margin.top / 2))
                 .attr("text-anchor", "center")
                 .style("font-size", "10px")
+                .style("cursor", "pointer")
                 .attr("fill", "black")
                 .text(function (d) {
                     return d.values[0].name
                 })
                 .attr("data-tippy-content", function(d) {
                     return d.values[0].name
-                });
+                })
             //     .on("mouseover", function(d) {
             //     smTooltip.transition()
             //         .duration(200)
@@ -248,7 +249,18 @@ $('#mybut').on('click', function () {
             //             .duration(500)
             //             .style("opacity", 0);
             //     });
-            //     ;
+                ;
+
+            // tippy('.myTippy');
+
+            tippy('.myTippy', {
+                delay: 100,
+                arrow: true,
+                arrowType: 'round',
+                size: 'small',
+                duration: 500,
+                animation: 'scale'
+            });
 
             var left = xScale(new Date("2018-11-18"));
             var right = xScale(new Date("2018-11-25")); //one more day

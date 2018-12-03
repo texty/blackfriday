@@ -157,9 +157,10 @@ body {
     animation: redBlink2 3s linear 1; }
 
 #credits {
-  text-align: right;
-  width: 60%;
-  margin: 50px auto 50px auto;
+  line-height: 1.6;
+  text-align: left;
+  width: max-content;
+  margin: 50px 20% 50px auto;
   font-weight: 100; }
 
 /*-------- Main content  ---------*/

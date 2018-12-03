@@ -506,7 +506,7 @@ header, div#source {
   @media (max-width: 825px) {
     #scatter-legend {
       width: 80%;
-      margin: auto; } }
+      margin: 30% auto; } }
   @media only screen and (min-width: 1024px) and (max-height: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
     #scatter-legend {
       margin-top: 5vh; } }

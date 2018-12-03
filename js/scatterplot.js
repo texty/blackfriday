@@ -162,7 +162,7 @@ $(document).ready(function () {
                     }
 
             })//clear existing text
-                .tspans(d3.wordwrap(d.text, d.wrap)); //wrap after 20 char
+                .tspans(d3.wordwrap(d.text, d.wrap, d.between)); //wrap after 20 char
         });
 
     svg.append('marker')
@@ -400,7 +400,7 @@ $(document).ready(function () {
             .attr("pointer-events", "none")
             .attr("x",xScale(40))
             .attr("y", yScale(-18))
-            .attr("transform", "translate(360,-340)rotate(45)")
+            .attr("transform", "translate(380,-375)rotate(45)")
             .attr("font-size", "10px")
             .text("Знижка,%");
 
@@ -409,7 +409,7 @@ $(document).ready(function () {
             .attr("pointer-events", "none")
             .attr("x",xScale(215))
             .attr("y", yScale(-18))
-            .attr("transform", "translate(30,-670)rotate(45)")
+            .attr("transform", "translate(75,-680)rotate(45)")
             .attr("font-size", "10px")
             .attr("fill", "black")
             .text("Націнка,%");
@@ -541,6 +541,7 @@ var annotations = [
         "text": "Дорожче, ніж зазвичай",
         "fill":"black",
         "size":"16px",
+        "between": 15,
         "bigScreenSize":"10px",
         "marker":"yes",
         "textOffset": [
@@ -551,7 +552,8 @@ var annotations = [
     {
         "sepalWidth": 2.3,
         "sepalLength": 2,
-        "path": "M116,-186C112,-144,90,-115,58,-106",
+        // "path": "M116,-186C112,-144,90,-115,58,-106",
+        "path": "M28,-233C-20,-206,-45,-157,-32,-80",
         "wrap": 20,
         "text": "Нечесні знижки",
         "fill":"black",
@@ -588,6 +590,7 @@ var annotations = [
         "text": "Точки під цією лінією - товари з націнкою",
         "fill":"black",
         "size":"12px",
+        "between": 15,
         "bigScreenSize":"8px",
         "marker":"no",
         "textOffset": [
@@ -603,12 +606,13 @@ var annotations = [
         "text": "Фактична знижка менше за оголошену магазином",
         "fill":"black",
         "size":"12px",
+        "between": 15,
         "bigScreenSize":"8px",
         "marker":"no",
         "textOffset": [
             36,
             -214
-        ]
+            ]
     },
     {
         "sepalWidth": 2.3,
@@ -618,6 +622,7 @@ var annotations = [
         "text": "Заявлена знижка була суттєвою (від 5%) і не менше реальної",
         "fill":"white",
         "size":"12px",
+        "between": 15,
         "bigScreenSize":"8px",
         "marker":"no",
         "textOffset": [
@@ -631,8 +636,9 @@ var annotations = [
         "wrap": 10,
         "text": "Вісь Y - фактична знижка, %",
         "fill":"grey",
-        "size":"10px",
-        "bigScreenSize":"8px",
+        "size":"9px",
+        "between": 11,
+        "bigScreenSize":"6px",
         "marker":"no",
         "textOffset": [
             361,115
@@ -642,11 +648,12 @@ var annotations = [
         "sepalWidth": 2.3,
         "sepalLength": 2,
         "path": "",
-        "wrap": 10,
+        "wrap": 5,
         "text": "Вісь X - заявлена магазином знижка, %",
         "fill":"grey",
-        "size":"10px",
-        "bigScreenSize":"8px",
+        "size":"9px",
+        "between": 11,
+        "bigScreenSize":"6px",
         "marker":"no",
         "textOffset": [
             -312,-153
@@ -657,7 +664,7 @@ var annotations = [
         "sepalLength": 5.7,
         "marker":"yes",
         "fill":"black",
-        "path": "M107,-27L66,-68",
+        "path": "M125,-61L81,-107",
         "text": "",
         "textOffset": [
             -83,
@@ -667,7 +674,7 @@ var annotations = [
     {
         "sepalWidth": 4.4,
         "sepalLength": 5.7,
-        "path": "M137,1L180,43",
+        "path": "M180,-7L228,41",
         "fill":"black",
         "marker":"yes",
         "text": "",
@@ -677,38 +684,37 @@ var annotations = [
         ]
     }
 
-]
+];
 
 
-var sm_annotations = [
-    {
-        "sepalWidth": 2.3,
-        "sepalLength": 2,
-        "path": "M136,2L176,41",
-        "wrap": 10,
-        "text": "Стара ціна",
-        "fill":"black",
-        "size":"10px",
-        "marker":"yes",
-        "textOffset": [
-            36,
-            156
-        ]
-    },
-    {
-        "sepalWidth": 2.3,
-        "sepalLength": 2,
-        "path": "M104,-28L63,-68",
-        "wrap": 20,
-        "text": "Ціна продажу",
-        "fill":"black",
-        "size":"10px",
-        "marker":"yes",
-        "textOffset": [
-            36,-242
-        ]
-    }
-]
-
+// var sm_annotations = [
+//     {
+//         "sepalWidth": 2.3,
+//         "sepalLength": 2,
+//         "path": "M136,2L176,41",
+//         "wrap": 10,
+//         "text": "Стара ціна",
+//         "fill":"black",
+//         "size":"10px",
+//         "marker":"yes",
+//         "textOffset": [
+//             36,
+//             156
+//         ]
+//     },
+//     {
+//         "sepalWidth": 2.3,
+//         "sepalLength": 2,
+//         "path": "M104,-28L63,-68",
+//         "wrap": 20,
+//         "text": "Ціна продажу",
+//         "fill":"black",
+//         "size":"10px",
+//         "marker":"yes",
+//         "textOffset": [
+//             36,-242
+//         ]
+//     }
+// ]
 
 

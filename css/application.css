@@ -575,6 +575,12 @@ div.tooltip {
     display: table-cell;
     vertical-align: top;
     cursor: pointer; }
+  div.tooltip .ct-chart-pink {
+    padding: 2px;
+    background-color: #ffeaed; }
+  div.tooltip .ct-chart-black {
+    padding: 2px;
+    background-color: #efefef; }
   div.tooltip .ct-chart-pink svg {
     margin: 1px;
     vertical-align: text-bottom; }

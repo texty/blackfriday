@@ -400,7 +400,7 @@ $(document).ready(function () {
             .attr("pointer-events", "none")
             .attr("x",xScale(40))
             .attr("y", yScale(-18))
-            .attr("transform", "translate(215,-485)rotate(45)")
+            .attr("transform", "translate(360,-340)rotate(45)")
             .attr("font-size", "10px")
             .text("Знижка,%");
 
@@ -409,9 +409,9 @@ $(document).ready(function () {
             .attr("pointer-events", "none")
             .attr("x",xScale(215))
             .attr("y", yScale(-18))
-            .attr("transform", "translate(200,-500)rotate(45)")
+            .attr("transform", "translate(30,-670)rotate(45)")
             .attr("font-size", "10px")
-            .attr("fill", "red")
+            .attr("fill", "black")
             .text("Націнка,%");
 
 
@@ -420,7 +420,7 @@ $(document).ready(function () {
             .each(function() {
               var tickValue =  d3.select(this).html();
                   if(Number(tickValue) < 0){
-                      d3.select(this).attr("fill", "red")
+                      d3.select(this).html(Math.abs(tickValue))
                   }
             });
 
@@ -651,6 +651,30 @@ var annotations = [
         "textOffset": [
             -312,-153
         ]
+    },
+    {
+        "sepalWidth": 4.4,
+        "sepalLength": 5.7,
+        "marker":"yes",
+        "fill":"black",
+        "path": "M107,-27L66,-68",
+        "text": "",
+        "textOffset": [
+            -83,
+            -65
+        ]
+    },
+    {
+        "sepalWidth": 4.4,
+        "sepalLength": 5.7,
+        "path": "M137,1L180,43",
+        "fill":"black",
+        "marker":"yes",
+        "text": "",
+        "textOffset": [
+            -83,
+            -65
+        ]
     }
 
 ]
@@ -660,7 +684,7 @@ var sm_annotations = [
     {
         "sepalWidth": 2.3,
         "sepalLength": 2,
-        "path": "M-5,86C-47,82,-55,18,-9,4",
+        "path": "M136,2L176,41",
         "wrap": 10,
         "text": "Стара ціна",
         "fill":"black",
@@ -674,7 +698,7 @@ var sm_annotations = [
     {
         "sepalWidth": 2.3,
         "sepalLength": 2,
-        "path": "M-5,86C-47,82,-55,18,-9,4",
+        "path": "M104,-28L63,-68",
         "wrap": 20,
         "text": "Ціна продажу",
         "fill":"black",

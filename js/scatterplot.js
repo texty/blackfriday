@@ -129,7 +129,7 @@ $(document).ready(function () {
     var swoopy = d3.swoopyDrag()
             .x(function(d){ return  xScale(d.sepalWidth)})
             .y(function(d){ return  yScale(d.sepalLength)})
-            .draggable(true)
+            .draggable(false)
                 .annotations(annotations);
 
     var swoopySel = svg.append('g')

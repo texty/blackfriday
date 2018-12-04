@@ -112,22 +112,24 @@ $('#mybut').on('click', function () {
                 .scale(xScale)
                 .tickSize(-height)
                 .ticks(9)
-                .tickFormat(formatTime)
-            ;
+                .tickFormat(formatTime);
+
 
         var line = d3.line()
             .defined(function(d) {
                 return d.price !== 0;
             })
             .x(function(d) { return xScale(d.date); })
-            .y(function(d) { return yScale(d.price); });
+            // .y(function(d) { return yScale(d.price); })
+            ;
 
         var lineOld = d3.line()
             .defined(function(d) {
                 return d.priceOld !== 0;
             })
             .x(function(d) { return xScale(d.date); })
-            .y(function(d) { return yScale(d.priceOld); });
+            // .y(function(d) { return yScale(d.priceOld); })
+        ;
 
         var bisectDate = d3.bisector(function(d) { return d.date; }).left;
 
@@ -138,16 +140,17 @@ $('#mybut').on('click', function () {
             d.date = parseDate(d.date)
         });
         xScale.domain([parseDate('2018-04-15'), parseDate('2018-12-30')]);
-        // xScale.domain(d3.extent(data, function(d) { return d.date; }));
+        
+        
+       // yScale.domain([0, d3.max(data, function (d) {
+       //          if(d.site === "site3") {
+       //              return d.priceOld;
+       //          }
+       //          else {
+       //              return d.price;
+       //          }
+       //      })]);
 
-            yScale.domain([0, d3.max(data, function (d) {
-                if(d.site === "leboutique") {
-                    return d.priceOld;
-                }
-                else {
-                    return d.price;
-                }
-            })]);
 
 
 
@@ -168,22 +171,69 @@ $('#mybut').on('click', function () {
                 return d.values[0].name
                 })
                 .append("g")
-                .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-            ;
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        svg.append("g")
+            .attr("id", "yAxisG")
+            .each( function (s) {
+                var svg1 = d3.select(this);
+                var d = svg1.datum();
+                yScale.domain([0,d3.max(d.values, function(k) {
+                    if(k.priceOld > 0) {
+                        return k.priceOld * 1.5
+                    } else {
+                        return k.price * 1.5
+                    }
+                })]);
+                svg1.call(yAxis);
+            });
 
 
-        svg.append("g").attr("id", "yAxisG").call(yAxis);
-        svg.append("g").attr("id", "xAxisG").attr("class", "axis").attr("transform", "translate(0," + height + ")")
+        svg.append("g")
+            .attr("id", "xAxisG")
+            .attr("class", "axis")
+            .attr("transform", "translate(0," + height + ")")
             .call(xAxis);
+
         d3.selectAll("path.domain").remove();
+
+        // svg.append("path")
+        //     .attr("class", "line")
+        //     .attr("d", function(d) {return line(d.values); });
 
         svg.append("path")
             .attr("class", "line")
-            .attr("d", function(d) {return line(d.values); });
+            .each( function (s) {
+                var svg1 = d3.select(this);
+                var d = svg1.datum();
+                yScale.domain([0,d3.max(d.values, function(k) {
+                    if(k.priceOld > 0) {
+                        return k.priceOld * 1.5
+                    } else {
+                        return k.price * 1.5
+                    }
+                })]);
+                line.y(function(d) { return yScale(d.price); });
+
+                svg1.attr("d", function(d) {return line(d.values); });
+            });
 
         svg.append("path")
             .attr("class", "lineOld")
-            .attr("d", function(d) {return lineOld(d.values); });
+            .each( function (s) {
+                var svg1 = d3.select(this);
+                var d = svg1.datum();
+                yScale.domain([0,d3.max(d.values, function(k) {
+                    if(k.priceOld > 0) {
+                        return k.priceOld * 1.5
+                    } else {
+                        return k.price * 1.5
+                    }
+                })]);
+                lineOld.y(function(d) { return yScale(d.priceOld); });
+
+                svg1.attr("d", function(d) {return lineOld(d.values); });
+            });
 
 
 
@@ -196,31 +246,13 @@ $('#mybut').on('click', function () {
                 category = svg.datum().key;
             var filtered_data = svg.datum().values;
 
-            // var focus = svg.append("g")
-            //     .attr("class", "focus")
-            //     .style("display", "none");
-            //
-            // focus.append("circle")
-            //     .attr("r", 3);
-            //
-            //
-            // focus.append("text")
-            //     .attr("x", 9)
-            //     .attr("dy", ".35em");
+
 
             svg.append("rect")
                 .attr("class", "overlay")
                 .attr("width", width + margin.right)
                 .attr("height", height);
-                // .on("mouseover", function () {
-                //     focus.style("display", null);
-                //     // focus2.style("display", null);
-                // })
-                // .on("mouseout", function () {
-                //     focus.style("display", "none");
-                //     // focus2.style("display", "none");
-                // });
-                // .on("mousemove", mousemove);
+
 
                         
             svg.append("text")
@@ -236,21 +268,7 @@ $('#mybut').on('click', function () {
                 })
                 .attr("data-tippy-content", function(d) {
                     return d.values[0].name
-                })
-            //     .on("mouseover", function(d) {
-            //     smTooltip.transition()
-            //         .duration(200)
-            //         .style("opacity", .9);
-            //         smTooltip.html(d.values[0].name)
-            //         .style("left", (d3.event.pageX) + "px")
-            //         .style("top", (d3.event.pageY - 28) + "px");
-            // })
-            //     .on("mouseout", function(d) {
-            //         smTooltip.transition()
-            //             .duration(500)
-            //             .style("opacity", 0);
-            //     });
-                ;
+                });
 
             // tippy('.myTippy');
 
@@ -275,55 +293,6 @@ $('#mybut').on('click', function () {
 
 
 
-            function mousemove() {
-                var x0 = xScale.invert(d3.mouse(this)[0]),
-                    i = bisectDate(filtered_data, x0, 1),
-                    d0 = filtered_data[i - 1],
-                    d1 = filtered_data[i],
-                    d = x0 - d0.date > d1.date - x0 ? d1 : d1;
-
-
-                focus.attr("transform", "translate(" + xScale(d.date) + "," + yScale(d.price) + ")");
-                focus
-                    .select("text")
-                    .text(function() {
-                        if(d.price > 0) {
-                            return d.price
-                        }
-                    })
-                    .attr("y", -15)
-                    .attr("fill", "#ff36ad")
-                    .attr("class", "tooltip")
-                    .attr("x", function () {
-                        if (x0 > parseDate ('2018-09-01')) {
-                            // you are on A zone
-                            return -20;
-                        }
-                    })
-                ;
-
-                // focus2.attr("transform", "translate(" + xScale(d.date) + "," + yScale(d.priceOld) + ")");
-                // focus2
-                //     .select("text")
-                //     .text(function() {
-                //         if(d.priceOld > 0) {
-                //             // var thisCircle = $(this)
-                //             //     .closest('g')[0].find('circle');
-                //             // thisCircle.css("opacity", 0);
-                //             return d.priceOld
-                //         }
-                //     })
-                //     .attr("y", -15)
-                //     .attr("fill", "white")
-                //
-                //     .attr("class", "tooltip")
-                //     .attr("x", function () {
-                //        if (x0 > parseDate ('2018-10-01')) {
-                //             // you are on A zone
-                //             return -30;
-                //         }
-                //     });
-            }
 
 
         })

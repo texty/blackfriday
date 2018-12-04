@@ -251,7 +251,7 @@ $(document).ready(function () {
 
                 })
                 // .attr('stroke', "black")
-                .attr('opacity', 0.9)
+                .attr('opacity', 0.7)
                 .attr('r', 2)
                 .on('click', function(d) {
                     //не малюємо точки, якщо маленький екран

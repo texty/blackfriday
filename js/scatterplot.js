@@ -4,7 +4,7 @@
 var parseDate = d3.timeParse("%Y-%m-%d");
 var formatTime = d3.timeFormat("%b");
 
-var API_ROOT = 'http://api-x32.texty.org.ua';
+var API_ROOT = 'https://api-x32.texty.org.ua';
 
 $(document).ready(function () {
 
@@ -233,6 +233,11 @@ $(document).ready(function () {
                 .attr('cy', function (d) {
                     return yScale(d.real_discount)
                 })
+                .style("cursor", function(d) {
+                    if(screen.width > 850) {
+                        return "pointer"
+                    }
+                })
                 // .attr("fill", function (d) {
                 //     return color(d.bigGat)
                 // })
@@ -401,20 +406,13 @@ $(document).ready(function () {
                                 .attr("x", -20)
                                 .attr("y", -10)
                                 .attr("text-anchor", "left")
-                                .style("font-size", "9px")
+                                .style("font-size", "10px")
                                 .attr("fill", "black")
                                 .text(function () {
                                     return theCase[0].name
                                 });
 
-                            // svg.append("text")
-                            //     // .attr("transform", "rotate(-90)")
-                            //     .attr("y", -10)
-                            //     .attr("x", xScale("April"))
-                            //     .attr("dy", "1em")
-                            //     .style("text-anchor", "middle")
-                            //     .text("грн");
-
+                            
                         });
                     }
     });

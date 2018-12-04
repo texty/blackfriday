@@ -3,7 +3,7 @@
  */
 
 var textBlockRect = document.getElementById("phantom").getBoundingClientRect();
-var scrollChartMargin = {top: 30, right: 40, bottom: 40, left: 60},
+var scrollChartMargin = {top: 50, right: 40, bottom: 40, left: 60},
     scrollChartWidth = textBlockRect.width - scrollChartMargin.left - scrollChartMargin.right,
     scrollChartHeight = scrollChartWidth  - scrollChartMargin.top - scrollChartMargin.bottom;
 
@@ -102,6 +102,17 @@ d3.csv("data/examples.csv", function(error, examples) {
         .text(function () {
             return theCase[0].name
         });
+
+    svg.append("text")
+    // .attr("transform", "rotate(-90)")
+        .attr("y", -12)
+        .attr("x", -8)
+        .attr("dy", "1em")
+        .style("font-size", "10px")
+        .style("text-anchor", "end")
+        .style("font-weight", "400")
+        .attr("fill", "black")
+        .text("тис. грн");
 
 
 

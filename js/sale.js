@@ -259,6 +259,15 @@ function drawMeThis(df, container) {
             return valuelineOld(d.values);
         });
 
+    buyMeChart.append("text")
+        // .attr("transform", "rotate(-90)")
+        .attr("y", -30)
+        .attr("x", -10)
+        .attr("dy", "1em")
+        .style("font-size", "10px")
+        .style("text-anchor", "middle")
+        .text("рази");
+
 
     var left = x(new Date("2018-11-18"));
     var right = x(new Date("2018-11-25")); //one more day

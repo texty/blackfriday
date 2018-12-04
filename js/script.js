@@ -114,21 +114,22 @@ $('#mybut').on('click', function () {
                 .ticks(9)
                 .tickFormat(formatTime);
 
-
+        //*****
         var line = d3.line()
             .defined(function(d) {
                 return d.price !== 0;
             })
             .x(function(d) { return xScale(d.date); })
-            // .y(function(d) { return yScale(d.price); })
+        // .y(function(d) { return yScale(d.price); }) // прибираємо поки, щоб дати індивідуальну потім
             ;
 
+        //*****
         var lineOld = d3.line()
             .defined(function(d) {
                 return d.priceOld !== 0;
             })
             .x(function(d) { return xScale(d.date); })
-            // .y(function(d) { return yScale(d.priceOld); })
+            // .y(function(d) { return yScale(d.priceOld); }) // прибираємо поки, щоб дати індивідуальну потім
         ;
 
         var bisectDate = d3.bisector(function(d) { return d.date; }).left;
@@ -142,18 +143,6 @@ $('#mybut').on('click', function () {
         xScale.domain([parseDate('2018-04-15'), parseDate('2018-12-30')]);
         
         
-       // yScale.domain([0, d3.max(data, function (d) {
-       //          if(d.site === "site3") {
-       //              return d.priceOld;
-       //          }
-       //          else {
-       //              return d.price;
-       //          }
-       //      })]);
-
-
-
-
 
         var products = d3.nest()
             .key(function(d) { return d.id; })
@@ -201,6 +190,9 @@ $('#mybut').on('click', function () {
         //     .attr("class", "line")
         //     .attr("d", function(d) {return line(d.values); });
 
+        //*****  
+        // ось тут в мене сумніви, чи треба знову повторювати визначення yScalе, 
+        // може його глобальним якось зробити, але не розумію як
         svg.append("path")
             .attr("class", "line")
             .each( function (s) {
@@ -208,22 +200,23 @@ $('#mybut').on('click', function () {
                 var d = svg1.datum();
                 yScale.domain([0,d3.max(d.values, function(k) {
                     if(k.priceOld > 0) {
-                        return k.priceOld * 1.5
+                        return k.priceOld * 1.5 // чи можна так? Щоб лінія була не впритик до верху дати верх таким чином
                     } else {
                         return k.price * 1.5
                     }
                 })]);
-                line.y(function(d) { return yScale(d.price); });
-
+                line.y(function(d) { return yScale(d.price); }); //індивідуальний y для кожного
                 svg1.attr("d", function(d) {return line(d.values); });
             });
 
+        //*****  
+        // те саме
         svg.append("path")
             .attr("class", "lineOld")
             .each( function (s) {
                 var svg1 = d3.select(this);
                 var d = svg1.datum();
-                yScale.domain([0,d3.max(d.values, function(k) {
+                yScale.domain([0,d3.max(d.values, function(k) { 
                     if(k.priceOld > 0) {
                         return k.priceOld * 1.5
                     } else {
@@ -234,11 +227,7 @@ $('#mybut').on('click', function () {
 
                 svg1.attr("d", function(d) {return lineOld(d.values); });
             });
-
-
-
-
-        // d3.selectAll("line").style("stroke", "silver");
+       
 
 
         svg.each(function() {

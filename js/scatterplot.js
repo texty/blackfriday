@@ -298,14 +298,17 @@ $(document).ready(function () {
 
 
                             // var textBlockRect = document.getElementById("scroll-text").getBoundingClientRect();
-                            var scrollChartMargin = {top: 30, right: 0, bottom: 40, left: 40},
+                            var scrollChartMargin = {top: 30, right: 0, bottom: 40, left: 50},
                                 scrollChartWidth = 250 - scrollChartMargin.left - scrollChartMargin.right,
                                 scrollChartHeight = 200 - scrollChartMargin.top - scrollChartMargin.bottom;
 
                             var xScale = d3.scaleTime().range([0, scrollChartWidth]);
                             var yScale = d3.scaleLinear().range([scrollChartHeight, 0]);
 
-                            var yAxis = d3.axisLeft().scale(yScale).ticks(5);
+                            var yAxis = d3.axisLeft()
+                                .scale(yScale)
+                                .ticks(5)
+                                .tickFormat( function(d) { return "₴ " + d  } );
 
                             var xAxis = d3.axisBottom()
                                 .scale(xScale)
@@ -404,6 +407,14 @@ $(document).ready(function () {
                                     return theCase[0].name
                                 });
 
+                            // svg.append("text")
+                            //     // .attr("transform", "rotate(-90)")
+                            //     .attr("y", -10)
+                            //     .attr("x", xScale("April"))
+                            //     .attr("dy", "1em")
+                            //     .style("text-anchor", "middle")
+                            //     .text("грн");
+
                         });
                     }
     });
@@ -501,33 +512,10 @@ $(document).ready(function () {
                 d3.event.preventDefault();
             });
 
-        var dataL = 0;
-        var offset = 100;
-
-
-        function zoomed() {
-// create new scale ojects based on event
-                var new_xScale = d3.event.transform.rescaleX(xScale);
-                var new_yScale = d3.event.transform.rescaleY(yScale);
-// update axes
-                gX.call(xAxis.scale(new_xScale));
-                gY.call(yAxis.scale(new_yScale));
-                points.data(data)
-                    .attr('cx', function (d) {
-                        return new_xScale(d.shop_discount)
-                    })
-                    .attr('cy', function (d) {
-                        return new_yScale(d.real_discount)
-                    });
 
 
 
-            points_g.select(".bf_line")
-                .attr("x1", new_xScale(0))
-                .attr("y1", new_yScale(0))
-                .attr("x2", new_xScale(100))
-                .attr("y2", new_yScale(100))
-        }
+
 
     });
 });

@@ -93,7 +93,7 @@ $('#mybut').on('click', function () {
         // }, 'slow');
         $('#charts').find('svg').remove();
 
-        var margin = {top: 30, right: 0, bottom: 40, left: 40},
+        var margin = {top: 30, right: 0, bottom: 40, left: 50},
             width = 220 - margin.left - margin.right,
             height = 220 - margin.top - margin.bottom;
 
@@ -105,7 +105,8 @@ $('#mybut').on('click', function () {
 
         var yAxis = d3.axisLeft()
             .scale(yScale)
-            .ticks(5);
+            .ticks(5)
+            .tickFormat( function(d) { return "₴ " + d  } );
 
         var xAxis = d3.axisBottom()
                 .scale(xScale)

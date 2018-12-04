@@ -573,7 +573,8 @@ div.tooltip {
   div.tooltip #tipDiv p {
     padding-top: 5px;
     display: flex;
-    justify-content: space-around; }
+    justify-content: space-around;
+    margin-bottom: 10px; }
   div.tooltip #closeX {
     display: table-cell;
     vertical-align: top;

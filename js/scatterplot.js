@@ -456,7 +456,7 @@ $(document).ready(function () {
             .attr("y", yScale(-18))
             .attr("transform", "translate(380,-375)rotate(45)")
             .attr("font-size", "10px")
-            .text("Знижка,%");
+            .text("Знижка, %");
 
 
         svg.append("text")
@@ -466,7 +466,7 @@ $(document).ready(function () {
             .attr("transform", "translate(75,-680)rotate(45)")
             .attr("font-size", "10px")
             .attr("fill", "black")
-            .text("Націнка,%");
+            .text("Націнка, %");
 
 
         //розмальовуємо негативну шкалу в червоний
@@ -634,7 +634,7 @@ var annotations = [
         "sepalLength": 2,
         "path": "0",
         "wrap": 30,
-        "text": "Фактична знижка менше за оголошену магазином",
+        "text": "Фактична знижка менша за оголошену магазином",
         "fill":"black",
         "size":"12px",
         "between": 15,
@@ -651,7 +651,7 @@ var annotations = [
         "sepalLength": 2,
         "path": "0",
         "wrap": 25,
-        "text": "Заявлена знижка була суттєвою (від 5%) і не менше реальної",
+        "text": "Заявлена знижка була суттєвою (від 5%) і не меншою від реальної",
         "fill":"white",
         "size":"12px",
         "between": 15,
@@ -683,7 +683,7 @@ var annotations = [
         "sepalLength": 2,
         "path": "",
         "wrap": 5,
-        "text": "Вісь X - заявлена магазином знижка, %",
+        "text": "Вісь X - заявлена знижка, %",
         "fill":"grey",
         "size":"9px",
         "between": 11,

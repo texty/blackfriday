@@ -223,12 +223,9 @@ li {
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 10px;
   position: sticky;
+  position: -webkit-sticky;
   top: 20%;
   z-index: 5; }
-  @media (max-width: 825px) {
-    #smallMultiplesContainer1 {
-      position: sticky;
-      top: 0; } }
   @media only screen and (min-width: 1024px) and (max-height: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
     #smallMultiplesContainer1 {
       position: relative; } }
@@ -243,12 +240,9 @@ li {
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 10px;
   position: sticky;
+  position: -webkit-sticky;
   top: 20%;
   z-index: 10; }
-  @media (max-width: 825px) {
-    #smallMultiplesContainer2 {
-      position: sticky;
-      top: 0; } }
   @media only screen and (min-width: 1024px) and (max-height: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
     #smallMultiplesContainer2 {
       position: relative;
@@ -265,10 +259,6 @@ li {
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 10px;
   z-index: 15; }
-  @media (max-width: 825px) {
-    #smallMultiplesContainer3 {
-      position: sticky;
-      top: 0; } }
   @media only screen and (min-width: 1024px) and (max-height: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
     #smallMultiplesContainer3 {
       position: relative;
@@ -619,6 +609,7 @@ div.tooltip {
   padding: 5px;
   grid-column: 2/3;
   position: sticky;
+  position: -webkit-sticky;
   top: calc((100% - 400px)/2);
   height: 50vh; }
   @supports (height: max-content) {
